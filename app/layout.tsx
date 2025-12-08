@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <LanguageProvider>
           <Header />
 
-          <main className="flex-1 pt-12 pb-10 relative z-10">
+          <main className="flex-1 pt-22 pb-10 relative z-10">
             {children}
           </main>
 
