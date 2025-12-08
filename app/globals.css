@@ -5,13 +5,6 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -23,4 +16,100 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===========================================
+   Animations
+=========================================== */
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideIn {
+  animation: fadeSlideIn 0.6s ease-out forwards;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0px rgba(140, 94, 60, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(140, 94, 60, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(140, 94, 60, 0.4);
+  }
+}
+
+.loadMoreBtn {
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.loadMoreBtn:hover {
+  transform: translateY(-3px) scale(1.03);
+  background-color: #a06b45; /* lighter brown */
+}
+
+.loadMoreBtn:active {
+  transform: scale(0.97);
+}
+
+.loadMoreBtn.loading {
+  animation: pulseGlow 1.3s infinite ease-in-out;
+}
+
+/* ===========================================
+   🎄 FULL PAGE SNOW FALLING (SUBTLE + BEHIND SITE)
+=========================================== */
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  background-image: url("/snow.png");
+  background-repeat: repeat;
+  background-size: 180px;
+  opacity: 0.15; /* Subtle and non-intrusive */
+  animation: snowFall 16s linear infinite;
+
+  z-index: 0; /* Behind all content */
+}
+
+@keyframes snowFall {
+  from {
+    background-position: 0px -200px;
+  }
+  to {
+    background-position: 0px 600px;
+  }
+}
+
+/* ===========================================
+   REMOVE OLD SNOW (if it existed)
+=========================================== */
+
+/* Remove header snow effect — now replaced by full-page version */
+.christmas-header,
+.christmas-header::after {
+  background: none !important;
+  animation: none !important;
+  content: none !important;
 }
