@@ -6968,5 +6968,77 @@
     "TagsEN": "[\"Liqueur\",\"Orange\",\"Christmas\",\"Drink\",\"Homemade\"]",
     "Date": "04/12/2025",
     "ShortID": "tz26jqK"
+  },
+
+  {
+    "id": "lZ4Vr_6sI9M",
+    "slug": "xoirino-me-damaskina-kai-kastana",
+    "title_gr": "Χοιρινό με Δαμάσκηνα και Κάστανα",
+    "title_en": "Pork with Prunes and Chestnuts",
+    "category_gr": "Εορταστικά",
+    "category_en": "Festive",
+    "youtube": "lZ4Vr_6sI9M",
+    "date": "2025-02-10",
+    "short_description_gr": "Ζουμερό χοιρινό με δαμάσκηνα, κάστανα και ζεστά αρώματα. Ένα γιορτινό πιάτο με πλούσια, μελωμένη σάλτσα.",
+    "short_description_en": "Tender pork baked with prunes, chestnuts and warm spices. A festive dish with a rich, velvety sauce.",
+    "ingredients_gr": [
+      "2 κιλά χοιρινή σπάλα ή λαιμό σε μεγάλα κομμάτια",
+      "2 μεγάλα κρεμμύδια χοντροκομμένα (380 γρ)",
+      "3 σκελίδες σκόρδο",
+      "3 καρότα σε ροδέλες (250 γρ)",
+      "100 ml ελαιόλαδο",
+      "1 σφηνάκι κονιάκ",
+      "200 ml λευκό ξηρό κρασί",
+      "500 ml ζεστό ζωμό κρέατος",
+      "200 γρ. δαμάσκηνα χωρίς κουκούτσι",
+      "250 γρ. κάστανα βρασμένα",
+      "1 κ.σ. μέλι",
+      "1 κ.σ. ντοματοπελτέ",
+      "1 ξυλάκι κανέλας",
+      "2 φύλλα δάφνης",
+      "10 κόκκους μπαχάρι",
+      "Αλάτι – πιπέρι",
+      "Λίγο ξύσμα πορτοκαλιού"
+    ],
+    "ingredients_en": [
+      "2 kg pork shoulder or neck, cut into large chunks",
+      "2 large onions, roughly chopped (380 g)",
+      "3 garlic cloves",
+      "3 carrots, sliced (250 g)",
+      "100 ml olive oil",
+      "1 shot of brandy",
+      "200 ml dry white wine",
+      "500 ml warm meat stock",
+      "200 g pitted prunes",
+      "250 g cooked chestnuts",
+      "1 tbsp honey",
+      "1 tbsp tomato paste",
+      "1 cinnamon stick",
+      "2 bay leaves",
+      "10 allspice berries",
+      "Salt – pepper",
+      "A little orange zest"
+    ],
+    "steps_gr": [
+      "Σοτάρεις το χοιρινό σε καυτό λάδι μέχρι να πάρει χρώμα.",
+      "Σβήνεις με το κονιάκ.",
+      "Προσθέτεις κρεμμύδι, καρότο και σκόρδο και σοτάρεις για 3 λεπτά.",
+      "Ρίχνεις τον πελτέ, το μέλι και σβήνεις με το κρασί.",
+      "Προσθέτεις ζωμό, δάφνη, κανέλα, μπαχάρι, αλάτι και πιπέρι.",
+      "Μεταφέρεις σε γάστρα και προσθέτεις δαμάσκηνα και κάστανα.",
+      "Ψήνεις 2,5 ώρες στους 170°C.",
+      "Αφαιρείς το καπάκι και ψήνεις άλλα 20–25 λεπτά μέχρι να δέσει η σάλτσα."
+    ],
+    "steps_en": [
+      "Sauté the pork in hot oil until browned.",
+      "Deglaze with the brandy.",
+      "Add onion, carrot and garlic and sauté for 3 minutes.",
+      "Add tomato paste and honey, then deglaze with the wine.",
+      "Add stock, bay leaves, cinnamon, allspice, salt and pepper.",
+      "Transfer to a casserole and add the prunes and chestnuts.",
+      "Bake for 2.5 hours at 170°C.",
+      "Remove the lid and bake for 20–25 more minutes until the sauce thickens."
+    ]
   }
+  
 ]
