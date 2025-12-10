@@ -12,10 +12,16 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <head />
+      <head>
+        {/* Google AdSense Verification */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2171074805444072"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
 
       <body className="bg-[#3c2718] text-white min-h-screen flex flex-col">
-
         <LanguageProvider>
           <Header />
 
@@ -25,7 +31,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
           <Footer />
         </LanguageProvider>
-
       </body>
     </html>
   );
