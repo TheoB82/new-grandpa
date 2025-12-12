@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      <div className="max-w-6xl mx-auto px-6 py-10 pt-32">
+      <div className="max-w-6xl mx-auto px-6 py-10 mt-24">
 
         {/* LOGO */}
         <div className="flex justify-center mb-6">
