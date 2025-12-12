@@ -72,6 +72,19 @@ function getThumb(url: string) {
   }
 }
 
+function isPublished(r: Recipe): boolean {
+  if (!r.Date) return true;
+
+  const recipeDate = parseDate(r.Date);
+  const today = new Date();
+
+  recipeDate.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
+
+  return recipeDate <= today;
+}
+
+
 /* ================================================================== */
 /*                        RECIPE EXPLORER                             */
 /* ================================================================== */
@@ -89,10 +102,12 @@ export default function RecipeExplorer() {
      SORT NEWEST → OLDEST
   ------------------------------------------------ */
   const sortedRecipes: Recipe[] = (recipes as Recipe[])
+    .filter(isPublished) // 👈 hide future recipes
     .slice()
     .sort(
       (a, b) => parseDate(b.Date).getTime() - parseDate(a.Date).getTime()
     );
+
 
   /* ----------------------------------------------
      FILTER (category + bilingual fuzzy search + tag-based categories)
