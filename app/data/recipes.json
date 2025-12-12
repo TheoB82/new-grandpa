@@ -6989,6 +6989,27 @@
     "TagsEN": "[\"Pork\",\"Prunes\",\"Chestnuts\",\"Festive\",\"Christmas\"]",
     "Date": "10/12/2025",
     "ShortID": "lZ4Vr_6sI9M"
+  },
+  {
+    "CategoryGR": "Γλυκά",
+    "CategoryEN": "Desserts",
+    "Image": "wix:image://v1/white_semolina_halva.jpg",
+    "TitleGR": "Χαλβάς Λευκός Σιμιγδαλένιος",
+    "TitleEN": "White Semolina Halva",
+    "ShortDescriptionGR": "Λευκός σιμιγδαλένιος χαλβάς με γάλα καρύδας. Νηστίσιμος, μόνο με 3 βασικά υλικά και έτοιμος σε μόλις 5 λεπτά.",
+    "ShortDescriptionEN": "White semolina halva made with coconut milk. Vegan, using only 3 basic ingredients and ready in just 5 minutes.",
+    "IngredientsGR": "<p class=\"font_7\">1 λίτρο γάλα καρύδας</p>\n<p class=\"font_7\">180 γρ. σιμιγδάλι ψιλό</p>\n<p class=\"font_7\">180 γρ. ζάχαρη</p>\n<p class=\"font_7\">1 κ.σ. ανθόνερο (προαιρετικό)</p>",
+    "IngredientsEN": "<p class=\"font_7\">1 litre coconut milk</p>\n<p class=\"font_7\">180 g fine semolina</p>\n<p class=\"font_7\">180 g sugar</p>\n<p class=\"font_7\">1 tbsp orange blossom water (optional)</p>",
+    "LongDescriptionGR": "<p class=\"font_7\">Απλός, λευκός σιμιγδαλένιος χαλβάς με γάλα καρύδας, ιδανικός για νηστεία αλλά και για όσους αγαπούν τα γρήγορα και εύκολα γλυκά. Με ελάχιστα υλικά και χωρίς σιρόπι, ετοιμάζεται σε μόλις 5 λεπτά και έχει φίνα, αρωματική γεύση.</p>",
+    "LongDescriptionEN": "<p class=\"font_7\">A simple white semolina halva made with coconut milk. Perfect for fasting or vegan diets, this dessert requires minimal ingredients, no syrup, and comes together in just 5 minutes with a delicate, aromatic flavour.</p>",
+    "ExecutionGR": "<ol class=\"font_7\">\n<li>Σε κατσαρόλα ρίχνεις το γάλα καρύδας και τη ζάχαρη και ζεσταίνεις σε μέτρια φωτιά μέχρι να διαλυθεί η ζάχαρη.</li>\n<li>Προσθέτεις το σιμιγδάλι σταδιακά, ανακατεύοντας συνεχώς με σύρμα για να μη σβολιάσει.</li>\n<li>Μαγειρεύεις για λίγα λεπτά μέχρι να πήξει το μείγμα και να ξεκολλάει από τα τοιχώματα της κατσαρόλας.</li>\n<li>Αποσύρεις από τη φωτιά και προσθέτεις το ανθόνερο, αν χρησιμοποιείς.</li>\n<li>Μεταφέρεις σε φόρμα ή μπολάκια, αφήνεις να σταθεί ελαφρώς και σερβίρεις.</li>\n</ol>",
+    "ExecutionEN": "<ol class=\"font_7\">\n<li>In a saucepan, add the coconut milk and sugar and heat over medium heat until the sugar dissolves.</li>\n<li>Gradually add the semolina, whisking constantly to avoid lumps.</li>\n<li>Cook for a few minutes until the mixture thickens and pulls away from the sides of the pan.</li>\n<li>Remove from the heat and stir in the orange blossom water, if using.</li>\n<li>Transfer to a mould or bowls, allow to set slightly, and serve.</li>\n</ol>",
+    "LinkYT": "https://www.youtube.com/watch?v=mGzsLL9ihDE",
+    "TagsGR": "[\"Χαλβάς\",\"Σιμιγδάλι\",\"Νηστίσιμο\",\"Γρήγορο Γλυκό\",\"Γάλα Καρύδας\"]",
+    "TagsEN": "[\"Halva\",\"Semolina\",\"Vegan\",\"Quick Dessert\",\"Coconut Milk\"]",
+    "Date": "14/12/2025",
+    "ShortID": "mGzsLL9ihDE"
   }
+  
   
 ]
