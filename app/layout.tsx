@@ -16,7 +16,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* Google Consent Mode v2 */}
+        {/* ✅ Disable Google Funding Choices popup */}
+        <Script id="google-funding-choices-disable" strategy="beforeInteractive">
+          {`
+            window.googlefc = window.googlefc || {};
+            window.googlefc.disable = true;
+          `}
+        </Script>
+
+        {/* ✅ Google Consent Mode v2 (default = denied) */}
         <Script id="google-consent" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -32,6 +40,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
 
       <body className="bg-[#3c2718] text-white min-h-screen flex flex-col">
+        {/* ✅ Loads AdSense ONLY after Accept all */}
         <AdsenseLoader />
 
         <LanguageProvider>
@@ -40,6 +49,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Footer />
         </LanguageProvider>
 
+        {/* ✅ Accept / Reject banner */}
         <CookieBanner />
       </body>
     </html>
