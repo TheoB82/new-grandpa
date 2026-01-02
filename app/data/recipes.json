@@ -7048,7 +7048,29 @@
     "TagsEN": "[\"Festive Salad\",\"Winter Salad\",\"Orange\",\"Pomegranate\",\"Parmesan\",\"Christmas\"]",
     "Date": "26/12/2025",
     "ShortID": "568XOvbxDHY"
+  },
+
+  {
+    "CategoryGR": "Κυρίως",
+    "CategoryEN": "Mains",
+    "Image": "wix:image://v1/beer_meatballs.jpg",
+    "TitleGR": "Κεφτέδες Μπυραρίας",
+    "TitleEN": "Beerhouse Meatballs",
+    "ShortDescriptionGR": "Ζουμεροί κεφτέδες μπυραρίας από χοιρινό και μοσχαρίσιο κιμά, με αρωματικά μπαχαρικά και πλούσια σάλτσα μπύρας. Ιδανικοί για μεζέ ή κυρίως πιάτο.",
+    "ShortDescriptionEN": "Juicy beerhouse-style meatballs made with pork and beef mince, aromatic spices and a rich beer sauce. Perfect as a meze or main course.",
+    "IngredientsGR": "<p class=\"font_7\"><strong>Για τους κεφτέδες:</strong></p>\n<p class=\"font_7\">500 γρ. κιμάς χοιρινός</p>\n<p class=\"font_7\">500 γρ. κιμάς μοσχαρίσιος</p>\n<p class=\"font_7\">2 κρεμμύδια (250 γρ.)</p>\n<p class=\"font_7\">2 σκελίδες σκόρδο</p>\n<p class=\"font_7\">5–6 φέτες μπαγιάτικο ψωμί τοστ (100 γρ.)</p>\n<p class=\"font_7\">160 ml γάλα</p>\n<p class=\"font_7\">1 μικρό κομμάτι βούτυρο</p>\n<p class=\"font_7\">2–3 αυγά</p>\n<p class=\"font_7\">Τριμμένη φρυγανιά (αν χρειαστεί)</p>\n<p class=\"font_7\">1 κ.σ. μαντζουράνα ή ρίγανη</p>\n<p class=\"font_7\">1 κ.γ. μαύρο πιπέρι</p>\n<p class=\"font_7\">1 κ.σ. πάπρικα γλυκιά</p>\n<p class=\"font_7\">1 πρέζα μοσχοκάρυδο</p>\n<p class=\"font_7\">1 κ.σ. αλάτι</p>\n<p class=\"font_7\">1 κ.σ. μουστάρδα</p>\n<p class=\"font_7\">20 γρ. φρέσκος μαϊντανός</p>\n<p class=\"font_7\">Ελαιόλαδο για το τηγάνισμα</p>\n<br/>\n<p class=\"font_7\"><strong>Για τη σάλτσα μπύρας:</strong></p>\n<p class=\"font_7\">3–4 κρεμμύδια</p>\n<p class=\"font_7\">2 κ.σ. αλεύρι</p>\n<p class=\"font_7\">1 ποτήρι μπύρα</p>\n<p class=\"font_7\">1 κ.γ. πάπρικα γλυκιά</p>\n<p class=\"font_7\">1 κ.γ. θυμάρι ξερό</p>\n<p class=\"font_7\">Αλάτι & πιπέρι</p>\n<p class=\"font_7\">1 μικρό κομμάτι βούτυρο</p>",
+    "IngredientsEN": "<p class=\"font_7\"><strong>For the meatballs:</strong></p>\n<p class=\"font_7\">500 g pork mince</p>\n<p class=\"font_7\">500 g beef mince</p>\n<p class=\"font_7\">2 onions (250 g)</p>\n<p class=\"font_7\">2 garlic cloves</p>\n<p class=\"font_7\">5–6 slices stale toast bread (100 g)</p>\n<p class=\"font_7\">160 ml milk</p>\n<p class=\"font_7\">Small piece of butter</p>\n<p class=\"font_7\">2–3 eggs</p>\n<p class=\"font_7\">Breadcrumbs if needed</p>\n<p class=\"font_7\">1 tbsp marjoram or oregano</p>\n<p class=\"font_7\">1 tsp black pepper</p>\n<p class=\"font_7\">1 tbsp sweet paprika</p>\n<p class=\"font_7\">Pinch of nutmeg</p>\n<p class=\"font_7\">1 tbsp salt</p>\n<p class=\"font_7\">1 tbsp mustard</p>\n<p class=\"font_7\">20 g fresh parsley</p>\n<p class=\"font_7\">Olive oil for frying</p>\n<br/>\n<p class=\"font_7\"><strong>For the beer sauce:</strong></p>\n<p class=\"font_7\">3–4 onions</p>\n<p class=\"font_7\">2 tbsp flour</p>\n<p class=\"font_7\">1 glass beer</p>\n<p class=\"font_7\">1 tsp sweet paprika</p>\n<p class=\"font_7\">1 tsp dried thyme</p>\n<p class=\"font_7\">Salt & pepper</p>\n<p class=\"font_7\">Small piece of butter</p>",
+    "LongDescriptionGR": "<p class=\"font_7\">Κλασικοί κεφτέδες μπυραρίας, ζουμεροί και πλούσιοι σε γεύση, με αρωματικά μπαχαρικά και συνοδεία μελωμένης σάλτσας μπύρας. Σερβίρονται ζεστοί αλλά παραμένουν εξαιρετικοί και κρύοι, ιδανικοί για τραπέζι, μεζέ ή οικογενειακό γεύμα.</p>",
+    "LongDescriptionEN": "<p class=\"font_7\">Classic beerhouse meatballs, juicy and full of flavour, seasoned with aromatic spices and served with a rich, caramelised beer sauce. Delicious hot or cold, perfect for sharing or as a hearty main dish.</p>",
+    "ExecutionGR": "<ol class=\"font_7\">\n<li>Ψιλοκόβουμε το κρεμμύδι και σοτάρουμε σε λίγο ελαιόλαδο μέχρι να μαλακώσει. Αφήνουμε να κρυώσει.</li>\n<li>Μουλιάζουμε το ψωμί στο γάλα και το στύβουμε καλά.</li>\n<li>Σε μπολ ανακατεύουμε όλα τα υλικά για τους κεφτέδες (εκτός τη φρυγανιά), προσθέτοντας το κρεμμύδι και το ψωμί.</li>\n<li>Ζυμώνουμε καλά και αν χρειαστεί προσθέτουμε λίγη τριμμένη φρυγανιά.</li>\n<li>Πλάθουμε κεφτεδάκια ίδιου μεγέθους.</li>\n<li>Τηγανίζουμε σε δυνατή φωτιά 1–2 λεπτά ανά πλευρά, χαμηλώνουμε και συνεχίζουμε για 8–9 λεπτά.</li>\n<li>Για τη σάλτσα, σοτάρουμε τα κρεμμύδια με το αλεύρι και τα μπαχαρικά.</li>\n<li>Σβήνουμε με την μπύρα και σιγοβράζουμε μέχρι να δέσει η σάλτσα.</li>\n<li>Προσθέτουμε το βούτυρο στο τέλος και σερβίρουμε με τους κεφτέδες.</li>\n</ol>",
+    "ExecutionEN": "<ol class=\"font_7\">\n<li>Finely chop the onion and sauté in olive oil until soft. Let cool.</li>\n<li>Soak the bread in milk and squeeze well.</li>\n<li>In a bowl, combine all meatball ingredients (except breadcrumbs), adding onion and bread.</li>\n<li>Knead well and add breadcrumbs if the mixture feels too soft.</li>\n<li>Shape evenly sized meatballs.</li>\n<li>Fry on high heat for 1–2 minutes per side, then lower heat and cook for 8–9 minutes.</li>\n<li>For the sauce, sauté onions with flour and spices.</li>\n<li>Deglaze with beer and simmer until thickened.</li>\n<li>Finish with butter and serve with the meatballs.</li>\n</ol>",
+    "LinkYT": "https://www.youtube.com/watch?v=9dMS6rGCvMk",
+    "TagsGR": "[\"Κεφτέδες\",\"Μπυραρίας\",\"Σάλτσα Μπύρας\",\"Μεζές\",\"Σπιτικό\"]",
+    "TagsEN": "[\"Meatballs\",\"Beerhouse\",\"Beer Sauce\",\"Meze\",\"Homemade\"]",
+    "Date": "03/01/2026",
+    "ShortID": "9dMS6rGCvMk"
   }
+  
   
   
   
