@@ -7013,22 +7013,38 @@
   {
     "CategoryGR": "Γλυκά",
     "CategoryEN": "Desserts",
+    "Image": "",
     "TitleGR": "Σπατούλα Θεσσαλίας",
     "TitleEN": "Thessaly Spatoula Dessert",
     "ShortDescriptionGR": "Παραδοσιακή σπατούλα Θεσσαλίας με σιρόπι, σοκολάτα και αφράτη κρέμα. Ένα πλούσιο, εορταστικό γλυκό ψυγείου ιδανικό για τα Χριστούγεννα.",
     "ShortDescriptionEN": "Traditional Thessaly Spatoula with syrup, chocolate, and light pastry cream. A rich chilled dessert, perfect for Christmas gatherings.",
-    "IngredientsGR": "<p class=\"font_7\"><strong>Για το παντεσπάνι:</strong></p>\n<p class=\"font_7\">100 g αλεύρι για όλες τις χρήσεις</p>\n<p class=\"font_7\">160 g ζάχαρη</p>\n<p class=\"font_7\">5 αυγά</p>\n<p class=\"font_7\">125 g καρύδια χοντροκοπανισμένα</p>\n<p class=\"font_7\">1 κ.γ. μπέικιν πάουντερ</p>\n<p class=\"font_7\">1 κ.γ. κανέλα</p>\n<p class=\"font_7\">½ κ.γ. γαρύφαλλο τριμμένο</p>\n<br/>\n<p class=\"font_7\"><strong>Για το σιρόπι:</strong></p>\n<p class=\"font_7\">300 g ζάχαρη</p>\n<p class=\"font_7\">375 ml νερό</p>\n<br/>\n<p class=\"font_7\"><strong>Για τη σοκολάτα:</strong></p>\n<p class=\"font_7\">200 g σκούρα κουβερτούρα</p>\n<p class=\"font_7\">240 g γάλα</p>\n<br/>\n<p class=\"font_7\"><strong>Για την κρέμα:</strong></p>\n<p class=\"font_7\">1.500 ml γάλα</p>\n<p class=\"font_7\">400 ml κρέμα γάλακτος</p>\n<p class=\"font_7\">280 g ζάχαρη</p>\n<p class=\"font_7\">120 g αλεύρι για όλες τις χρήσεις</p>\n<p class=\"font_7\">4 κρόκους αυγών</p>\n<p class=\"font_7\">3 βανίλιες</p>\n<p class=\"font_7\">1 πρέζα αλάτι</p>",
-    "IngredientsEN": "<p class=\"font_7\"><strong>For the sponge:</strong></p>\n<p class=\"font_7\">100 g all-purpose flour</p>\n<p class=\"font_7\">160 g sugar</p>\n<p class=\"font_7\">5 eggs</p>\n<p class=\"font_7\">125 g chopped walnuts</p>\n<p class=\"font_7\">1 tsp baking powder</p>\n<p class=\"font_7\">1 tsp cinnamon</p>\n<p class=\"font_7\">½ tsp ground clove</p>\n<br/>\n<p class=\"font_7\"><strong>For the syrup:</strong></p>\n<p class=\"font_7\">300 g sugar</p>\n<p class=\"font_7\">375 ml water</p>\n<br/>\n<p class=\"font_7\"><strong>For the chocolate:</strong></p>\n<p class=\"font_7\">200 g dark couverture chocolate</p>\n<p class=\"font_7\">240 g milk</p>\n<br/>\n<p class=\"font_7\"><strong>For the pastry cream:</strong></p>\n<p class=\"font_7\">1.5 L milk</p>\n<p class=\"font_7\">400 ml heavy cream</p>\n<p class=\"font_7\">280 g sugar</p>\n<p class=\"font_7\">120 g all-purpose flour</p>\n<p class=\"font_7\">4 egg yolks</p>\n<p class=\"font_7\">3 vanilla capsules</p>\n<p class=\"font_7\">1 pinch salt</p>",
-    "LongDescriptionGR": "<p class=\"font_7\">Παραδοσιακό γλυκό Θεσσαλίας με ανάλαφρο παντεσπάνι, σιρόπι, σοκολάτα και πλούσια κρέμα. Η σπατούλα σερβίρεται παγωμένη και αποτελεί αγαπημένο χριστουγεννιάτικο επιδόρπιο με ζεστά μπαχαρικά και τραγανά καρύδια.</p>",
-    "LongDescriptionEN": "<p class=\"font_7\">A traditional Thessaly dessert featuring airy sponge cake soaked in syrup, chocolate filling, and rich pastry cream. Served chilled, it is a festive favourite with warming spices and crunchy walnuts.</p>",
-    "ExecutionGR": "<ol class=\"font_7\">\n<li>Χτυπάμε αυγά και ζάχαρη 15 λεπτά μέχρι να αφρατέψουν.</li>\n<li>Ανακατεύουμε αλεύρι, μπέικιν, κανέλα, γαρύφαλλο και τα ενσωματώνουμε στα αυγά.</li>\n<li>Προσθέτουμε καρύδια απαλά.</li>\n<li>Ρίχνουμε το μείγμα σε βουτυρωμένη φόρμα 34×26 cm και ψήνουμε στους 175°C για 30–35 λεπτά.</li>\n<li>Βράζουμε νερό και ζάχαρη για 4 λεπτά και σιροπιάζουμε το κρύο παντεσπάνι.</li>\n<li>Λιώνουμε σοκολάτα και γάλα σε μπεν μαρί και γεμίζουμε γραμμές στο παντεσπάνι.</li>\n<li>Χτυπάμε σαντιγί. Φτιάχνουμε κρέμα με γάλα, ζάχαρη, αλεύρι, αλάτι & βανίλια – προσθέτουμε κρόκους και βράζουμε.</li>\n<li>Όταν κρυώσει ενσωματώνουμε τη σαντιγί και απλώνουμε την κρέμα πάνω από το γλυκό.</li>\n<li>Πασπαλίζουμε κανέλα και καρύδι και βάζουμε στο ψυγείο 3–4 ώρες.</li>\n</ol>",
-    "ExecutionEN": "<ol class=\"font_7\">\n<li>Beat eggs and sugar for 15 minutes until thick and pale.</li>\n<li>Mix flour, baking powder, cinnamon and clove, then gently fold into egg mixture.</li>\n<li>Add walnuts and combine lightly.</li>\n<li>Pour batter into buttered pan (34×26cm) and bake at 175°C for 30–35 minutes.</li>\n<li>Boil sugar and water for 4 minutes and drizzle hot syrup over cold cake.</li>\n<li>Melt chocolate and milk over bain-marie and fill scored grooves on cake.</li>\n<li>Whip cream. Prepare pastry cream with milk, sugar, flour, salt & vanilla, then add yolks and cook.</li>\n<li>Cool and fold in whipped cream. Spread cream over cake.</li>\n<li>Sprinkle with cinnamon and walnuts. Refrigerate 3–4 hours.</li>\n</ol>",
+    "IngredientsGR": "<p><strong>Για το παντεσπάνι:</strong></p>\n<p>100 g αλεύρι για όλες τις χρήσεις</p>\n<p>160 g ζάχαρη</p>\n<p>5 αυγά</p>\n<p>125 g καρύδια χοντροκοπανισμένα</p>\n<p>1 κ.γ. μπέικιν πάουντερ</p>\n<p>1 κ.γ. κανέλα</p>\n<p>½ κ.γ. γαρύφαλλο τριμμένο</p>\n<br>\n<p><strong>Για το σιρόπι:</strong></p>\n<p>300 g ζάχαρη</p>\n<p>375 ml νερό</p>\n<br>\n<p><strong>Για τη σοκολάτα:</strong></p>\n<p>200 g σκούρα κουβερτούρα</p>\n<p>240 g γάλα</p>\n<br>\n<p><strong>Για την κρέμα:</strong></p>\n<p>1.500 ml γάλα</p>\n<p>400 ml κρέμα γάλακτος</p>\n<p>280 g ζάχαρη</p>\n<p>120 g αλεύρι για όλες τις χρήσεις</p>\n<p>4 κρόκους αυγών</p>\n<p>3 βανίλιες</p>\n<p>1 πρέζα αλάτι</p>",
+    "IngredientsEN": "<p><strong>For the sponge:</strong></p>\n<p>100 g all-purpose flour</p>\n<p>160 g sugar</p>\n<p>5 eggs</p>\n<p>125 g chopped walnuts</p>\n<p>1 tsp baking powder</p>\n<p>1 tsp cinnamon</p>\n<p>½ tsp ground clove</p>\n<br>\n<p><strong>For the syrup:</strong></p>\n<p>300 g sugar</p>\n<p>375 ml water</p>\n<br>\n<p><strong>For the chocolate:</strong></p>\n<p>200 g dark couverture chocolate</p>\n<p>240 g milk</p>\n<br>\n<p><strong>For the pastry cream:</strong></p>\n<p>1.5 L milk</p>\n<p>400 ml heavy cream</p>\n<p>280 g sugar</p>\n<p>120 g all-purpose flour</p>\n<p>4 egg yolks</p>\n<p>3 vanilla capsules</p>\n<p>1 pinch salt</p>",
+    "ExecutionGR": "<p>Χτυπάμε αυγά και ζάχαρη 15 λεπτά μέχρι να αφρατέψουν.</p><ol><li><p>Ανακατεύουμε αλεύρι, μπέικιν, κανέλα, γαρύφαλλο και τα ενσωματώνουμε στα αυγά.</p></li><li><p>Προσθέτουμε καρύδια απαλά.</p></li><li><p>Ρίχνουμε το μείγμα σε βουτυρωμένη φόρμα 34×26 cm και ψήνουμε στους 175°C για 30–35 λεπτά.</p></li><li><p>Βράζουμε νερό και ζάχαρη για 4 λεπτά και σιροπιάζουμε το κρύο παντεσπάνι.</p></li><li><p>Λιώνουμε σοκολάτα και γάλα σε μπεν μαρί και γεμίζουμε γραμμές στο παντεσπάνι.</p></li><li><p>Χτυπάμε σαντιγί. Φτιάχνουμε κρέμα με γάλα, ζάχαρη, αλεύρι, αλάτι &amp; βανίλια – προσθέτουμε κρόκους και βράζουμε.</p></li><li><p>Όταν κρυώσει ενσωματώνουμε τη σαντιγί και απλώνουμε την κρέμα πάνω από το γλυκό.</p></li><li><p>Πασπαλίζουμε κανέλα και καρύδι και βάζουμε στο ψυγείο 3–4 ώρες.</p></li></ol><p></p>",
+    "ExecutionEN": "<ol><li><p>Beat eggs and sugar for 15 minutes until thick and pale.</p></li></ol><p>Mix flour, baking powder, cinnamon and clove, then gently fold into egg mixture.</p><ol><li><p>Add walnuts and combine lightly.</p></li><li><p>Pour batter into buttered pan (34×26cm) and bake at 175°C for 30–35 minutes.</p></li><li><p>Boil sugar and water for 4 minutes and drizzle hot syrup over cold cake.</p></li><li><p>Melt chocolate and milk over bain-marie and fill scored grooves on cake.</p></li><li><p>Whip cream. Prepare pastry cream with milk, sugar, flour, salt &amp; vanilla, then add yolks and cook.</p></li><li><p>Cool and fold in whipped cream. Spread cream over cake.</p></li><li><p>Sprinkle with cinnamon and walnuts. Refrigerate 3–4 hours.</p></li></ol><p></p>",
+    "LongDescriptionGR": "<p>Παραδοσιακό γλυκό Θεσσαλίας με ανάλαφρο παντεσπάνι, σιρόπι, σοκολάτα και πλούσια κρέμα. Η σπατούλα σερβίρεται παγωμένη και αποτελεί αγαπημένο χριστουγεννιάτικο επιδόρπιο με ζεστά μπαχαρικά και τραγανά καρύδια.</p>",
+    "LongDescriptionEN": "<p>A traditional Thessaly dessert featuring airy sponge cake soaked in syrup, chocolate filling, and rich pastry cream. Served chilled, it is a festive favourite with warming spices and crunchy walnuts.</p>",
     "LinkYT": "https://www.youtube.com/watch?v=hwaONo_Wg7I",
-    "TagsGR": "[\"Σπατούλα\",\"Θεσσαλίας\",\"Κρέμα\",\"Σιρόπι\",\"Καρύδι\",\"Χριστούγεννα\"]",
-    "TagsEN": "[\"Spatoula\",\"Thessaly\",\"Custard\",\"Syrup\",\"Walnuts\",\"Christmas\"]",
     "Date": "19/12/2025",
-    "ShortID": "hwaONo_Wg7I"
+    "ShortID": "hwaONo_Wg7I",
+    "TagsGR": [
+      "Σπατούλα",
+      "Θεσσαλίας",
+      "Κρέμα",
+      "Σιρόπι",
+      "Καρύδι",
+      "Χριστούγεννα"
+    ],
+    "TagsEN": [
+      "Spatoula",
+      "Thessaly",
+      "Custard",
+      "Syrup",
+      "Walnuts",
+      "Christmas"
+    ]
   },
+  
   {
     "CategoryGR": "Εορταστικά",
     "CategoryEN": "Festive",
