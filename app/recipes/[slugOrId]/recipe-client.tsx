@@ -226,13 +226,21 @@ export default function RecipeClient({ recipe }: { recipe: Recipe }) {
             <div
               className="
                 prose prose-invert max-w-none
+
+                /* Paragraph-based (old recipes) */
                 prose-p:mb-4
-                prose-li:mb-5
-                prose-ol:pl-5
-                prose-ul:pl-5
+                prose-br:content-['']
+
+                /* List-based (new recipes) */
+                prose-ol:list-decimal
+                prose-ol:pl-6
+                prose-li:mb-4
+
+                /* Shared */
                 prose-strong:text-[#fdd9a1]
               "
             >
+
 
               {parse(execution || "")}
             </div>
