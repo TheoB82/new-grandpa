@@ -210,14 +210,9 @@ export default function RecipeClient({ recipe }: { recipe: Recipe }) {
         {/* LONG DESCRIPTION */}
         {/* --------------------------------------------------------------- */}
         {longDesc && (
-          <div className="prose prose-invert max-w-none
-                    prose-ol:list-decimal
-                    prose-ol:pl-6
-                    prose-li:mb-4
-                    prose-li::marker:text-[#fdd9a1]">
-          {parse(execution || "")}
+          <div className="prose prose-invert max-w-none mb-10 text-center mx-auto">
+            {parse(longDesc)}
           </div>
-
         )}
 
         {/* --------------------------------------------------------------- */}
