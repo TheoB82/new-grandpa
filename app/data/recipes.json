@@ -7044,8 +7044,22 @@
     "ExecutionGR": "<ol><li><p>1) Πλένουμε και στεγνώνουμε καλά όλα τα πράσινα και τα τοποθετούμε σε μεγάλη σαλατιέρα.</p></li><li><p></p></li><li><p>2) Κόβουμε το πράσο σε λεπτές ροδέλες και το σοτάρουμε ελαφρά μέχρι να μαλακώσει.</p></li><li><p></p></li><li><p>3) Καθαρίζουμε το πορτοκάλι και το κόβουμε σε φιλέτα. Προσθέτουμε το ρόδι.</p></li><li><p></p></li><li><p>4) Ρίχνουμε τα φιλέτα πορτοκαλιού, το ρόδι και το πράσο στη σαλάτα.</p></li><li><p></p></li><li><p>5) Σε μπλέντερ ή μπολ χτυπάμε όλα τα υλικά για το ντρέσινγκ.</p></li><li><p></p></li><li><p>6) Περιχύνουμε τη σαλάτα, ανακατεύουμε απαλά και ολοκληρώνουμε με φλούδες παρμεζάνας και λίγο βαλσάμικο σε κρέμα.</p></li></ol><p></p>",
     "ExecutionEN": "<ol><li><p>1) Wash and dry all greens thoroughly and place them in a large salad bowl.</p></li><li><p></p></li><li><p>2) Slice the leek and lightly sauté until softened.</p></li><li><p></p></li><li><p>3) Peel the orange and cut into segments. Add the pomegranate seeds.</p></li><li><p></p></li><li><p>4) Add orange, pomegranate and leek to the greens.</p></li><li><p></p></li><li><p>5) Whisk or blend all dressing ingredients until smooth.</p></li><li><p></p></li><li><p>6) Dress the salad, toss gently and finish with parmesan shavings and a drizzle of balsamic glaze.</p></li></ol><p></p>",
     "LinkYT": "https://www.youtube.com/watch?v=568XOvbxDHY",
-    "TagsGR": ["Γιορτινή Σαλάτα","Χειμωνιάτικη","Πορτοκάλι","Ρόδι","Παρμεζάνα","Χριστούγεννα"],
-    "TagsEN": ["Festive Salad","Winter Salad","Orange","Pomegranate","Parmesan","Christmas"],
+    "TagsGR": [
+      "Γιορτινή Σαλάτα",
+      "Χειμωνιάτικη",
+      "Πορτοκάλι",
+      "Ρόδι",
+      "Παρμεζάνα",
+      "Χριστούγεννα"
+    ],
+    "TagsEN": [
+      "Festive Salad",
+      "Winter Salad",
+      "Orange",
+      "Pomegranate",
+      "Parmesan",
+      "Christmas"
+    ],
     "Date": "26/12/2025",
     "ShortID": "568XOvbxDHY"
   },
