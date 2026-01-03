@@ -223,7 +223,17 @@ export default function RecipeClient({ recipe }: { recipe: Recipe }) {
           {/* EXECUTION */}
           <div>
             <h2 className="text-2xl font-bold mb-4">{lang === "gr" ? "Εκτέλεση" : "Execution"}</h2>
-            <div className="prose prose-invert max-w-none">
+            <div
+              className="
+                prose prose-invert max-w-none
+                prose-p:mb-4
+                prose-li:mb-5
+                prose-ol:pl-5
+                prose-ul:pl-5
+                prose-strong:text-[#fdd9a1]
+              "
+            >
+
               {parse(execution || "")}
             </div>
           </div>
@@ -231,7 +241,15 @@ export default function RecipeClient({ recipe }: { recipe: Recipe }) {
           {/* INGREDIENTS (boxed) */}
           <div>
             <h2 className="text-2xl font-bold mb-4">{lang === "gr" ? "Υλικά" : "Ingredients"}</h2>
-            <div className="bg-[#5a3a24] border border-[#8c5e3c] rounded-xl p-6 shadow-lg prose prose-invert max-w-none">
+            <div
+              className="
+                bg-[#5a3a24] border border-[#8c5e3c] rounded-xl p-6 shadow-lg
+                prose prose-invert max-w-none
+                prose-p:mb-3
+                prose-li:mb-2
+                prose-strong:text-[#fdd9a1]
+              "
+            >
               {parse(ingredients || "")}
             </div>
           </div>
