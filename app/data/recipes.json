@@ -7099,7 +7099,28 @@
     "TagsEN": ["Meatballs","Beer Sauce","Greek Cuisine"],
     "Date": "03/01/2026",
     "ShortID": "9dMS6rGCvMk"
+  },
+  {
+    "CategoryGR": "Κυρίως",
+    "CategoryEN": "Mains",
+    "Image": "",
+    "TitleGR": "ΝΤΟΛΜΑΔΕΣ ΓΑΣΤΡΑΣ",
+    "TitleEN": "Oven-Baked Stuffed Cabbage Rolls",
+    "ShortDescriptionGR": "Σίγουρα έτσι δεν τους ξαναδοκιμάσατε.",
+    "ShortDescriptionEN": "A rich and deeply flavoured version you probably have not tried before.",
+    "IngredientsGR": "<p>1 μεγάλο λάχανο<br>200 γρ ρύζι<br>600 γρ κιμά μοσχαρίσιο <br>400 γρ λουκάνικο χωριάτικο <br>4 Κρεμμύδια (500γρ)<br>1 κ.σ. πελτέ ντομάτας <br>1 πιπεριά κόκκινη<br>2 καρότα <br>3 σκελ. σκόρδο<br>30 γρ μαϊντανό <br>Αλάτι<br>1 κ.γ. μαύρο πιπέρι<br>1 κ.γ. πάπρικα καπνιστή<br>½ κ.γ. μπούκοβο (προαιρετικό)<br>1 σφηνάκι μηλόξυδο <br>1 λίτρο χυμό ντομάτας</p><p></p>",
+    "IngredientsEN": "<p>1 large cabbage<br>200 g rice<br>600 g beef mince<br>400 g traditional pork sausage<br>4 onions (500 g)<br>1 tbsp tomato paste<br>1 red pepper<br>2 carrots<br>3 garlic cloves<br>30 g parsley<br>Salt<br>1 tsp black pepper<br>1 tsp smoked paprika<br>½ tsp chilli flakes (optional)<br>1 shot apple cider vinegar<br>1 litre tomato juice</p>",
+    "ExecutionGR": "<p>Θα ζεματίσουμε το λάχανο σκεπασμένο σε νερό που σιγοβράζει για 30 λεπτά περίπου... </p>",
+    "ExecutionEN": "<ol><li>Blanch the cabbage in gently simmering water for about 30 minutes, removing softened outer leaves as they loosen.</li><li>Remove the casing from the sausage, finely chop it, and sauté for 3–4 minutes without adding fat. Set aside.</li><li>Finely chop onions, grate carrots, chop red pepper, garlic, and parsley.</li><li>In the same pan, sauté the onions with a little olive oil over low heat for 6–7 minutes. Add carrots and pepper and cook for 3 minutes.</li><li>Add garlic and cook for 1–2 minutes. Stir in tomato paste and deglaze with apple cider vinegar.</li><li>Add soaked rice and one glass of tomato juice diluted with cabbage cooking water. Simmer for 5–6 minutes.</li><li>Season with salt and spices. Remove from heat and let cool.</li><li>Mix in the beef mince, parsley, and chopped sausage. Adjust seasoning if needed.</li><li>Remove thick stems from cabbage leaves, fill with the mixture, and roll.</li><li>Line the bottom of a roasting pot with chopped cabbage core. Arrange rolls tightly on top.</li><li>Cover with diluted tomato juice and extra cabbage leaves.</li><li>Bake at 170°C (static oven) for 2 hours. Uncover and bake for another 20 minutes until lightly coloured.</li><li>Rest briefly, then serve.</li></ol>",
+    "LongDescriptionGR": "<p>Ντολμάδες φούρνου μαγειρεμένοι αργά στη γάστρα, γεμάτοι αρώματα, πλούσια γεύση και βαθιά νοστιμιά.</p>",
+    "LongDescriptionEN": "<p>Slow-baked cabbage rolls cooked in a roasting pot, rich in aroma and depth, combining beef, sausage, rice, and tomato for a deeply comforting dish.</p>",
+    "LinkYT": "https://www.youtube.com/watch?v=xU7iAvrCUAg",
+    "TagsGR": ["ντολμάδες", "λάχανο", "φούρνου", "παραδοσιακό"],
+    "TagsEN": ["cabbage rolls", "oven baked", "traditional", "greek cuisine"],
+    "Date": "10/01/2026",
+    "ShortID": "xU7iAvrCUAg"
   }
+  
   
   
   
