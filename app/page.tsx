@@ -32,8 +32,8 @@ export default function Home() {
     : null;
 
   return (
-    <div className="w-full">
-      <div className="max-w-6xl mx-auto px-6 py-10 mt-24">
+    <div className="w-full bg-[var(--bg-strong)]">
+      <div className="max-w-6xl mx-auto px-6 py-12 mt-24">
 
         {/* LOGO */}
         <div className="flex justify-center mb-6">
@@ -47,12 +47,15 @@ export default function Home() {
         </div>
 
         {/* TITLE */}
-        <h1 className="text-5xl font-bold text-center mb-10">
+        <h1 className="text-5xl font-bold text-center mb-12 text-[var(--text-primary)]">
           {lang === "en" ? "Recipes" : "Συνταγές"}
         </h1>
 
-        {/* MAIN RECIPE EXPLORER */}
-        <RecipeExplorer />
+        {/* CONTENT SURFACE */}
+        <div className="bg-[var(--surface)] rounded-2xl p-6 md:p-8 shadow-sm">
+          <RecipeExplorer />
+        </div>
+
       </div>
     </div>
   );
