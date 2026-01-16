@@ -7119,7 +7119,27 @@
     "TagsEN": ["cabbage rolls", "oven baked", "traditional", "greek cuisine"],
     "Date": "10/01/2026",
     "ShortID": "xU7iAvrCUAg"
+  },
+  {
+    "CategoryGR": "Κυρίως",
+    "CategoryEN": "Mains",
+    "Image": "",
+    "TitleGR": "Οσομπούκο Λεμονάτο",
+    "TitleEN": "Greek Style Lemon Ossobuco",
+    "ShortDescriptionGR": "Ζουμερό οσομπούκο σιγομαγειρεμένο με λεμόνι, θυμάρι και λευκό κρασί. Ένα αρωματικό και ισορροπημένο κυρίως πιάτο.",
+    "ShortDescriptionEN": "Tender ossobuco slowly cooked with lemon, thyme and white wine. A fragrant and well-balanced main course.",
+    "IngredientsGR": "<p class=\"font_7\">1,5 κιλό κότσι μοσχαρίσιο (οσομπούκο)</p>\n<p class=\"font_7\">50 γρ. αλεύρι γ.ό.χ.</p>\n<p class=\"font_7\">50 γρ. ελαιόλαδο</p>\n<p class=\"font_7\">1 μεγάλο κρεμμύδι, ψιλοκομμένο (150 γρ)</p>\n<p class=\"font_7\">2 καρότα σε ροδέλες</p>\n<p class=\"font_7\">2 σκελίδες σκόρδο</p>\n<p class=\"font_7\">6-7 κλωνάρια φρέσκο θυμάρι, ολόκληρα + 4-5 κλωνάρια μόνο τα φυλλαράκια</p>\n<p class=\"font_7\">Χυμός από 2 λεμόνια</p>\n<p class=\"font_7\">Ξύσμα από 2 λεμόνια</p>\n<p class=\"font_7\">100 ml ξηρό λευκό κρασί</p>\n<p class=\"font_7\">1 κ.σ. μουστάρδα</p>\n<p class=\"font_7\">600 ml ζεστό ζωμό κρέατος</p>\n<p class=\"font_7\">2 φύλλα δάφνης</p>\n<p class=\"font_7\">Αλάτι & φρεσκοτριμμένο πιπέρι</p>",
+    "IngredientsEN": "<p class=\"font_7\">1.5 kg veal shank (ossobuco)</p>\n<p class=\"font_7\">50 g all-purpose flour</p>\n<p class=\"font_7\">50 g olive oil</p>\n<p class=\"font_7\">1 large onion, finely chopped (150 g)</p>\n<p class=\"font_7\">2 carrots, sliced</p>\n<p class=\"font_7\">2 garlic cloves</p>\n<p class=\"font_7\">6–7 sprigs fresh thyme, whole + 4–5 sprigs leaves only</p>\n<p class=\"font_7\">Juice of 2 lemons</p>\n<p class=\"font_7\">Zest of 2 lemons</p>\n<p class=\"font_7\">100 ml dry white wine</p>\n<p class=\"font_7\">1 tbsp mustard</p>\n<p class=\"font_7\">600 ml hot beef stock</p>\n<p class=\"font_7\">2 bay leaves</p>\n<p class=\"font_7\">Salt & freshly ground black pepper</p>",
+    "LongDescriptionGR": "<p class=\"font_7\">Το οσομπούκο λεμονάτο είναι ένα πιάτο βαθιάς νοστιμιάς, όπου το αργό μαγείρεμα αναδεικνύει την τρυφερότητα του κρέατος και το λεμόνι δίνει φρεσκάδα και ισορροπία. Ιδανικό για κυριακάτικο ή γιορτινό τραπέζι.</p>",
+    "LongDescriptionEN": "<p class=\"font_7\">Greek-style lemon ossobuco is a dish of deep flavour, where slow cooking brings out the tenderness of the meat and lemon adds freshness and balance. Ideal for a Sunday or festive meal.</p>",
+    "ExecutionGR": "<ol class=\"font_7\">\n<li>Κόβουμε το καρότο σε ροδέλες και το σκόρδο σε λεπτές φέτες και ψιλοκόβουμε το κρεμμύδι.</li>\n<li>Αλατοπιπερόνουμε το κρέας και το αλευρώνουμε τινάζοντας το περιττό αλεύρι.</li>\n<li>Τοποθετούμε μια κατσαρόλα σε δυνατή φωτιά και αφήνουμε να ζεσταθεί.</li>\n<li>Ρίχνουμε το ελαιόλαδο και το κρέας και σοτάρουμε μέχρι να πάρει χρώμα από όλες τις πλευρές.</li>\n<li>Αφαιρούμε το κρέας.</li>\n<li>Βάζουμε το κρεμμύδι και το σοτάρουμε για 4 λεπτά.</li>\n<li>Προσθέτουμε το καρότο και σοτάρουμε για άλλα 2 λεπτά.</li>\n<li>Προσθέτουμε το σκόρδο και σοτάρουμε για 1 λεπτό ακόμη.</li>\n<li>Σβήνουμε με το κρασί και αφήνουμε να εξατμιστεί το αλκοόλ για 2-3 λεπτά.</li>\n<li>Ξαναβάζουμε στην κατσαρόλα το κρέας, προσθέτουμε το ζωμό ίσα να το καλύπτει και ρίχνουμε τις δάφνες, τη μουστάρδα, τα ολόκληρα κλωνάρια θυμαριού και αλατοπίπερο.</li>\n<li>Κλείνουμε την κατσαρόλα με το καπάκι, χαμηλώνουμε τη φωτιά εντελώς και σιγοβράζουμε για 2 ώρες.</li>\n<li>Βγάζουμε τη δάφνη και το θυμάρι και προσθέτουμε το ξύσμα και τον χυμό λεμονιού.</li>\n<li>Βράζουμε για άλλα 15 λεπτά σε χαμηλή θερμοκρασία.</li>\n<li>Αποσύρουμε την κατσαρόλα από τη φωτιά και αφήνουμε για ένα 20λεπτο να δέσουν οι γεύσεις.</li>\n<li>Ρίχνουμε το ωμό ελαιόλαδο και το ψιλοκομμένο θυμάρι.</li>\n<li>Καλή όρεξη.</li>\n</ol>",
+    "ExecutionEN": "<ol class=\"font_7\">\n<li>Slice the carrots, cut the garlic into thin slices and finely chop the onion.</li>\n<li>Season the meat with salt and pepper and coat with flour, shaking off the excess.</li>\n<li>Place a pot over high heat and allow it to heat well.</li>\n<li>Add the olive oil and meat and sear until browned on all sides.</li>\n<li>Remove the meat from the pot.</li>\n<li>Add the onion and sauté for 4 minutes.</li>\n<li>Add the carrots and sauté for another 2 minutes.</li>\n<li>Add the garlic and sauté for 1 more minute.</li>\n<li>Deglaze with the wine and let the alcohol evaporate for 2–3 minutes.</li>\n<li>Return the meat to the pot, add enough stock to just cover it, then add bay leaves, mustard, whole thyme sprigs, salt and pepper.</li>\n<li>Cover with a lid, lower the heat completely and simmer gently for 2 hours.</li>\n<li>Remove the bay leaves and thyme, then add the lemon zest and juice.</li>\n<li>Simmer for another 15 minutes over low heat.</li>\n<li>Remove from heat and let rest for 20 minutes so the flavours can meld.</li>\n<li>Finish with raw olive oil and chopped thyme.</li>\n<li>Enjoy.</li>\n</ol>",
+    "LinkYT": "https://www.youtube.com/watch?v=Gf39sKCT-ew",
+    "TagsGR": "[\"Οσομπούκο\",\"Μοσχάρι\",\"Λεμονάτο\",\"Κυρίως\",\"Ελληνική Κουζίνα\"]",
+    "TagsEN": "[\"Ossobuco\",\"Veal\",\"Lemon\",\"Main Course\",\"Greek Cuisine\"]",
+    "Date": "16/01/2026"
   }
+  
   
   
   

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { categoryMapping } from "@/utils/categoryMapping";
 import SearchSuggestions from "@/components/SearchSuggestions";
-import logo from "@/../public/logoXmas.png";
+import logo from "@/../public/logo.png";
 
 /* ----------------------------------------------------------
    MATCH CATEGORY WHEN SWITCHING LANGUAGES

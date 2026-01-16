@@ -38,7 +38,7 @@ export default function Home() {
         {/* LOGO */}
         <div className="flex justify-center mb-6">
           <Image
-            src="/logoXmas.png"
+            src="/logo.png"
             alt="Logo"
             width={200}
             height={200}

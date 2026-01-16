@@ -124,32 +124,6 @@ html, body {
   animation: pulseGlow 1.3s infinite ease-in-out;
 }
 
-/* =========================
-   SNOW OVERLAY
-========================= */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-
-  background-image: url("/snow.png");
-  background-repeat: repeat;
-  background-size: 180px;
-  opacity: 0.15;
-  animation: snowFall 16s linear infinite;
-
-  z-index: 0;
-}
-
-@keyframes snowFall {
-  from {
-    background-position: 0 -200px;
-  }
-  to {
-    background-position: 0 600px;
-  }
-}
 
 /* =========================
    CLEANUP
