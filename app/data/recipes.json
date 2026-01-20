@@ -7139,7 +7139,28 @@
     "TagsEN": "[\"Ossobuco\",\"Veal\",\"Lemon\",\"Main Course\",\"Greek Cuisine\"]",
     "Date": "17/01/2026",
     "ShortID": "Gf39sKCT-ew"
+  },
+  {
+    "CategoryGR": "Γλυκά",
+    "CategoryEN": "Desserts",
+    "Image": "",
+    "TitleGR": "Σοκολατόπιτα με Υγρή Σοκολάτα και Γκανάζ",
+    "TitleEN": "Chocolate Cake with Chocolate Sauce and Ganache",
+    "ShortDescriptionGR": "Αφράτη σοκολατόπιτα που ποτίζεται με ζεστή σοκολάτα και καλύπτεται με πλούσια γκανάζ. Ένα απόλυτα σοκολατένιο γλυκό.",
+    "ShortDescriptionEN": "Fluffy chocolate cake soaked with warm chocolate sauce and topped with rich ganache. A deeply chocolatey dessert.",
+    "IngredientsGR": "<p class=\"font_7\"><strong>Σοκολατόπιτα (ταψί 28x18 εκ.):</strong></p>\n<p class=\"font_7\">110 γρ. αλεύρι για όλες τις χρήσεις</p>\n<p class=\"font_7\">30 γρ. κορν φλάουρ</p>\n<p class=\"font_7\">6 γρ. μπέικιν πάουντερ</p>\n<p class=\"font_7\">200 γρ. ζάχαρη</p>\n<p class=\"font_7\">1 κ.γ. εκχύλισμα βανίλιας</p>\n<p class=\"font_7\">20 γρ. κακάο χωρίς ζάχαρη</p>\n<p class=\"font_7\">130 γρ. λιωμένο ανάλατο βούτυρο</p>\n<p class=\"font_7\">4 αυγά (200 γρ.)</p>\n<p class=\"font_7\">100 ml γάλα</p>\n<p class=\"font_7\">1/4 κ.γ. αλάτι</p>\n\n<p class=\"font_7\"><strong>Σάλτσα σοκολάτας:</strong></p>\n<p class=\"font_7\">170 ml κρέμα γάλακτος</p>\n<p class=\"font_7\">280 ml γάλα</p>\n<p class=\"font_7\">40 γρ. ζάχαρη</p>\n<p class=\"font_7\">15 γρ. κακάο χωρίς ζάχαρη</p>\n<p class=\"font_7\">100 γρ. σοκολάτα γάλακτος</p>\n\n<p class=\"font_7\"><strong>Για το γλάσο:</strong></p>\n<p class=\"font_7\">200 γρ. σοκολάτα 70% κακάο</p>\n<p class=\"font_7\">200 γρ. κρέμα γάλακτος</p>",
+    "IngredientsEN": "<p class=\"font_7\"><strong>Chocolate cake (28x18 cm pan):</strong></p>\n<p class=\"font_7\">110 g all-purpose flour</p>\n<p class=\"font_7\">30 g cornflour</p>\n<p class=\"font_7\">6 g baking powder</p>\n<p class=\"font_7\">200 g sugar</p>\n<p class=\"font_7\">1 tsp vanilla extract</p>\n<p class=\"font_7\">20 g unsweetened cocoa powder</p>\n<p class=\"font_7\">130 g melted unsalted butter</p>\n<p class=\"font_7\">4 eggs (200 g)</p>\n<p class=\"font_7\">100 ml milk</p>\n<p class=\"font_7\">1/4 tsp salt</p>\n\n<p class=\"font_7\"><strong>Chocolate sauce:</strong></p>\n<p class=\"font_7\">170 ml heavy cream</p>\n<p class=\"font_7\">280 ml milk</p>\n<p class=\"font_7\">40 g sugar</p>\n<p class=\"font_7\">15 g unsweetened cocoa powder</p>\n<p class=\"font_7\">100 g milk chocolate</p>\n\n<p class=\"font_7\"><strong>For the glaze:</strong></p>\n<p class=\"font_7\">200 g dark chocolate (70%)</p>\n<p class=\"font_7\">200 g heavy cream</p>",
+    "LongDescriptionGR": "<p class=\"font_7\">Αυτή η σοκολατόπιτα συνδυάζει αφράτη βάση, πλούσια υγρή σοκολάτα και βελούδινη γκανάζ. Κάθε στρώση προσθέτει βάθος γεύσης και υφής, δημιουργώντας ένα γλυκό ιδανικό για σοκολατολάτρεις.</p>",
+    "LongDescriptionEN": "<p class=\"font_7\">This chocolate cake combines a light sponge, rich chocolate soaking sauce and silky ganache. Each layer adds depth of flavour and texture, making it perfect for chocolate lovers.</p>",
+    "ExecutionGR": "<ol class=\"font_7\">\n<li>Κοσκινίζω το αλεύρι, το κορν φλάουρ, το κακάο, το μπέικιν και το αλάτι.</li>\n<li>Ανακατεύω και αφήνω στην άκρη.</li>\n<li>Στα αυγά προσθέτω τη ζάχαρη και χτυπάω στη μεσαία προς δυνατή σκάλα ώσπου να ασπρίσουν 7-8 λεπτά.</li>\n<li>Χτυπώντας συνεχώς σε χαμηλή ταχύτητα προσθέτω τη βανίλια, το χλιαρό γάλα και το λιωμένο αλλά όχι καυτό βούτυρο.</li>\n<li>Προσθέτω τα στερεά υλικά σε μία δόση και ενσωματώνω στη χαμηλότερη ταχύτητα.</li>\n<li>Ξύνω τα τοιχώματα του μπολ.</li>\n<li>Ρίχνω το μίγμα σε καλά βουτυρωμένη φόρμα 28x18 εκ.</li>\n<li>Ανακινώ τη φόρμα και ψήνω σε προθερμασμένο φούρνο στους 180°C για 30-40 λεπτά.</li>\n<li>Όσο ψήνεται, ετοιμάζω τη σάλτσα σοκολάτας.</li>\n<li>Ζεσταίνω γάλα και κρέμα γάλακτος, προσθέτω ζάχαρη και κακάο.</li>\n<li>Λίγο πριν βράσει αποσύρω και προσθέτω τη σοκολάτα.</li>\n<li>Ανακατεύω μέχρι να λιώσει.</li>\n<li>Αφήνω το γλυκό 10 λεπτά και το περιχύνω με τη ζεστή σοκολάτα.</li>\n<li>Ετοιμάζω τη γκανάζ ζεσταίνοντας την κρέμα και λιώνοντας μέσα τη σοκολάτα.</li>\n<li>Όταν χλιαρύνει το γλυκό, το περιχύνω με τη γκανάζ.</li>\n<li>Τοποθετώ στο ψυγείο για 4-6 ώρες.</li>\n</ol>",
+    "ExecutionEN": "<ol class=\"font_7\">\n<li>Sift the flour, cornflour, cocoa, baking powder and salt.</li>\n<li>Mix and set aside.</li>\n<li>Add the sugar to the eggs and beat on medium-high speed for 7–8 minutes until pale.</li>\n<li>On low speed add vanilla, lukewarm milk and melted but not hot butter.</li>\n<li>Add the dry ingredients all at once and mix on the lowest speed.</li>\n<li>Scrape down the sides of the bowl.</li>\n<li>Pour into a well-buttered 28x18 cm pan.</li>\n<li>Bake in a preheated oven at 180°C for 30–40 minutes.</li>\n<li>While baking, prepare the chocolate sauce.</li>\n<li>Heat milk and cream, then add sugar and cocoa.</li>\n<li>Remove from heat before boiling and add the chocolate.</li>\n<li>Stir until melted.</li>\n<li>Let the cake rest for 10 minutes and pour the warm chocolate sauce over it.</li>\n<li>Prepare the ganache by heating the cream and melting the chocolate.</li>\n<li>Once the cake has cooled slightly, pour over the ganache.</li>\n<li>Refrigerate for 4–6 hours.</li>\n</ol>",
+    "LinkYT": "https://www.youtube.com/watch?v=e1jIHhlGN-M",
+    "TagsGR": "[\"Σοκολάτα\",\"Σοκολατόπιτα\",\"Γλυκό\",\"Γκανάζ\",\"Ταψιού\"]",
+    "TagsEN": "[\"Chocolate\",\"Chocolate Cake\",\"Dessert\",\"Ganache\",\"Baked\"]",
+    "Date": "22/01/2026",
+    "ShortID": "e1jIHhlGN-M"
   }
+  
   
   
   
