@@ -7159,7 +7159,29 @@
     "TagsEN": "[\"Chocolate\",\"Chocolate Cake\",\"Dessert\",\"Ganache\",\"Baked\"]",
     "Date": "22/01/2026",
     "ShortID": "e1jIHhlGN-M"
+  },
+
+  {
+    "CategoryGR": "Μεζέδες",
+    "CategoryEN": "Starters",
+    "Image": "",
+    "TitleGR": "Πολίτικη Πικάντικη Λαχανοσαλάτα",
+    "TitleEN": "Politiki Spicy Cabbage Salad",
+    "ShortDescriptionGR": "Τρώγεται χειμώνα καλοκαίρι. Ιδανική για να συνοδεύσει ψητά κρέατα!",
+    "ShortDescriptionEN": "Fresh cabbage salad with carrots, peppers and celery, dressed with olive oil and vinegar.",
+    "IngredientsGR": "<p class=\"font_7\">½ κιλό λάχανο</p>\n<p class=\"font_7\">2 πιπεριές χρωματιστές</p>\n<p class=\"font_7\">2-3 κλωνάρια σέλερι</p>\n<p class=\"font_7\">3 μέτρια καρότα</p>\n<p class=\"font_7\">1 χεριά μαϊντανό (μόνο τα φύλλα)</p>\n<p class=\"font_7\">2 κοφτά κ.γ. ζάχαρη</p>\n<p class=\"font_7\">40 ml ελαιόλαδο</p>\n<p class=\"font_7\">1-2 σφηνάκια ξύδι ή κατά βούληση</p>\n<p class=\"font_7\">Αλάτι</p>\n<p class=\"font_7\">Πιπέρι</p>",
+    "IngredientsEN": "<p class=\"font_7\">500 g cabbage</p>\n<p class=\"font_7\">2 mixed-colour peppers</p>\n<p class=\"font_7\">2–3 celery stalks</p>\n<p class=\"font_7\">3 medium carrots</p>\n<p class=\"font_7\">1 handful parsley (leaves only)</p>\n<p class=\"font_7\">2 level tsp sugar</p>\n<p class=\"font_7\">40 ml olive oil</p>\n<p class=\"font_7\">1–2 shots vinegar or to taste</p>\n<p class=\"font_7\">Salt</p>\n<p class=\"font_7\">Pepper</p>",
+    "LongDescriptionGR": "<p class=\"font_7\">Μια απλή και θρεπτική σαλάτα με τραγανό λάχανο και φρέσκα λαχανικά, ιδανική για συνοδευτικό σε κάθε γεύμα.</p>",
+    "LongDescriptionEN": "<p class=\"font_7\">A simple and nutritious salad with crunchy cabbage and fresh vegetables, ideal as a side dish for any meal.</p>",
+    "ExecutionGR": "",
+    "ExecutionEN": "",
+    "LinkYT": "https://www.youtube.com/watch?v=CtPfexuDuMA",
+    "TagsGR": "[\"Σαλάτα\",\"Λάχανο\",\"Λαχανικά\",\"Νηστίσιμη\",\"Υγιεινή\"]",
+    "TagsEN": "[\"Salad\",\"Cabbage\",\"Vegetables\",\"Vegan\",\"Healthy\"]",
+    "Date": "28/01/2026",
+    "ShortID": "CtPfexuDuMA"
   }
+  
   
   
   
