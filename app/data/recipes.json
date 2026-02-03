@@ -7208,7 +7208,7 @@
     "Image": "",
     "TitleGR": "Σπανακόπιτα Χωρίς Φύλλο",
     "TitleEN": "Crustless Spinach Pie",
-    "ShortDescriptionGR": "Αφράτη σπανακόπιτα χωρίς φύλλο, με γιαούρτι, καλαμποκάλευρο και τυριά. Γρήγορη και εύκολη λύση για κάθε μέρα.",
+    "ShortDescriptionGR": "Γιατί το φύλλο είναι ωραίο… αλλά δεν είναι πάντα για κάθε μέρα.",
     "ShortDescriptionEN": "Fluffy crustless spinach pie with yoghurt, cornmeal and cheese. A quick and easy everyday dish.",
     "IngredientsGR": "<p class=\"font_7\">500 γρ σπανάκι</p>\n<p class=\"font_7\">1 κρεμμύδι ψιλοκομμένο</p>\n<p class=\"font_7\">1 κ.γ. αλάτι</p>\n<p class=\"font_7\">3 αυγά</p>\n<p class=\"font_7\">1 φλιτζάνι γιαούρτι (200 γρ)</p>\n<p class=\"font_7\">½ φλιτζάνι ελαιόλαδο (90 ml)</p>\n<p class=\"font_7\">1 φλιτζάνι καλαμποκάλευρο (110 γρ)</p>\n<p class=\"font_7\">1 κ.γ. μπέικιν πάουντερ</p>\n<p class=\"font_7\">½ κ.γ. μπούκοβο</p>\n<p class=\"font_7\">1 φλιτζάνι φέτα θρυμματισμένη (130 γρ)</p>\n<p class=\"font_7\">1 φλιτζάνι κίτρινο τυρί που λιώνει (100 γρ)</p>\n<p class=\"font_7\">½ φλιτζάνι άνηθο</p>\n<p class=\"font_7\">½ φλιτζάνι μαϊντανό</p>\n<p class=\"font_7\">Αλάτι και μαύρο πιπέρι κατά βούληση</p>\n<p class=\"font_7\"><em>Χρησιμοποιήθηκε φλιτζάνι των 200 ml</em></p>",
     "IngredientsEN": "<p class=\"font_7\">500 g spinach</p>\n<p class=\"font_7\">1 onion, finely chopped</p>\n<p class=\"font_7\">1 tsp salt</p>\n<p class=\"font_7\">3 eggs</p>\n<p class=\"font_7\">1 cup yoghurt (200 g)</p>\n<p class=\"font_7\">½ cup olive oil (90 ml)</p>\n<p class=\"font_7\">1 cup cornmeal (110 g)</p>\n<p class=\"font_7\">1 tsp baking powder</p>\n<p class=\"font_7\">½ tsp chilli flakes</p>\n<p class=\"font_7\">1 cup crumbled feta (130 g)</p>\n<p class=\"font_7\">1 cup melting yellow cheese (100 g)</p>\n<p class=\"font_7\">½ cup dill</p>\n<p class=\"font_7\">½ cup parsley</p>\n<p class=\"font_7\">Salt and black pepper to taste</p>\n<p class=\"font_7\"><em>200 ml cup used</em></p>",
@@ -7222,8 +7222,6 @@
     "Date": "03/02/2026",
     "ShortID": "IvWuy8Ju0Ko"
   }
-
-  
 
   
 ]
