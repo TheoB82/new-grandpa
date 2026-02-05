@@ -7221,7 +7221,29 @@
     "TagsEN": "[\"Spinach Pie\",\"Crustless\",\"Cheese\",\"Oven\",\"Greek\"]",
     "Date": "03/02/2026",
     "ShortID": "IvWuy8Ju0Ko"
+  },
+
+  {
+    "CategoryGR": "Γλυκά",
+    "CategoryEN": "Desserts",
+    "Image": "",
+    "TitleGR": "Γαλατόπιτα Χωρίς Φύλλο",
+    "TitleEN": "Crustless Milk Pie (Galatopita)",
+    "ShortDescriptionGR": "Κλασική γαλατόπιτα χωρίς φύλλο, με σιμιγδάλι και άρωμα εσπεριδοειδών. Απλή, αρωματική και ιδανική για κάθε εποχή.",
+    "ShortDescriptionEN": "Classic crustless Greek milk pie with semolina and citrus aroma. Simple, fragrant and perfect for any season.",
+    "IngredientsGR": "<p class=\"font_7\">1 λίτρο γάλα</p>\n<p class=\"font_7\">200 γρ ή 1 φλιτζάνι ζάχαρη</p>\n<p class=\"font_7\">100 γρ ή 1 φλιτζάνι σιμιγδάλι ψιλό</p>\n<p class=\"font_7\">3 αυγά</p>\n<p class=\"font_7\">75 γρ βούτυρο αγελαδινό</p>\n<p class=\"font_7\">1 κ.γ. εκχύλισμα βανίλιας</p>\n<p class=\"font_7\">Ξύσμα από 1 πορτοκάλι ή λεμόνι</p>\n<p class=\"font_7\">Ζάχαρη για πασπάλισμα</p>",
+    "IngredientsEN": "<p class=\"font_7\">1 litre milk</p>\n<p class=\"font_7\">200 g or 1 cup sugar</p>\n<p class=\"font_7\">100 g or 1 cup fine semolina</p>\n<p class=\"font_7\">3 eggs</p>\n<p class=\"font_7\">75 g unsalted butter</p>\n<p class=\"font_7\">1 tsp vanilla extract</p>\n<p class=\"font_7\">Zest of 1 orange or lemon</p>\n<p class=\"font_7\">Sugar for sprinkling</p>",
+    "LongDescriptionGR": "<p class=\"font_7\">Η γαλατόπιτα χωρίς φύλλο είναι ένα παραδοσιακό ελληνικό γλυκό με βελούδινη υφή και ήπια γλυκύτητα. Φτιάχνεται εύκολα με απλά υλικά και αρωματίζεται με βανίλια και ξύσμα εσπεριδοειδών.</p>",
+    "LongDescriptionEN": "<p class=\"font_7\">Crustless galatopita is a traditional Greek dessert with a smooth, creamy texture and gentle sweetness. Easy to prepare with simple ingredients, flavoured with vanilla and citrus zest.</p>",
+    "ExecutionGR": "<ol class=\"font_7\">\n<li>Προθερμάνετε τον φούρνο στους 180°C. Βουτυρώστε ένα ταψί 26 εκ. και πασπαλίστε με λευκή ή καστανή ζάχαρη.</li>\n<li>Στο κρύο γάλα πρόσθεσε όλα τα υλικά εκτός το βούτυρο και το ξύσμα.</li>\n<li>Ανακατεύεις καλά και το φέρνεις σε βρασμό χωρίς να σταματήσεις το ανακάτεμα. Μόλις πάρει βράση το γάλα και αρχίσει η κρέμα να πήζει την αποσύρεις από την εστία.</li>\n<li>Πρόσθεσε το βούτυρο και ανακάτεψε.</li>\n<li>Ρίξτε το μείγμα στο προετοιμασμένο ταψί. Πασπάλισε με νιφάδες βουτύρου. Ψήστε στους 180°C για 40 λεπτά περίπου.</li>\n<li>Αφήστε το να κρυώσει εντελώς πριν το σερβίρετε.</li>\n<li>Κόψτε σε κομμάτια και πασπαλίστε με κανέλα και ξύσμα πορτοκαλιού ή λεμονιού αν επιθυμείτε.</li>\n</ol>",
+    "ExecutionEN": "<ol class=\"font_7\">\n<li>Preheat the oven to 180°C. Butter a 26 cm baking dish and sprinkle with white or brown sugar.</li>\n<li>Add all ingredients except the butter and zest to the cold milk.</li>\n<li>Stir well and bring to a boil, stirring constantly. Once it boils and the cream starts to thicken, remove from the heat.</li>\n<li>Add the butter and stir until incorporated.</li>\n<li>Pour the mixture into the prepared dish. Sprinkle with butter flakes and bake at 180°C for about 40 minutes.</li>\n<li>Allow to cool completely before serving.</li>\n<li>Cut into pieces and sprinkle with cinnamon and orange or lemon zest if desired.</li>\n</ol>",
+    "LinkYT": "https://www.youtube.com/watch?v=BHT8BgQYoA4",
+    "TagsGR": "[\"Γαλατόπιτα\",\"Σιμιγδάλι\",\"Χωρίς Φύλλο\",\"Γλυκό\",\"Φούρνος\"]",
+    "TagsEN": "[\"Galatopita\",\"Semolina\",\"Crustless\",\"Dessert\",\"Baked\"]",
+    "Date": "05/02/2026",
+    "ShortID": "BHT8BgQYoA4"
   }
+  
 
   
 ]
