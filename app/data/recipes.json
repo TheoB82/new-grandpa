@@ -7242,7 +7242,28 @@
     "TagsEN": "[\"Galatopita\",\"Semolina\",\"Crustless\",\"Dessert\",\"Baked\"]",
     "Date": "06/02/2026",
     "ShortID": "BHT8BgQYoA4"
+  },
+  {
+    "CategoryGR": "Ψωμιά & Ζύμες",
+    "CategoryEN": "Breads & Dough",
+    "Image": "",
+    "TitleGR": "Τυρόπιτα με Γιαούρτι Χωρίς Φύλλο",
+    "TitleEN": "Crustless Yogurt Cheese Pie",
+    "ShortDescriptionGR": "Χορταστική και αφράτη τυρόπιτα χωρίς φύλλο, με γιαούρτι και πλούσια τυριά.",
+    "ShortDescriptionEN": "Hearty and fluffy crustless cheese pie with yogurt and plenty of cheese.",
+    "IngredientsGR": "<p class=\"font_7\">350 γρ αλεύρι</p>\n<p class=\"font_7\">1 κ.γ. μπέικιν πάουντερ</p>\n<p class=\"font_7\">1 ½ κ.γ. αλάτι</p>\n<p class=\"font_7\">1 κ.γ. ζάχαρη</p>\n<p class=\"font_7\">70 ml ελαιόλαδο</p>\n<p class=\"font_7\">300 γρ γιαούρτι στραγγιστό</p>\n<p class=\"font_7\">2 αυγά</p>\n<p class=\"font_7\">250 γρ τυρί κίτρινο τριμμένο</p>\n<p class=\"font_7\">200 γρ φέτα θρυμματισμένη</p>\n<p class=\"font_7\">2 κρεμμυδάκια ψιλοκομμένα</p>\n<p class=\"font_7\">2 κ.σ. δυόσμο ψιλοκομμένο</p>\n<p class=\"font_7\">1 κ.σ. θυμάρι</p>\n<p class=\"font_7\">Πιπέρι</p>",
+    "IngredientsEN": "<p class=\"font_7\">350 g flour</p>\n<p class=\"font_7\">1 tsp baking powder</p>\n<p class=\"font_7\">1½ tsp salt</p>\n<p class=\"font_7\">1 tsp sugar</p>\n<p class=\"font_7\">70 ml olive oil</p>\n<p class=\"font_7\">300 g strained Greek yogurt</p>\n<p class=\"font_7\">2 eggs</p>\n<p class=\"font_7\">250 g grated yellow cheese</p>\n<p class=\"font_7\">200 g crumbled feta</p>\n<p class=\"font_7\">2 spring onions, chopped</p>\n<p class=\"font_7\">2 tbsp chopped mint</p>\n<p class=\"font_7\">1 tbsp thyme</p>\n<p class=\"font_7\">Black pepper</p>",
+    "LongDescriptionGR": "<p class=\"font_7\">Μια εύκολη τυρόπιτα χωρίς φύλλο, με αφράτη υφή και πλούσια γεύση από γιαούρτι και τυριά. Ιδανική για καθημερινό τραπέζι ή για κολατσιό.</p>",
+    "LongDescriptionEN": "<p class=\"font_7\">An easy crustless cheese pie with a soft texture and rich flavor from yogurt and cheeses. Perfect for everyday meals or snacks.</p>",
+    "ExecutionGR": "<ol class=\"font_7\">\n<li>Σε 350 g αλεύρι προσθέτω 1 κ.γ. μπέικιν, 1½ κ.γ. αλάτι και 1 κ.γ. ζάχαρη. Τα ανακατεύω και κάνω στο κέντρο μια λακκούβα.</li>\n<li>Ρίχνω 70 ml ελαιόλαδο, 300 g γιαούρτι στραγγιστό, 2 αυγά και πιπέρι. Ανακατεύω να δω την υφή.</li>\n<li>Προσθέτω 250 g τριμμένο κίτρινο τυρί.</li>\n<li>Ρίχνω 2 κρεμμυδάκια ψιλοκομμένα, 2 κ.σ. δυόσμο και 1 κ.σ. θυμάρι. Αν θέλετε προσθέστε άνηθο ή μαϊντανό.</li>\n<li>Προσθέτω τη φέτα θρυμματισμένη και ανακατεύω καλά.</li>\n<li>Βουτυρώνω ταψάκι 25x20 cm και το πασπαλίζω με τριμμένη φρυγανιά.</li>\n<li>Αδειάζω τη ζύμη στο ταψάκι και την απλώνω ομοιόμορφα.</li>\n<li>Σκορπίζω από πάνω 100 g φέτα χοντροτριμμένη.</li>\n<li>Πασπαλίζω λεπτό στρώμα φρυγανιάς.</li>\n<li>Ψήνω περίπου 1 ώρα στους 180°C αντιστάσεις μέχρι να πάρει ωραίο χρώμα και να ψηθεί εσωτερικά.</li>\n<li>Αν χρειαστεί σκεπάζω με αντικολλητικό χαρτί.</li>\n<li>Αφήνω να κρυώσει 10 λεπτά και κόβω.</li>\n</ol>",
+    "ExecutionEN": "<ol class=\"font_7\">\n<li>Add baking powder, salt and sugar to the flour and mix. Make a well in the center.</li>\n<li>Add olive oil, yogurt, eggs and pepper. Mix to combine.</li>\n<li>Add the grated yellow cheese.</li>\n<li>Add spring onions, mint and thyme. Optionally add dill or parsley.</li>\n<li>Add the crumbled feta and mix well.</li>\n<li>Butter a 25x20 cm pan and sprinkle with breadcrumbs.</li>\n<li>Spread the mixture evenly in the pan.</li>\n<li>Scatter 100 g coarsely crumbled feta on top.</li>\n<li>Sprinkle a thin layer of breadcrumbs.</li>\n<li>Bake for about 1 hour at 180°C (top and bottom heat) until golden and cooked through.</li>\n<li>If needed, cover with baking paper.</li>\n<li>Let cool for 10 minutes before slicing.</li>\n</ol>",
+    "LinkYT": "https://www.youtube.com/watch?v=yycG2i2GtaE",
+    "TagsGR": "[\"Τυρόπιτα\",\"Χωρίς Φύλλο\",\"Γιαούρτι\",\"Πίτα\",\"Φούρνος\"]",
+    "TagsEN": "[\"Cheese Pie\",\"Crustless\",\"Yogurt\",\"Pie\",\"Baked\"]",
+    "Date": "11/02/2026",
+    "ShortID": "yycG2i2GtaE"
   }
+  
   
 
   
