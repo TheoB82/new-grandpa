@@ -7262,6 +7262,26 @@
     "TagsEN": "[\"Cheese Pie\",\"Crustless\",\"Yogurt\",\"Pie\",\"Baked\"]",
     "Date": "11/02/2026",
     "ShortID": "yycG2i2GtaE"
+  },
+  {
+    "CategoryGR": "Μεζέδες",
+    "CategoryEN": "Starters",
+    "Image": "",
+    "TitleGR": "Τηγανητά Καλαμαράκια Τραγανά",
+    "TitleEN": "Crispy Fried Calamari",
+    "ShortDescriptionGR": "Τα μυστικά για τέλεια Τηγανητά Καλαμαράκια ή Θράψαλα Τραγανά και Μαλακά! .",
+    "ShortDescriptionEN": "Crispy fried calamari with a simple coating and proper frying technique for perfect results.",
+    "IngredientsGR": "<p class=\"font_7\">1 κιλό καλαμαράκια ή θράψαλα</p>\n<p class=\"font_7\">Αλεύρι για όλες τις χρήσεις με καλαμποκάλευρο</p>\n<p class=\"font_7\">Αλάτι</p>\n<p class=\"font_7\">Λάδι για τηγάνισμα</p>\n<p class=\"font_7\">Λεμόνι για το σερβίρισμα</p>",
+    "IngredientsEN": "<p class=\"font_7\">1 kg calamari or squid</p>\n<p class=\"font_7\">All-purpose flour mixed with cornflour</p>\n<p class=\"font_7\">Salt</p>\n<p class=\"font_7\">Oil for frying</p>\n<p class=\"font_7\">Lemon for serving</p>",
+    "LongDescriptionGR": "<p class=\"font_7\">Τα τηγανητά καλαμαράκια θέλουν σωστό καθάρισμα, καλό στέγνωμα και δυνατή θερμοκρασία λαδιού για να γίνουν τραγανά εξωτερικά και ζουμερά εσωτερικά.</p>",
+    "LongDescriptionEN": "<p class=\"font_7\">Fried calamari require proper cleaning, thorough drying and hot oil to achieve a crispy exterior and tender interior.</p>",
+    "ExecutionGR": "<ol class=\"font_7\">\n<li>Καθαρίζουμε καλά τα καλαμαράκια και τα κόβουμε σε ροδέλες.</li>\n<li>Τα πλένουμε και τα στεγνώνουμε πολύ καλά με απορροφητικό χαρτί.</li>\n<li>Ανακατεύουμε αλεύρι για όλες τις χρήσεις με λίγο καλαμποκάλευρο.</li>\n<li>Πανάρουμε τα καλαμαράκια και τινάζουμε το περιττό αλεύρι.</li>\n<li>Ζεσταίνουμε καλά το λάδι σε βαθύ τηγάνι.</li>\n<li>Τηγανίζουμε λίγα λίγα για να μην πέσει η θερμοκρασία του λαδιού.</li>\n<li>Μόλις πάρουν χρυσαφένιο χρώμα τα βγάζουμε σε απορροφητικό χαρτί.</li>\n<li>Αλατίζουμε όσο είναι ζεστά.</li>\n<li>Σερβίρουμε με φρέσκο λεμόνι.</li>\n</ol>",
+    "ExecutionEN": "<ol class=\"font_7\">\n<li>Clean the calamari well and cut into rings.</li>\n<li>Wash and dry thoroughly with paper towels.</li>\n<li>Mix all-purpose flour with a little cornflour.</li>\n<li>Coat the calamari and shake off excess flour.</li>\n<li>Heat the oil well in a deep pan.</li>\n<li>Fry in small batches so the oil temperature does not drop.</li>\n<li>Once golden, remove and place on paper towels.</li>\n<li>Season with salt while hot.</li>\n<li>Serve with fresh lemon.</li>\n</ol>",
+    "LinkYT": "https://www.youtube.com/watch?v=5VqX7RqdEUc",
+    "TagsGR": "[\"Καλαμαράκια\",\"Θαλασσινά\",\"Τηγανητά\",\"Νηστίσιμα\",\"Ορεκτικό\"]",
+    "TagsEN": "[\"Calamari\",\"Seafood\",\"Fried\",\"Mediterranean\",\"Appetizer\"]",
+    "Date": "13/02/2026",
+    "ShortID": "5VqX7RqdEUc"
   }
   
   
