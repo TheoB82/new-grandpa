@@ -7282,6 +7282,26 @@
     "TagsEN": "[\"Calamari\",\"Seafood\",\"Fried\",\"Mediterranean\",\"Appetizer\"]",
     "Date": "13/02/2026",
     "ShortID": "5VqX7RqdEUc"
+  },
+  {
+    "CategoryGR": "Κυρίως",
+    "CategoryEN": "Mains",
+    "Image": "",
+    "TitleGR": "Φακές Νηστίσιμες με Ταχίνι",
+    "TitleEN": "Vegan Lentils with Tahini",
+    "ShortDescriptionGR": "Παραδοσιακές νηστίσιμες φακές χωρίς λάδι, με μυστικό υλικό το ταχίνι που δίνει βελούδινη υφή και πλούσια γεύση.",
+    "ShortDescriptionEN": "Traditional oil-free lentils made with tahini for a velvety texture and rich flavour.",
+    "IngredientsGR": "<p class=\"font_7\">250 γρ φακές</p>\n<p class=\"font_7\">1 πατάτα</p>\n<p class=\"font_7\">2 καρότα</p>\n<p class=\"font_7\">1 πιπεριά σε χρώμα</p>\n<p class=\"font_7\">2 κρεμμύδια</p>\n<p class=\"font_7\">3 κ.σ. ταχίνι</p>\n<p class=\"font_7\">2 σκελίδες σκόρδο</p>\n<p class=\"font_7\">1/2 κ.γ. κύμινο (προαιρετικό)</p>\n<p class=\"font_7\">Δάφνη</p>\n<p class=\"font_7\">Λίγο ξύδι για το τέλος</p>\n<p class=\"font_7\">Αλάτι</p>",
+    "IngredientsEN": "<p class=\"font_7\">250 g lentils</p>\n<p class=\"font_7\">1 potato</p>\n<p class=\"font_7\">2 carrots</p>\n<p class=\"font_7\">1 coloured pepper</p>\n<p class=\"font_7\">2 onions</p>\n<p class=\"font_7\">3 tbsp tahini</p>\n<p class=\"font_7\">2 garlic cloves</p>\n<p class=\"font_7\">1/2 tsp cumin (optional)</p>\n<p class=\"font_7\">Bay leaves</p>\n<p class=\"font_7\">A little vinegar for finishing</p>\n<p class=\"font_7\">Salt</p>",
+    "LongDescriptionGR": "<p class=\"font_7\">Μια διαφορετική εκδοχή της κλασικής φακής, χωρίς ελαιόλαδο αλλά με ταχίνι για σοτάρισμα. Το αποτέλεσμα είναι δεμένο, βελούδινο και απόλυτα χορταστικό, ιδανικό για νηστεία ή υγιεινή διατροφή.</p>",
+    "LongDescriptionEN": "<p class=\"font_7\">A different take on classic lentils, made without olive oil and sautéed with tahini instead. The result is creamy, rich and satisfying, perfect for fasting or healthy eating.</p>",
+    "ExecutionGR": "<ol class=\"font_7\">\n<li>Πλένουμε καλά τις φακές και τις βάζουμε σε κατσαρόλα με νερό να πάρουν μία πρώτη βράση.</li>\n<li>Κόβουμε την πατάτα, τα καρότα και την πιπεριά σε κομμάτια.</li>\n<li>Ψιλοκόβουμε τα κρεμμύδια και το σκόρδο.</li>\n<li>Σε κατσαρόλα σοτάρουμε το κρεμμύδι με το ταχίνι αντί για ελαιόλαδο.</li>\n<li>Προσθέτουμε το σκόρδο και ανακατεύουμε.</li>\n<li>Ρίχνουμε τις φακές, τα λαχανικά και τη δάφνη.</li>\n<li>Προσθέτουμε νερό ώστε να καλυφθούν και βράζουμε μέχρι να μαλακώσουν.</li>\n<li>Προσθέτουμε κύμινο αν θέλουμε και αλάτι προς το τέλος.</li>\n<li>Λίγο πριν σερβίρουμε ρίχνουμε λίγο ξύδι για να ισορροπήσει η γεύση.</li>\n</ol>",
+    "ExecutionEN": "<ol class=\"font_7\">\n<li>Rinse the lentils well and bring them to an initial boil in water.</li>\n<li>Chop the potato, carrots and pepper.</li>\n<li>Finely chop the onions and garlic.</li>\n<li>In a pot, sauté the onion using tahini instead of olive oil.</li>\n<li>Add the garlic and stir.</li>\n<li>Add the lentils, vegetables and bay leaves.</li>\n<li>Add enough water to cover and simmer until tender.</li>\n<li>Add cumin if desired and salt towards the end.</li>\n<li>Before serving, add a splash of vinegar to balance the flavour.</li>\n</ol>",
+    "LinkYT": "https://www.youtube.com/watch?v=qqm-CVkDpnE",
+    "TagsGR": "[\"Φακές\",\"Νηστίσιμα\",\"Ταχίνι\",\"Όσπρια\",\"Υγιεινό\"]",
+    "TagsEN": "[\"Lentils\",\"Vegan\",\"Tahini\",\"Legumes\",\"Healthy\"]",
+    "Date": "26/02/2026",
+    "ShortID": "qqm-CVkDpnE"
   }
   
   
