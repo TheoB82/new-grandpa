@@ -181,8 +181,8 @@ export default function RecipeExplorer() {
             px-4 py-2 rounded-full text-sm font-medium transition border
             ${
               !selectedCategory
-                ? "bg-[#a06b45] border-[#d9b08c]"
-                : "bg-[#5a3a24] border-[#8c5e3c] hover:bg-[#6e4a30]"
+                ? "bg-[--accent] border-[--accent-secondary] text-white"
+                : "bg-[--chip-bg] border-[--chip-border] text-[--text-primary] hover:bg-[--accent-secondary]"
             }
           `}
         >
@@ -197,8 +197,8 @@ export default function RecipeExplorer() {
               px-4 py-2 rounded-full text-sm font-medium transition border
               ${
                 selectedCategory === cat.name
-                  ? "bg-[#a06b45] border-[#d9b08c] text-white"
-                  : "bg-[#5a3a24]/40 border-[#8c5e3c]/60 text-[#fce8c8] hover:bg-[#5a3a24]/60"
+                  ? "bg-[#a06b45] border-[--accent-secondary] text-white"
+                  : "bg-[--chip-bg] border-[--chip-border] text-[--text-primary] hover:bg-[--accent-secondary]"
               }
             `}
           >
@@ -217,9 +217,7 @@ export default function RecipeExplorer() {
             <Link
               key={r.TitleEN}
               href={`/recipes/${r.ShortID}`}
-              className="bg-[#5a3a24] hover:bg-[#6e4a30]
-                rounded-xl p-4 border border-[#8c5e3c] 
-                shadow-md transition opacity-0 animate-slideIn text-center"
+              className="card p-4 rounded-xl transition opacity-0 animate-slideIn text-center"
               style={{
                 animationDelay: `${index * 80}ms`,
                 animationFillMode: "forwards",

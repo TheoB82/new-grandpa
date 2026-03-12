@@ -5,32 +5,47 @@
 ========================= */
 :root {
   /* Page layers */
-  --bg: #f4efe9;
-  --bg-strong: #e6dacd;
-  --surface: #efe6dc;
-  --card: #ffffff;
+  --bg: #f4ede4;           /* warm, light beige */
+  --bg-strong: #ede0ce;    /* slightly darker beige */
+
+  --surface: #f7e6c4;      /* pale gold/tan for cards */
+  --card: #f7e6c4;
 
   /* Text */
-  --text-primary: #1a1a1a;
-  --text-secondary: #5c5c5c;
+  --text-primary: #3e2c18; /* deep brown for titles */
+  --text-secondary: #5c4321; /* darker for descriptions */
 
   /* Borders */
-  --border: #d6c8ba;
+  --border: #d9b08c;       /* light brown/gold */
 
   /* Brand */
-  --brand: #6b3f26;
-  --brand-soft: #f1e7e1;
+  --brand: #a06b45;        /* warm brown */
+  --brand-soft: #e7dbc8;   /* soft tan */
 
   /* Header */
-  --header-bg: #4a2f1f;
-  --header-text: #f6efe7;
-  --header-muted: #e0cfbf;
-  --header-border: rgba(255,255,255,0.18);
+  --header-bg: #7c5c3b;    /* medium brown */
+  --header-text: #f4ede4;  /* light beige */
+  --header-muted: #d9b08c; /* gold */
+  --header-border: rgba(160,107,69,0.18);
 
   /* UI chips (language, pills) */
-  --chip-bg: rgba(255,255,255,0.12);
-  --chip-bg-hover: rgba(255,255,255,0.18);
-  --chip-border: rgba(255,255,255,0.25);
+  --chip-bg: #e7dbc8;      /* lighter for chips */
+  --chip-bg-hover: #d9b08c;
+  --chip-border: #d9b08c;
+/* =========================
+   CARD STYLE
+========================= */
+.card {
+  background: var(--surface);
+  box-shadow: 0 4px 16px rgba(160,107,69,0.10);
+  border-radius: 1rem;
+  border: 1.5px solid var(--border);
+}
+
+  /* Accent and highlight */
+  --accent: #a06b45;       /* matches logo border */
+  --accent-secondary: #d9b08c; /* matches scroll */
+  --danger: #d94f2a;       /* rooster's red comb */
 }
 
 /* =========================
@@ -38,27 +53,31 @@
 ========================= */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121212;
-    --bg-strong: #181818;
-    --surface: #1a1a1a;
-    --card: #1f1f1f;
+    --bg: #181511;              /* deep brown-black */
+    --bg-strong: #221a13;       /* rich dark brown */
+    --surface: #2c2117;         /* panel surface, dark brown */
+    --card: #33261a;            /* slightly lighter for cards */
 
-    --text-primary: #f5f5f5;
-    --text-secondary: #b5b5b5;
+    --text-primary: #f4ede4;    /* light beige */
+    --text-secondary: #d9b08c;  /* gold */
 
-    --border: #2a2a2a;
+    --border: #7c5c3b;          /* medium brown */
 
-    --brand: #c9a27d;
-    --brand-soft: #2a1e16;
+    --brand: #a06b45;           /* warm brown */
+    --brand-soft: #33261a;      /* dark tan */
 
-    --header-bg: #2a1e16;
-    --header-text: #f5efe7;
-    --header-muted: #d9c7b6;
-    --header-border: rgba(255,255,255,0.12);
+    --header-bg: var(--surface);       /* match card background for dark mode */
+    --header-text: #f4ede4;     /* light beige */
+    --header-muted: #d9b08c;    /* gold */
+    --header-border: var(--border);   /* match card border for dark mode */
 
-    --chip-bg: rgba(255,255,255,0.08);
-    --chip-bg-hover: rgba(255,255,255,0.14);
-    --chip-border: rgba(255,255,255,0.18);
+    --chip-bg: rgba(160,107,69,0.10);
+    --chip-bg-hover: rgba(160,107,69,0.18);
+    --chip-border: rgba(160,107,69,0.18);
+
+    --accent: #a06b45;
+    --accent-secondary: #d9b08c;
+    --danger: #d94f2a;
   }
 }
 

@@ -286,12 +286,12 @@ export default function RecipeClient({ recipe }: { recipe: Recipe }) {
                 <Link
                   key={idx}
                   href={link}
-                  className="bg-[#5a3a24] rounded-xl overflow-hidden border border-[#8c5e3c] shadow hover:bg-[#6e4a30] transition"
+                  className="card overflow-hidden p-4 hover:shadow-lg transition"
                 >
                   <img src={thumb} alt={simTitle} className="w-full h-40 object-cover" />
 
-                  <div className="p-4">
-                    <div className="text-sm text-[#fdd9a1] mb-1">{category}</div>
+                  <div>
+                    <div className="text-sm mb-1" style={{ color: "var(--accent-secondary)" }}>{category}</div>
                     <div className="font-bold">{simTitle}</div>
                   </div>
                 </Link>

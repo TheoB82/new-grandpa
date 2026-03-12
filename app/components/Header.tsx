@@ -58,9 +58,9 @@ export default function Header() {
   };
 
   const activeClass =
-    "text-[var(--header-text)] font-semibold border-b-2 border-[var(--header-text)]";
+    "text-[--header-text] font-semibold border-b-2 border-[--header-text]";
   const inactiveClass =
-    "text-[var(--header-muted)] hover:text-[var(--header-text)] transition";
+    "text-[--header-muted] hover:text-[--header-text] transition";
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[var(--header-bg)] text-[var(--header-text)] border-b border-[var(--header-border)] backdrop-blur-md">
@@ -87,7 +87,7 @@ export default function Header() {
             placeholder={lang === "gr" ? "Αναζήτηση..." : "Search..."}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-black/25 border border-[var(--header-border)] text-[var(--header-text)] placeholder-[var(--header-muted)]"
+            className="w-full px-3 py-2 rounded-lg bg-black/25 border border-[--header-border] text-[--header-text] placeholder-[--header-muted]"
           />
           <SearchSuggestions />
         </div>
@@ -96,8 +96,8 @@ export default function Header() {
         <div className="flex items-center gap-3">
 
           {/* LANGUAGE */}
-          <div className="hidden sm:flex rounded-md overflow-hidden border border-[var(--chip-border)]">
-            {["gr", "en"].map((l) => (
+          <div className="hidden sm:flex rounded-md overflow-hidden border border-[--chip-border]">
+            {['gr', 'en'].map((l) => (
               <button
                 key={l}
                 onClick={() => {
@@ -107,8 +107,8 @@ export default function Header() {
                 }}
                 className={`px-3 py-1 ${
                   lang === l
-                    ? "bg-white/25"
-                    : "bg-[var(--chip-bg)] hover:bg-[var(--chip-bg-hover)]"
+                    ? 'bg-[--brand] text-white font-bold border border-[--brand]'
+                    : 'bg-[--chip-bg] text-[--brand] border border-[--brand] hover:bg-[--chip-bg-hover]'
                 }`}
               >
                 {l.toUpperCase()}
@@ -119,7 +119,7 @@ export default function Header() {
           {/* MOBILE MENU */}
           <button
             onClick={() => setMobileOpen((p) => !p)}
-            className="sm:hidden px-3 py-2 rounded border border-[var(--chip-border)]"
+            className="sm:hidden px-3 py-2 rounded border border-[--chip-border]"
           >
             ☰
           </button>
@@ -127,7 +127,7 @@ export default function Header() {
       </div>
 
       {/* DESKTOP CATEGORIES */}
-      <nav className="hidden sm:flex justify-center gap-6 px-6 py-2 border-t border-[var(--header-border)] bg-black/15">
+      <nav className="hidden sm:flex justify-center gap-6 px-6 py-2 border-t border-[var(--header-border)] bg-[var(--header-bg)]">
         <button
           onClick={() => applyCategory(null)}
           className={selectedCategory === null ? activeClass : inactiveClass}
@@ -148,7 +148,7 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       {mobileOpen && (
-        <div className="sm:hidden px-4 py-4 space-y-4 bg-black/20 border-t border-[var(--header-border)]">
+        <div className="sm:hidden px-4 py-4 space-y-4 bg-black/20 border-t border-[--header-border]">
 
           {/* SEARCH */}
           <input
@@ -156,12 +156,12 @@ export default function Header() {
             placeholder={lang === "gr" ? "Αναζήτηση..." : "Search..."}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-black/30 border border-[var(--chip-border)] text-[var(--header-text)] placeholder-[var(--header-muted)]"
+            className="w-full px-3 py-2 rounded-lg bg-black/30 border border-[--chip-border] text-[--header-text] placeholder-[--header-muted]"
           />
 
           {/* LANGUAGE */}
           <div className="flex gap-2">
-            {["gr", "en"].map((l) => (
+            {['gr', 'en'].map((l) => (
               <button
                 key={l}
                 onClick={() => {
@@ -171,8 +171,8 @@ export default function Header() {
                 }}
                 className={`flex-1 py-2 rounded border ${
                   lang === l
-                    ? "bg-white/25 border-white/40"
-                    : "bg-black/20 border-[var(--chip-border)]"
+                    ? 'bg-[--brand] text-white font-bold border border-[--brand]'
+                    : 'bg-black/20 text-[--brand] border border-[--brand]'
                 }`}
               >
                 {l.toUpperCase()}
@@ -186,11 +186,11 @@ export default function Header() {
               onClick={() => applyCategory(null)}
               className={`px-4 py-2 rounded-full border ${
                 selectedCategory === null
-                  ? "bg-white/25 border-white/40"
-                  : "bg-black/20 border-[var(--chip-border)]"
+                  ? 'bg-[--brand] text-white font-bold border border-[--brand]'
+                  : 'bg-black/20 text-[--brand] border border-[--brand]'
               }`}
             >
-              {lang === "gr" ? "Όλες" : "All"}
+              {lang === 'gr' ? 'Όλες' : 'All'}
             </button>
 
             {categories.map((c) => (
@@ -199,8 +199,8 @@ export default function Header() {
                 onClick={() => applyCategory(c.name)}
                 className={`px-4 py-2 rounded-full border ${
                   selectedCategory === c.name
-                    ? "bg-white/25 border-white/40"
-                    : "bg-black/20 border-[var(--chip-border)]"
+                    ? 'bg-[--brand] text-white font-bold border border-[--brand]'
+                    : 'bg-black/20 text-[--brand] border border-[--brand]'
                 }`}
               >
                 {c.name}
