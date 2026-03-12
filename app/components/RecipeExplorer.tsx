@@ -216,7 +216,7 @@ export default function RecipeExplorer() {
           return (
             <Link
               key={r.TitleEN}
-              href={`/recipes/${slugify(r.TitleEN)}`}
+              href={`/recipes/${r.ShortID}`}
               className="bg-[#5a3a24] hover:bg-[#6e4a30]
                 rounded-xl p-4 border border-[#8c5e3c] 
                 shadow-md transition opacity-0 animate-slideIn text-center"
