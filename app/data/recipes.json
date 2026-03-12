@@ -7363,7 +7363,28 @@
     "TagsEN": "[\"Piroshki\",\"Fried Pies\",\"Potato\",\"Feta\",\"Snack\",\"Breads and Dough\",\"Traditional\"]",
     "Date": "09/03/2026",
     "ShortID": "dhF_3s3Zhm8"
-  }
+  },
+
+  {
+  "CategoryGR": "Γλυκά",
+  "CategoryEN": "Desserts",
+  "Image": "TBC",
+  "TitleGR": "Νηστίσιμο Γλυκό Σοκολάτας",
+  "TitleEN": "Vegan Chocolate Cake",
+  "ShortDescriptionGR": "Αφράτο, ζουμερό και πλούσιο σε γεύση σοκολάτας, χωρίς αυγά, βούτυρο ή γάλα.",
+  "ShortDescriptionEN": "Fluffy, moist, and rich chocolate cake, egg-free, butter-free, and dairy-free.",
+  "IngredientsGR": "<p class=\"font_7\">165 γρ. αλεύρι για κάθε χρήση</p>\n<p class=\"font_7\">150 γρ. ζάχαρη</p>\n<p class=\"font_7\">35 γρ. κακάο σε σκόνη</p>\n<p class=\"font_7\">¼ κ.γ. αλάτι</p>\n<p class=\"font_7\">1 κ.γ. μπέικιν πάουντερ</p>\n<p class=\"font_7\">½ κ.γ. μαγειρική σόδα</p>\n<p class=\"font_7\">80 ml λάδι</p>\n<p class=\"font_7\">240 ml γάλα φυτικό</p>\n<p class=\"font_7\">1 κ.γ. εκχύλισμα βανίλιας</p>\n<p class=\"font_7\">1 κ.σ. χυμός λεμονιού ή ξύδι</p>\n<p class=\"font_7\"><u>Για το γλάσο</u></p>\n<p class=\"font_7\">200 γρ. μαύρη σοκολάτα</p>\n<p class=\"font_7\">150 ml κρέμα φυτικού γάλακτος</p>",
+  "IngredientsEN": "<p class=\"font_7\">165 g all-purpose flour</p>\n<p class=\"font_7\">150 g sugar</p>\n<p class=\"font_7\">35 g cocoa powder</p>\n<p class=\"font_7\">1/4 tsp salt</p>\n<p class=\"font_7\">1 tsp baking powder</p>\n<p class=\"font_7\">1/2 tsp baking soda</p>\n<p class=\"font_7\">80 ml oil</p>\n<p class=\"font_7\">240 ml plant-based milk</p>\n<p class=\"font_7\">1 tsp vanilla extract</p>\n<p class=\"font_7\">1 tbsp lemon juice or vinegar</p>\n<p class=\"font_7\"><u>For the glaze</u></p>\n<p class=\"font_7\">200 g dark chocolate</p>\n<p class=\"font_7\">150 ml plant-based cream</p>",
+  "LongDescriptionGR": "<p class=\"font_8\">Σήμερα φίλοι μου φτιάχνουμε ένα υπέροχο νηστίσιμο γλυκό σοκολάτας, αφράτο, ζουμερό και απίστευτα εύκολο! Χωρίς αυγά, χωρίς βούτυρο και χωρίς γάλα, αλλά με πλούσια γεύση σοκολάτας που θα λατρέψουν όλοι. Ιδανικό για νηστεία, για καφέ, για κέρασμα ή για κάθε στιγμή που θέλουμε ένα γρήγορο σπιτικό γλυκό.</p>",
+  "LongDescriptionEN": "<p class=\"font_8\">Today we make a wonderful vegan chocolate cake, fluffy, moist, and incredibly easy! No eggs, no butter, no milk, but with rich chocolate flavor everyone will love. Perfect for fasting, coffee, sharing, or any time you want a quick homemade dessert.</p>",
+  "ExecutionGR": "<ol class=\"font_8\">\n<li>Σε μια μεγάλη μπολ ανακατεύουμε τα στερεά υλικά: αλεύρι, κακάο, μπέικιν πάουντερ, μαγειρική σόδα, αλάτι και ζάχαρη.</li>\n<li>Προσθέτουμε το λάδι, το φυτικό γάλα, τη βανίλια και το χυμό λεμονιού ή ξύδι. Ανακατεύουμε μέχρι να έχουμε ένα ομοιόμορφο μείγμα.</li>\n<li>Αδειάζουμε το μείγμα σε ελαφρώς λαδωμένη ή με λαδόκολλα φόρμα 20 εκ.</li>\n<li>Ψήνουμε σε προθερμασμένο φούρνο στους 180°C για 30-40 λεπτά. Αφήνουμε να κρυώσει 20 λεπτά στη φόρμα και μετά σε σχάρα.</li>\n<li>Για το γλάσο: Ζεσταίνουμε την κρέμα φυτικού γάλακτος μέχρι να βράσει, τη ρίχνουμε πάνω στη σοκολάτα και ανακατεύουμε μέχρι να γίνει λεία κρέμα.</li>\n<li>Αφήνουμε το γλάσο να κρυώσει 15-20 λεπτά και το απλώνουμε πάνω στο κέικ.</li>\n<li>Προαιρετικά: Πασπαλίζουμε με ξύσμα πορτοκαλιού, ξηρούς καρπούς ή τριμμένη σοκολάτα.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_8\">\n<li>In a large bowl, mix the dry ingredients: flour, cocoa, baking powder, baking soda, salt, and sugar.</li>\n<li>Add oil, plant-based milk, vanilla, and lemon juice or vinegar. Stir until smooth.</li>\n<li>Pour the mixture into a lightly greased or parchment-lined 20 cm pan.</li>\n<li>Bake in a preheated oven at 180°C for 30-40 minutes. Let cool 20 minutes in the pan, then on a rack.</li>\n<li>For the glaze: Heat the plant-based cream until boiling, pour over the chocolate, and stir until smooth.</li>\n<li>Let the glaze cool for 15-20 minutes and spread over the cake.</li>\n<li>Optional: Sprinkle with orange zest, nuts, or grated chocolate.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=7fr00Kk9oYw",
+  "TagsGR": "[\"Γλυκό\",\"Γλυκά\",\"Σοκολάτα\",\"Νηστίσιμο\",\"Vegan\",\"κέικ\",\"σοκολατένιο\",\"fasting\",\"dessert\"]",
+  "TagsEN": "[\"Dessert\",\"Chocolate\",\"Vegan\",\"Cake\",\"Fasting\",\"Easy\",\"Moist\",\"Rich\"]",
+  "Date": "12/03/2026",
+  "ShortID": "7fr00Kk9oYw"
+}
   
   
 
