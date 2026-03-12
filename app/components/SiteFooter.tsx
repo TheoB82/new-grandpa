@@ -42,7 +42,7 @@ export default function Footer() {
 
         {/* COPYRIGHT LINE */}
         <div className="text-center text-xs opacity-60 pt-2">
-          © 2025 Grandpa Tassos Cooking. All rights reserved.
+          © 2026 Grandpa Tassos Cooking. All rights reserved.
         </div>
 
       </div>
