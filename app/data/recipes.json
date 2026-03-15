@@ -7385,6 +7385,26 @@
   "Date": "12/03/2026",
   "ShortID": "7fr00Kk9oYw"
 
+},
+{
+  "CategoryGR": "Κυρίως Πιάτα",
+  "CategoryEN": "Main Dishes",
+  "Image": "TBC",
+  "TitleGR": "Νηστίσιμες Πατάτες Ογκρατέν",
+  "TitleEN": "Vegan Potato Gratin",
+  "ShortDescriptionGR": "Πατάτες ογκρατέν χωρίς ζωικά, ιδανικές για νηστεία.",
+  "ShortDescriptionEN": "Vegan potato gratin, perfect for fasting periods.",
+  "IngredientsGR": "<p class=\"font_7\">1 κιλό πατάτες</p>\n<p class=\"font_7\">1 μεγάλο κρεμμύδι</p>\n<p class=\"font_7\">2 σκελίδες σκόρδο</p>\n<p class=\"font_7\">1 φλιτζάνι φυτική κρέμα</p>\n<p class=\"font_7\">1/2 φλιτζάνι φυτικό τυρί</p>\n<p class=\"font_7\">2 κουταλιές ελαιόλαδο</p>\n<p class=\"font_7\">Αλάτι, πιπέρι, μοσχοκάρυδο</p>",
+  "IngredientsEN": "<p class=\"font_7\">1 kg potatoes</p>\n<p class=\"font_7\">1 large onion</p>\n<p class=\"font_7\">2 garlic cloves</p>\n<p class=\"font_7\">1 cup plant-based cream</p>\n<p class=\"font_7\">1/2 cup vegan cheese</p>\n<p class=\"font_7\">2 tbsp olive oil</p>\n<p class=\"font_7\">Salt, pepper, nutmeg</p>",
+  "LongDescriptionGR": "<p class=\"font_8\">Μια εύκολη και νόστιμη συνταγή για πατάτες ογκρατέν χωρίς ζωικά προϊόντα. Ιδανική για περιόδους νηστείας ή για όσους ακολουθούν φυτική διατροφή.</p>",
+  "LongDescriptionEN": "<p class=\"font_8\">An easy and delicious vegan potato gratin recipe. Perfect for fasting or anyone following a plant-based diet.</p>",
+  "ExecutionGR": "<ol class=\"font_8\">\n<li>Καθαρίζουμε και κόβουμε τις πατάτες σε λεπτές φέτες.</li>\n<li>Ψιλοκόβουμε το κρεμμύδι και το σκόρδο.</li>\n<li>Σε ένα τηγάνι σοτάρουμε το κρεμμύδι και το σκόρδο με το ελαιόλαδο.</li>\n<li>Προσθέτουμε τις πατάτες και ανακατεύουμε καλά.</li>\n<li>Ρίχνουμε τη φυτική κρέμα, το φυτικό τυρί, αλάτι, πιπέρι και μοσχοκάρυδο.</li>\n<li>Μεταφέρουμε το μείγμα σε ταψί και ψήνουμε στους 180°C για 45 λεπτά.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_8\">\n<li>Peel and slice the potatoes thinly.</li>\n<li>Finely chop the onion and garlic.</li>\n<li>Sauté the onion and garlic in olive oil.</li>\n<li>Add the potatoes and mix well.</li>\n<li>Pour in the plant-based cream, vegan cheese, salt, pepper, and nutmeg.</li>\n<li>Transfer to a baking dish and bake at 180°C for 45 minutes.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=b9v652rNOwU",
+  "TagsGR": "[\"Νηστίσιμα\",\"Πατάτες\",\"Ογκρατέν\",\"Βίγκαν\",\"Κυρίως Πιάτο\"]",
+  "TagsEN": "[\"Vegan\",\"Potatoes\",\"Gratin\",\"Fasting\",\"Main\"]",
+  "Date": "15/03/2026",
+  "ShortID": "b9v652rNOwU"
 }
   
   
