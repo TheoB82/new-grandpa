@@ -7405,6 +7405,26 @@
   "TagsEN": "[\"Vegan\",\"Potatoes\",\"Gratin\",\"Fasting\",\"Main\"]",
   "Date": "16/03/2026",
   "ShortID": "b9v652rNOwU"
+  },
+  {
+    "CategoryGR": "Εορταστικά",
+    "CategoryEN": "Festive",
+    "Image": "TBC",
+    "TitleGR": "Κόκκινα Πασχαλινά Αυγά με Χρώμα Ζαχαροπλαστικής",
+    "TitleEN": "Red Easter Eggs with Food Coloring",
+    "ShortDescriptionGR": "Βάψτε πασχαλινά αυγά με χρώμα ζαχαροπλαστικής, χωρίς χημικά. Μπορούν να γίνουν σε διάφορα χρώματα!",
+    "ShortDescriptionEN": "Dye Easter eggs with food coloring, no chemicals needed. Can be made in various colors!",
+    "IngredientsGR": "<p class=\"font_7\">2 φλιτζάνια ζεστό νερό</p>\n<p class=\"font_7\">2 κ.σ. ξύδι</p>\n<p class=\"font_7\">10 γρ χρώμα ζαχαροπλαστικής</p>\n<p class=\"font_7\">Βρασμένα αυγά</p>",
+    "IngredientsEN": "<p class=\"font_7\">2 cups hot water</p>\n<p class=\"font_7\">2 tbsp vinegar</p>\n<p class=\"font_7\">10 g food coloring</p>\n<p class=\"font_7\">Boiled eggs</p>",
+    "LongDescriptionGR": "<p class=\"font_8\">Μια απλή και οικονομική μέθοδος για να βάψετε πασχαλινά αυγά χωρίς χημικά, χρησιμοποιώντας χρώμα ζαχαροπλαστικής. Ιδανικό για παιδιά και για όσους αποφεύγουν τα έτοιμα βαφικά αυγών.</p>",
+    "LongDescriptionEN": "<p class=\"font_8\">A simple and budget-friendly way to dye Easter eggs without chemicals, using food coloring. Perfect for kids and anyone avoiding commercial egg dyes.</p>",
+    "ExecutionGR": "<ol class=\"font_8\">\n<li>Βράζουμε τα αυγά και τα αφήνουμε να κρυώσουν σε κρύο νερό.</li>\n<li>Σε ένα βάζο ή μπολ, ρίχνουμε 2 φλιτζάνια ζεστό νερό και 2 κουταλιές της σούπας ξύδι.</li>\n<li>Προσθέτουμε 10 γρ χρώμα ζαχαροπλαστικής και ανακατεύουμε καλά.</li>\n<li>Βυθίζουμε τα βρασμένα αυγά στο διάλυμα και τα αφήνουμε για 10 λεπτά ή μέχρι να πάρουν το επιθυμητό χρώμα, ανακατεύοντας κατά διαστήματα.</li>\n<li>Αν θέλουμε πιο έντονο χρώμα, τα αφήνουμε περισσότερο χρόνο.</li>\n<li>Για σχέδια, τυλίγουμε ένα λαστιχάκι γύρω από το αυγό πριν το βάψουμε.</li>\n<li>Βγάζουμε τα αυγά και τα αφήνουμε να στεγνώσουν καλά.</li>\n<li>Όταν στεγνώσουν, τα περνάμε με λίγο ελαιόλαδο για γυαλάδα.</li>\n</ol>",
+    "ExecutionEN": "<ol class=\"font_8\">\n<li>Boil the eggs and cool them in cold water.</li>\n<li>In a jar or bowl, add 2 cups hot water and 2 tablespoons vinegar.</li>\n<li>Add 10 g food coloring and mix well.</li>\n<li>Submerge the boiled eggs in the solution and leave for 10 minutes or until the desired color is reached, stirring occasionally.</li>\n<li>For a more intense color, leave the eggs longer.</li>\n<li>For patterns, wrap a rubber band around the egg before dyeing.</li>\n<li>Remove the eggs and let them dry completely.</li>\n<li>Once dry, rub with a little olive oil for shine.</li>\n</ol>",
+    "LinkYT": "https://www.youtube.com/watch?v=dyrdBP3hYco",
+    "TagsGR": "[\"Πάσχα\",\"Αυγά\",\"Χρώμα Ζαχαροπλαστικής\",\"Χωρίς Χημικά\",\"Παραδοσιακό\"]",
+    "TagsEN": "[\"Easter\",\"Eggs\",\"Food Coloring\",\"No Chemicals\",\"Traditional\"]",
+    "Date": "19/03/2026",
+    "ShortID": "dyrdBP3hYco"
 }
   
   
