@@ -7426,6 +7426,26 @@
     "TagsEN": "[\"Easter\",\"Eggs\",\"Food Coloring\",\"No Chemicals\",\"Traditional\"]",
     "Date": "19/03/2026",
     "ShortID": "dyrdBP3hYco"
+},
+{
+  "CategoryGR": "Κυρίως Πιάτα",
+  "CategoryEN": "Main Dishes",
+  "Image": "",
+  "TitleGR": "Συκωταριά Αρνίσια στο Τηγάνι με Λεμόνι",
+  "TitleEN": "Pan-Fried Lamb Offal with Lemon",
+  "ShortDescriptionGR": "Παραδοσιακή συκωταριά αρνίσια στο τηγάνι με λεμόνι, ρίγανη και αρωματικά. Η συκωταριά θέλει σωστό χρόνο, δυνατή αρχή στο τηγάνι και το σωστό τελείωμα με λεμόνι και ρίγανη.",
+  "ShortDescriptionEN": "Traditional pan-fried lamb offal with lemon, oregano and herbs. A quick and flavorful dish.",
+  "IngredientsGR": "<p class=\"font_7\">1 συκωταριά αρνίσια</p>\n<p class=\"font_7\">50 ml ξύδι</p>\n<p class=\"font_7\">50 ml λευκό ξηρό κρασί</p>\n<p class=\"font_7\">1 κόπανο πράσου ψιλοκομμένο</p>\n<p class=\"font_7\">2 κ.σ. ρίγανη</p>\n<p class=\"font_7\">100 ml ελαιόλαδο</p>\n<p class=\"font_7\">Χυμό από 2 λεμόνια</p>\n<p class=\"font_7\">Λίγο θυμάρι φρέσκο</p>\n<p class=\"font_7\">Λίγο μπούκοβο</p>\n<p class=\"font_7\">Φρέσκια ρίγανη για το σερβίρισμα</p>\n<p class=\"font_7\">Αλάτι</p>\n<p class=\"font_7\">Φρεσκοτριμμένο πιπέρι</p>",
+  "IngredientsEN": "<p class=\"font_7\">1 lamb offal set</p>\n<p class=\"font_7\">50 ml vinegar</p>\n<p class=\"font_7\">50 ml dry white wine</p>\n<p class=\"font_7\">1 leek stalk finely chopped</p>\n<p class=\"font_7\">2 tbsp oregano</p>\n<p class=\"font_7\">100 ml olive oil</p>\n<p class=\"font_7\">Juice of 2 lemons</p>\n<p class=\"font_7\">Some fresh thyme</p>\n<p class=\"font_7\">Chili flakes (optional)</p>\n<p class=\"font_7\">Fresh oregano for serving</p>\n<p class=\"font_7\">Salt</p>\n<p class=\"font_7\">Freshly ground pepper</p>",
+  "LongDescriptionGR": "<p class=\"font_7\">Μια παραδοσιακή ελληνική συνταγή για συκωταριά στο τηγάνι με λεμόνι και ρίγανη. Έντονη γεύση, απλή εκτέλεση και ιδανική για μεζέ με φρέσκο ψωμί.</p>",
+  "LongDescriptionEN": "<p class=\"font_7\">A traditional Greek recipe for pan-fried lamb offal with lemon and oregano. Bold flavour, simple preparation and perfect served with fresh bread.</p>",
+  "ExecutionGR": "<ol class=\"font_7\">\n<li>Κόβουμε τη συκωταριά σε μπουκιές και την αφήνουμε σε ένα μπολ με ξύδι για 10 λεπτά.</li>\n<li>Στη συνέχεια πλένουμε καλά τη συκωταριά κάτω από τρεχούμενο νερό, και αφήνουμε να στραγγίσει. Τοποθετούμε τα κομμάτια πάνω σε απορροφητικό χαρτί κουζίνας.</li>\n<li>Σε ένα τηγάνι ζεσταίνουμε το ελαιόλαδο και το αφήνουμε να κάψει πολύ καλά.</li>\n<li>Ρίχνουμε την συκωταριά σε δόσεις για να μη ρίξουμε τη θερμοκρασία και τσιγαρίζουμε για περίπου 5 λεπτά να πάρει χρώμα από όλες τις πλευρές.</li>\n<li>Προσθέτουμε ένα ψιλοκομμένο κόπανο πράσου και τσιγαρίζουμε για άλλα 2 λεπτά, πάντα στη μέγιστη θερμοκρασία.</li>\n<li>Σβήνουμε με το κρασί και αφήνουμε να εξατμιστεί το αλκοόλ.</li>\n<li>Προσθέτουμε το αλάτι και το μπούκοβο, αν βάλουμε.</li>\n<li>Ανακατεύουμε και σε 1 λεπτό προσθέτουμε το χυμό του λεμονιού, και τη ρίγανη.</li>\n<li>Ανακινούμε το τηγάνι και αφήνουμε να μαγειρευτεί για 2 λεπτά ακόμη, να εισχωρήσει το λεμόνι στο κρέας.</li>\n<li>Σβήνουμε τη φωτιά και τώρα πασπαλίζουμε με το φρέσκο θυμάρι, αν βάλουμε.</li>\n<li>Λίγο φρεσκοτριμμένο πιπέρι από πάνω.</li>\n<li>Σερβίρουμε με μπόλικο φρέσκο ψωμί προζυμένιο.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_7\">\n<li>Cut the lamb offal into bite-sized pieces and soak in vinegar for 10 minutes.</li>\n<li>Rinse well under running water and let drain. Place on kitchen paper to dry.</li>\n<li>Heat the olive oil in a pan until very hot.</li>\n<li>Add the offal in batches to avoid lowering the temperature and fry for about 5 minutes until browned on all sides.</li>\n<li>Add the chopped leek and sauté for another 2 minutes over high heat.</li>\n<li>Deglaze with the wine and let the alcohol evaporate.</li>\n<li>Add salt and chili flakes if using.</li>\n<li>Stir and after 1 minute add the lemon juice and oregano.</li>\n<li>Shake the pan and cook for 2 more minutes to let the lemon infuse the meat.</li>\n<li>Turn off the heat and sprinkle with fresh thyme if using.</li>\n<li>Add freshly ground pepper on top.</li>\n<li>Serve with plenty of fresh sourdough bread.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=GDd7JoZXFTc",
+  "TagsGR": "[\"Συκωταριά\",\"Αρνί\",\"Τηγάνι\",\"Μεζές\",\"Παραδοσιακό\"]",
+  "TagsEN": "[\"Lamb Offal\",\"Pan Fried\",\"Greek Cuisine\",\"Meze\",\"Traditional\"]",
+  "Date": "24/03/2026",
+  "ShortID": "GDd7JoZXFTc"
 }
   
   
