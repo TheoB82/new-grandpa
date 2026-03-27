@@ -7446,6 +7446,27 @@
   "TagsEN": "[\"Lamb Offal\",\"Pan Fried\",\"Greek Cuisine\",\"Meze\",\"Traditional\"]",
   "Date": "24/03/2026",
   "ShortID": "GDd7JoZXFTc"
+},
+
+{
+  "CategoryGR": "Γλυκά",
+  "CategoryEN": "Desserts",
+  "Image": "",
+  "TitleGR": "Παραδοσιακή Μελαλευριά",
+  "TitleEN": "Traditional Honey Pudding (Melalevria)",
+  "ShortDescriptionGR": "Ένα παλιό παραδοσιακό γλυκό με μέλι, νερό και κορνφλάουρ. Απλό, αυθεντικό και γεμάτο γεύση.",
+  "ShortDescriptionEN": "A traditional old-style dessert made with honey, water and cornflour. Simple, authentic and full of flavour.",
+  "IngredientsGR": "<p class=\"font_7\">3 κούπες νερό (750 ml)</p>\n<p class=\"font_7\">1 κούπα μέλι (375 g)</p>\n<p class=\"font_7\">12 κ.γ. κορνφλάουρ (60 g)</p>\n<p class=\"font_7\"><br><strong>Για το σερβίρισμα:</strong></p>\n<p class=\"font_7\">Καρύδι</p>\n<p class=\"font_7\">Αμύγδαλο</p>\n<p class=\"font_7\">Σησάμι</p>",
+  "IngredientsEN": "<p class=\"font_7\">3 cups water (750 ml)</p>\n<p class=\"font_7\">1 cup honey (375 g)</p>\n<p class=\"font_7\">12 tsp cornflour (60 g)</p>\n<p class=\"font_7\"><br><strong>For serving:</strong></p>\n<p class=\"font_7\">Walnuts</p>\n<p class=\"font_7\">Almonds</p>\n<p class=\"font_7\">Sesame seeds</p>",
+  "LongDescriptionGR": "<p class=\"font_7\">Η μελαλευριά είναι ένα παραδοσιακό ελληνικό γλυκό με απλά υλικά όπως μέλι και νερό. Θυμίζει παλιές εποχές και αποτελεί ιδανική επιλογή για να αξιοποιήσουμε μέλι που έχει ζαχαρώσει.</p>",
+  "LongDescriptionEN": "<p class=\"font_7\">Melalevria is a traditional Greek dessert made with simple ingredients like honey and water. It evokes old times and is perfect for using crystallised honey.</p>",
+  "ExecutionGR": "<ol class=\"font_7\">\n<li>Βάζουμε το μέλι και τα δύο ποτήρια νερό σε κατσαρόλα, ανάβουμε το μάτι και ανακατεύουμε κατά διαστήματα μέχρι να πλησιάσει στο σημείο βρασμού.</li>\n<li>Διαλύουμε το κορνφλάουρ στο 1 ποτήρι κρύο νερό που κρατήσαμε.</li>\n<li>Το προσθέτουμε στην κατσαρόλα και ανακατεύουμε με σύρμα με γρήγορες κινήσεις συνεχώς μέχρι να πήξει.</li>\n<li>Σερβίρουμε αμέσως και προσθέτουμε τη διακόσμηση της επιλογής μας.</li>\n<li>Μόλις κρυώσει, το απολαμβάνουμε.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_7\">\n<li>Add the honey and two cups of water to a pot, heat and stir occasionally until it approaches boiling point.</li>\n<li>Dissolve the cornflour in the remaining cup of cold water.</li>\n<li>Add it to the pot and whisk continuously with quick movements until it thickens.</li>\n<li>Serve immediately and add your preferred toppings.</li>\n<li>Let it cool slightly before enjoying.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=IH2IYWJMSK0",
+  "TagsGR": "[\"Μελαλευριά\",\"Μέλι\",\"Παραδοσιακό\",\"Γλυκό\",\"Νηστίσιμο\"]",
+  "TagsEN": "[\"Honey Dessert\",\"Traditional\",\"Greek Dessert\",\"Vegan\",\"Simple\"]",
+  "Date": "27/03/2026",
+  "ShortID": "IH2IYWJMSK0"
 }
   
   
