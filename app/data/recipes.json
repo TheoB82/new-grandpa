@@ -7472,7 +7472,27 @@
     "TagsEN": "[\"Μερακλίδικα\",\"Μπάρμπεκιου\",\"Μεζέδες\",\"grandpatassoscooking\",\"σούβλα\",\"ψητά\",\"Barbecue\",\"Kokoretsi\",\"Specials\",\"Greek cooking\",\"Greek Easter\"]",
     "Date": "04/04/2020",
     "ShortID": "wHujibu"
-  }
+  },
+  {
+  "CategoryGR": "Κυρίως",
+  "CategoryEN": "Main",
+  "Image": "",
+  "TitleGR": "Γιαχνί Μανιταριών με Λαχανικά",
+  "TitleEN": "Mushroom and Vegetable Stew (Yahni)",
+  "ShortDescriptionGR": "Ένα απλό αλλά γεμάτο γεύση γιαχνί με μανιτάρια και λαχανικά. Ιδανικό για καθημερινό τραπέζι ή νηστεία.",
+  "ShortDescriptionEN": "A simple yet flavorful mushroom and vegetable stew. Perfect for everyday meals or fasting periods.",
+  "IngredientsGR": "<p class=\"font_7\">1 μεγάλο κρεμμύδι, ψιλοκομμένο (200 γρ)</p>\n<p class=\"font_7\">Λίγο πράσο ψιλοκομμένο (150 γρ)</p>\n<p class=\"font_7\">2 σκελίδες σκόρδο</p>\n<p class=\"font_7\">400 γρ. μανιτάρια</p>\n<p class=\"font_7\">2 καρότα τριμμένα</p>\n<p class=\"font_7\">2-3 πιπεριές (σε χρώματα), μέτρια κομμένες (350 γρ)</p>\n<p class=\"font_7\">350 γρ πατάτες, μέτρια κομμένες</p>\n<p class=\"font_7\">100 γρ ντομάτα λιαστή</p>\n<p class=\"font_7\">1 κ.σ. πελτέ ντομάτας</p>\n<p class=\"font_7\">600 - 650 ml ζωμό λαχανικών</p>\n<p class=\"font_7\">1 κ.γ. καπνιστή πάπρικα</p>\n<p class=\"font_7\">1 κ.γ. μαντζουράνα ή θυμάρι ή ρίγανη</p>\n<p class=\"font_7\">3-5 κ.σ. ελαιόλαδο</p>\n<p class=\"font_7\">Αλάτι, πιπέρι</p>\n<p class=\"font_7\">Φρέσκος μαϊντανός για γαρνίρισμα</p>",
+  "IngredientsEN": "<p class=\"font_7\">1 large onion, finely chopped (200 g)</p>\n<p class=\"font_7\">Some leek, finely chopped (150 g)</p>\n<p class=\"font_7\">2 garlic cloves</p>\n<p class=\"font_7\">400 g mushrooms</p>\n<p class=\"font_7\">2 carrots, grated</p>\n<p class=\"font_7\">2-3 bell peppers (mixed colours), roughly chopped (350 g)</p>\n<p class=\"font_7\">350 g potatoes, roughly chopped</p>\n<p class=\"font_7\">100 g sun-dried tomatoes</p>\n<p class=\"font_7\">1 tbsp tomato paste</p>\n<p class=\"font_7\">600–650 ml vegetable stock</p>\n<p class=\"font_7\">1 tsp smoked paprika</p>\n<p class=\"font_7\">1 tsp marjoram or thyme or oregano</p>\n<p class=\"font_7\">3–5 tbsp olive oil</p>\n<p class=\"font_7\">Salt, pepper</p>\n<p class=\"font_7\">Fresh parsley for garnish</p>",
+  "LongDescriptionGR": "<p class=\"font_7\">Ένα παραδοσιακό γιαχνί με μανιτάρια και λαχανικά, γεμάτο αρώματα και γεύση. Με σωστό σοτάρισμα και ισορροπία υλικών, γίνεται ένα εξαιρετικό φαγητό κατσαρόλας, ιδανικό για νηστεία ή ένα ελαφρύ καθημερινό γεύμα.</p>",
+  "LongDescriptionEN": "<p class=\"font_7\">A traditional mushroom and vegetable stew full of flavour and aroma. With proper sautéing and balanced ingredients, it becomes a perfect pot dish for fasting or a light everyday meal.</p>",
+  "ExecutionGR": "<ol class=\"font_7\">\n<li>Σοτάρισμα Μανιταριών: Βάλτε 3 κουταλιές της σούπας ελαιόλαδο στην κατσαρόλα. Μόλις κάψει, ρίξτε τα μανιτάρια σε δύο δόσεις για να πάρουν χρώμα και να μην βγάλουν πολλά υγρά. Αφαιρέστε την πρώτη δόση και συνεχίστε με τη δεύτερη. Αν χρειαστεί προσθέστε ακόμη λίγο ελαιόλαδο.</li>\n<li>Σοτάρισμα Λαχανικών: Προσθέστε το πράσο και το κρεμμύδι στην κατσαρόλα μαζί με την πρώτη δόση μανιταριών.</li>\n<li>Σταδιακή Προσθήκη: Ρίξτε τις πιπεριές, το σκόρδο και το καρότο.</li>\n<li>Πατάτες & Πελτές: Μετά από ένα λεπτό, προσθέστε τις πατάτες και μια κουταλιά πελτέ ντομάτας. Σοτάρετε τον πελτέ για 1 λεπτό για να βγάλει τα αρώματά του.</li>\n<li>Λιαστή Ντομάτα & Μπαχαρικά: Προσθέστε τη λιαστή ντομάτα. Χαμηλώστε τη φωτιά και ρίξτε 1 κ.γ. καπνιστή πάπρικα, 1 κ.γ. ματζουράνα (ή θυμάρι/ρίγανη), πιπέρι και αλάτι με προσοχή.</li>\n<li>Μαγείρεμα: Προσθέστε ζεστό ζωμό λαχανικών μέχρι να σκεπαστούν τα υλικά. Σιγοβράστε με μισάνοιχτο καπάκι μέχρι να μαλακώσουν οι πατάτες (περίπου 25-30 λεπτά συνολικά).</li>\n<li>Σερβίρισμα: Στο τέλος, προσθέστε λίγο ωμό φρέσκο ελαιόλαδο, φρεσκοτριμμένο πιπέρι και προαιρετικά λίγη πρασινάδα (π.χ. μαϊντανό) για το μάτι.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_7\">\n<li>Sauté the mushrooms: Add 3 tablespoons of olive oil to a pot. Once hot, add the mushrooms in two batches so they brown properly without releasing too much liquid. Remove the first batch and repeat with the second, adding more oil if needed.</li>\n<li>Sauté the vegetables: Add the leek and onion to the pot along with the first batch of mushrooms.</li>\n<li>Add gradually: Add the peppers, garlic, and carrot.</li>\n<li>Potatoes & tomato paste: After a minute, add the potatoes and tomato paste. Cook the paste for 1 minute to release its aroma.</li>\n<li>Sun-dried tomatoes & spices: Add the sun-dried tomatoes. Lower the heat and add smoked paprika, marjoram (or thyme/oregano), salt and pepper.</li>\n<li>Cooking: Add warm vegetable stock until ingredients are covered. Simmer partially covered until the potatoes are tender (about 25–30 minutes).</li>\n<li>Serving: Finish with a drizzle of raw olive oil, freshly ground pepper and optionally fresh herbs like parsley.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=K6Hes1KNJPU",
+  "TagsGR": "[\"Μανιτάρια\",\"Γιαχνί\",\"Νηστίσιμο\",\"Λαχανικά\",\"Κατσαρόλας\"]",
+  "TagsEN": "[\"Mushrooms\",\"Stew\",\"Vegan\",\"Vegetables\",\"Comfort Food\"]",
+  "Date": "02/04/2026",
+  "ShortID": "K6Hes1KNJPU"
+}
   
   
 
