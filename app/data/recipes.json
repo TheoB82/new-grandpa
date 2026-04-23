@@ -7531,6 +7531,27 @@
   "TagsEN": "[\"Beef Tongue\",\"Traditional\",\"Lemon Sauce\",\"Meat\",\"Main Dish\"]",
   "Date": "16/04/2026",
   "ShortID": "rHHuciG1Qrw"
+},
+
+{
+  "CategoryGR": "Κυρίως",
+  "CategoryEN": "Main",
+  "Image": "TBC",
+  "TitleGR": "Μελιτζάνες στο Φούρνο με Πατάτες",
+  "TitleEN": "Baked Eggplants with Potatoes",
+  "ShortDescriptionGR": "Παραδοσιακό λαδερό φαγητό με μελιτζάνες και πατάτες, μελωμένο και γεμάτο άρωμα.",
+  "ShortDescriptionEN": "A traditional Greek oven-baked dish with eggplants and potatoes, rich in flavor and aroma.",
+  "IngredientsGR": "<p class=\"font_7\">1,3 κιλό μελιτζάνες</p>\n<p class=\"font_7\">1 κιλό πατάτες</p>\n<p class=\"font_7\"><strong>Για τη σάλτσα:</strong></p>\n<p class=\"font_7\">1 φλιτζάνι ελαιόλαδο (200 ml)</p>\n<p class=\"font_7\">4-5 σκελίδες σκόρδο</p>\n<p class=\"font_7\">2 μεγάλα κρεμμύδια</p>\n<p class=\"font_7\">1 μέτρια ντομάτα</p>\n<p class=\"font_7\">3 πιπεριές σε χρώμα</p>\n<p class=\"font_7\">1 κ.σ. πελτέ ντομάτας</p>\n<p class=\"font_7\">1 κ.γ. πάπρικα γλυκιά</p>\n<p class=\"font_7\">Αλάτι και πιπέρι</p>\n<p class=\"font_7\">1 κ.γ. μπούκοβο (προαιρετικό)</p>\n<p class=\"font_7\">1 κ.σ. θυμάρι ξερό</p>\n<p class=\"font_7\">½ ματσάκι μαϊντανό</p>\n<p class=\"font_7\">1-2 ντομάτες σε ροδέλες</p>\n<p class=\"font_7\"><strong>Για επικάλυψη:</strong></p>\n<p class=\"font_7\">2-3 ντομάτες σε λεπτές ροδέλες</p>",
+  "IngredientsEN": "<p class=\"font_7\">1.3 kg eggplants</p>\n<p class=\"font_7\">1 kg potatoes</p>\n<p class=\"font_7\"><strong>For the sauce:</strong></p>\n<p class=\"font_7\">1 cup olive oil (200 ml)</p>\n<p class=\"font_7\">4-5 garlic cloves</p>\n<p class=\"font_7\">2 large onions</p>\n<p class=\"font_7\">1 medium tomato</p>\n<p class=\"font_7\">3 mixed color peppers</p>\n<p class=\"font_7\">1 tbsp tomato paste</p>\n<p class=\"font_7\">1 tsp sweet paprika</p>\n<p class=\"font_7\">Salt and pepper</p>\n<p class=\"font_7\">1 tsp chili flakes (optional)</p>\n<p class=\"font_7\">1 tbsp dried thyme</p>\n<p class=\"font_7\">½ bunch parsley</p>\n<p class=\"font_7\">1-2 tomatoes, sliced</p>\n<p class=\"font_7\"><strong>For topping:</strong></p>\n<p class=\"font_7\">2-3 tomatoes, thinly sliced</p>",
+  "LongDescriptionGR": "<p class=\"font_8\">Σήμερα φτιάχνουμε μελιτζάνες με πατάτες στο φούρνο, ένα παραδοσιακό λαδερό γεμάτο άρωμα και γεύση. Με απλά υλικά και σωστό ψήσιμο, το φαγητό γίνεται μελωμένο και πεντανόστιμο. Ιδανικό για καθημερινό τραπέζι, νηστεία ή ελαφρύ σπιτικό φαγητό.</p>",
+  "LongDescriptionEN": "<p class=\"font_8\">Today we make baked eggplants with potatoes, a traditional Greek dish full of aroma and flavor. With simple ingredients and proper cooking, the result is rich and delicious. Perfect for everyday meals, fasting periods, or a light homemade dish.</p>",
+  "ExecutionGR": "<ol class=\"font_8\">\n<li>Καθαρίζεις τις μελιτζάνες και τις κόβεις πρώτα κατά μήκος και μετά σε μέτριες φέτες. Τις βάζεις σε νερό για να μη μαυρίσουν.</li>\n<li>Καθαρίζεις τις πατάτες και τις κόβεις σε χοντρές ροδέλες.</li>\n<li>Αλατοπιπερώνεις πατάτες και μελιτζάνες και τις ραντίζεις με λίγο ελαιόλαδο.</li>\n<li>Τις ανακατεύεις καλά και τις στρώνεις στο ταψί, ώστε να μοιράζονται ομοιόμορφα.</li>\n<li>Βάζεις το ταψί στον φούρνο να ξεκινήσει το ψήσιμο.</li>\n<li>Σε τηγάνι βάζεις ελαιόλαδο και σοτάρεις τα κρεμμύδια μέχρι να μαλακώσουν.</li>\n<li>Προσθέτεις τις πιπεριές και συνεχίζεις το σοτάρισμα.</li>\n<li>Ρίχνεις τον πελτέ να ψηθεί καλά.</li>\n<li>Προσθέτεις τη ντομάτα και λίγο νερό.</li>\n<li>Αλατοπιπερώνεις και βάζεις θυμάρι, πάπρικα και προαιρετικά μπούκοβο.</li>\n<li>Αφήνεις να δέσει ελαφρά η σάλτσα.</li>\n<li>Στο τέλος προσθέτεις μαϊντανό και αποσύρεις από τη φωτιά.</li>\n<li>Βγάζεις το ταψί και απλώνεις από πάνω τη σάλτσα.</li>\n<li>Προσθέτεις φέτες ντομάτας, το σκόρδο και λίγο επιπλέον ελαιόλαδο.</li>\n<li>Ξαναβάζεις στον φούρνο μέχρι να μελώσει το φαγητό και να πάρει ωραίο χρώμα.</li>\n<li>Αφήνεις λίγο να σταθεί πριν το σερβίρισμα.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_8\">\n<li>Peel the eggplants and cut them lengthwise, then into medium slices. Place them in water to prevent browning.</li>\n<li>Peel the potatoes and cut them into thick slices.</li>\n<li>Season the potatoes and eggplants with salt and pepper and drizzle with a little olive oil.</li>\n<li>Mix well and arrange them evenly in a baking tray.</li>\n<li>Place the tray in the oven to start baking.</li>\n<li>In a pan, heat olive oil and sauté the onions until softened.</li>\n<li>Add the peppers and continue sautéing.</li>\n<li>Add the tomato paste and cook it well.</li>\n<li>Add the tomato and a little water.</li>\n<li>Season with salt, pepper, thyme, paprika, and optionally chili flakes.</li>\n<li>Let the sauce thicken slightly.</li>\n<li>Finally, add parsley and remove from heat.</li>\n<li>Take the tray out of the oven and spread the sauce over the vegetables.</li>\n<li>Add tomato slices, garlic, and a bit more olive oil.</li>\n<li>Return to the oven until the dish is tender and nicely browned.</li>\n<li>Let it rest slightly before serving.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=70mPk1LwlmM",
+  "TagsGR": "[\"Μελιτζάνες\",\"Πατάτες\",\"Λαδερά\",\"Νηστίσιμα\",\"Φούρνου\"]",
+  "TagsEN": "[\"Eggplant\",\"Potatoes\",\"Vegan\",\"Oven\",\"Greek\"]",
+  "Date": "23/04/2026",
+  "ShortID": "70mPk1LwlmM"
 }
   
   
