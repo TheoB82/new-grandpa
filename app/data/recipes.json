@@ -7552,6 +7552,27 @@
   "TagsEN": "[\"Eggplant\",\"Potatoes\",\"Vegan\",\"Oven\",\"Greek\"]",
   "Date": "23/04/2026",
   "ShortID": "70mPk1LwlmM"
+},
+
+{
+  "CategoryGR": "Κυρίως",
+  "CategoryEN": "Main",
+  "Image": "TBC",
+  "TitleGR": "Άδανα Κεμπάπ",
+  "TitleEN": "Adana Kebabs",
+  "ShortDescriptionGR": "Πικάντικα και ζουμερά κεμπάπ με ανάμεικτο κιμά και έντονα μπαχαρικά, ψημένα στη σχάρα.",
+  "ShortDescriptionEN": "Spicy and juicy kebabs made with mixed minced meat and bold spices, grilled to perfection.",
+  "IngredientsGR": "<p class=\"font_7\">1 κιλό ανάμεικτος κιμάς μοσχαριού και αρνιού</p>\n<p class=\"font_7\">2-3 κόκκινες πιπεριές (240-250 γρ)</p>\n<p class=\"font_7\">1-2 κ.γ. μπούκοβο (προσαρμόστε κατά βούληση)</p>\n<p class=\"font_7\">1 κ.σ. πάπρικα γλυκιά</p>\n<p class=\"font_7\">2 κ.γ. αλάτι (18 γρ)</p>\n<p class=\"font_7\">1 κ.γ. πιπέρι μαύρο</p>\n<p class=\"font_7\">1-2 σκελίδες σκόρδο λιωμένο</p>\n<p class=\"font_7\"><strong>Για τη σαλάτα:</strong></p>\n<p class=\"font_7\">2 μέτρια κρεμμύδια σε φέτες</p>\n<p class=\"font_7\">2-3 ντομάτες σε μικρούς κύβους</p>\n<p class=\"font_7\">½ φλιτζάνι ψιλοκομμένο μαϊντανό</p>\n<p class=\"font_7\">1 κ.σ. σουμάκ ή κατά βούληση</p>\n<p class=\"font_7\">Αλάτι και πιπέρι κατά βούληση</p>",
+  "IngredientsEN": "<p class=\"font_7\">1 kg mixed minced beef and lamb</p>\n<p class=\"font_7\">2-3 red peppers (240-250 g)</p>\n<p class=\"font_7\">1-2 tsp chili flakes (adjust to taste)</p>\n<p class=\"font_7\">1 tbsp sweet paprika</p>\n<p class=\"font_7\">2 tsp salt (18 g)</p>\n<p class=\"font_7\">1 tsp black pepper</p>\n<p class=\"font_7\">1-2 garlic cloves, crushed</p>\n<p class=\"font_7\"><strong>For the salad:</strong></p>\n<p class=\"font_7\">2 medium onions, sliced</p>\n<p class=\"font_7\">2-3 tomatoes, diced</p>\n<p class=\"font_7\">½ cup chopped parsley</p>\n<p class=\"font_7\">1 tbsp sumac (optional)</p>\n<p class=\"font_7\">Salt and pepper to taste</p>",
+  "LongDescriptionGR": "<p class=\"font_8\">Σήμερα φτιάχνουμε Άδανα κεμπάπ, ένα πικάντικο και ζουμερό κεμπάπ με έντονη γεύση και σωστή τεχνική. Το μυστικό δεν είναι μόνο τα υλικά, αλλά το σωστό ζύμωμα, η ισορροπία στα μπαχαρικά και το σωστό ψήσιμο.</p>",
+  "LongDescriptionEN": "<p class=\"font_8\">Today we prepare Adana kebabs, a spicy and juicy dish full of bold flavors and proper technique. The secret lies not only in the ingredients but also in proper kneading, spice balance, and grilling.</p>",
+  "ExecutionGR": "<ol class=\"font_8\">\n<li>Σε ένα μπολ, ανακατέψτε τις λιωμένες πιπεριές με τον κιμά, το σκόρδο, πάπρικα, μπούκοβο, αλάτι και μαύρο πιπέρι.</li>\n<li>Ζυμώστε όλα τα υλικά για 10 λεπτά, μέχρι να ενωθούν καλά και να σπάσουν οι ίνες.</li>\n<li>Αφήστε τον κιμά στο ψυγείο το λιγότερο για 1 ώρα ή όλη τη νύχτα.</li>\n<li>Βρέξτε τα χέρια σας για να μην κολλήσουν και στη συνέχεια πλάστε το μείγμα για τα κεμπάπ σε μπάλες περίπου 130 γρ.. Περνάμε τα κεμπάπ στις λάμες.</li>\n<li>Ανακατέψτε καλά τα υλικά της σαλάτας λίγο πριν τα σερβίρετε.</li>\n<li>Μόλις η σχάρα ζεσταθεί, ψήστε τα κεμπάπ από όλες τις πλευρές μέχρι να ψηθούν καλά και να ροδίσουν ωραία.</li>\n<li>Γυρίζετε τα κεμπάπ κάθε 40 δευτερόλεπτα για να εξασφαλίσετε ομοιόμορφο ψήσιμο και να μην πέσουν από τις λάμες.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_8\">\n<li>In a bowl, mix the crushed peppers with the minced meat, garlic, paprika, chili flakes, salt, and black pepper.</li>\n<li>Knead all ingredients for 10 minutes until well combined and the fibers break down.</li>\n<li>Refrigerate the mixture for at least 1 hour or overnight.</li>\n<li>Wet your hands to prevent sticking, then shape the mixture into kebabs of about 130 g each and skewer them onto metal skewers.</li>\n<li>Mix the salad ingredients well just before serving.</li>\n<li>Once the grill is hot, cook the kebabs on all sides until nicely browned and cooked through.</li>\n<li>Turn the kebabs every 40 seconds to ensure even cooking and prevent them from falling apart.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=twXShqqhux8",
+  "TagsGR": "[\"Κεμπάπ\",\"Άδανα\",\"Ψητά\",\"Κρέας\",\"Σχάρα\"]",
+  "TagsEN": "[\"Kebab\",\"Adana\",\"Grill\",\"Meat\",\"BBQ\"]",
+  "Date": "05/05/2026",
+  "ShortID": "twXShqqhux8"
 }
   
   
