@@ -7657,6 +7657,25 @@
   "TagsEN": "[\"Mackerel\",\"Fish\",\"Seafood\",\"Pan Fried\",\"Tartar Sauce\"]",
   "Date": "03/06/2026",
   "ShortID": "3y-Kn_3ui3E"
+},
+{
+  "CategoryGR": "Μεζέδες",
+  "CategoryEN": "Starters",
+  "TitleGR": "Ροδίτικη Σαλάτα με Φασολάκια",
+  "TitleEN": "Rhodian Green Bean Salad",
+  "ShortDescriptionGR": "Δροσερή παραδοσιακή σαλάτα από τη Ρόδο με φασολάκια, αρωματική σάλτσα ντομάτας, δυόσμο και ξύδι.",
+  "ShortDescriptionEN": "A refreshing traditional salad from Rhodes with green beans, aromatic tomato sauce, mint, and vinegar.",
+  "IngredientsGR": "<p class=\"font_7\">500 γρ. φασολάκια φρέσκα καθαρισμένα</p>\n<p class=\"font_7\">2-3 ώριμες ντομάτες, τριμμένες ή ψιλοκομμένες</p>\n<p class=\"font_7\">3-4 σκελίδες σκόρδο, ψιλοκομμένες</p>\n<p class=\"font_7\">1 μικρό ξερό κρεμμύδι, ψιλοκομμένο</p>\n<p class=\"font_7\">100 ml ελαιόλαδο</p>\n<p class=\"font_7\">4-5 κ.σ. ξύδι από κρασί</p>\n<p class=\"font_7\">Δυόσμος ψιλοκομμένος</p>\n<p class=\"font_7\">Μαϊντανός ψιλοκομμένος</p>\n<p class=\"font_7\">Αλάτι</p>\n<p class=\"font_7\">Φρεσκοτριμμένο πιπέρι</p>\n<p class=\"font_7\"><strong>Προαιρετικά για το σερβίρισμα:</strong></p>\n<p class=\"font_7\">Τριμμένη ροδίτικη μυζήθρα ή βαρελίσια φέτα</p>",
+  "IngredientsEN": "<p class=\"font_7\">500 g fresh green beans, trimmed</p>\n<p class=\"font_7\">2-3 ripe tomatoes, grated or finely chopped</p>\n<p class=\"font_7\">3-4 garlic cloves, finely chopped</p>\n<p class=\"font_7\">1 small onion, finely chopped</p>\n<p class=\"font_7\">100 ml olive oil</p>\n<p class=\"font_7\">4-5 tbsp wine vinegar</p>\n<p class=\"font_7\">Fresh mint, finely chopped</p>\n<p class=\"font_7\">Fresh parsley, finely chopped</p>\n<p class=\"font_7\">Salt</p>\n<p class=\"font_7\">Freshly ground black pepper</p>\n<p class=\"font_7\"><strong>Optional for serving:</strong></p>\n<p class=\"font_7\">Grated Rhodian mizithra cheese or barrel-aged feta</p>",
+  "LongDescriptionGR": "<p class=\"font_8\">Σήμερα φτιάχνουμε μια παραδοσιακή Ροδίτικη σαλάτα με φασολάκια, γεμάτη αρώματα και καλοκαιρινές γεύσεις. Τα τρυφερά φασολάκια συνδυάζονται με μια ελαφριά σάλτσα ντομάτας, ξύδι, σκόρδο και φρέσκα μυρωδικά, δημιουργώντας ένα δροσερό και χορταστικό πιάτο.</p>",
+  "LongDescriptionEN": "<p class=\"font_8\">Today we prepare a traditional Rhodian green bean salad full of Mediterranean aromas and summer flavors. Tender green beans are combined with a light tomato sauce, vinegar, garlic, and fresh herbs to create a refreshing and satisfying dish.</p>",
+  "ExecutionGR": "<ol class=\"font_8\">\n<li>Βάζεις μια κατσαρόλα με αλατισμένο νερό να βράσει.</li>\n<li>Προσθέτεις τα φασολάκια και τα βράζεις για περίπου 15 λεπτά μέχρι να μαλακώσουν αλλά να κρατάνε ελαφρώς.</li>\n<li>Στραγγίζεις τα φασολάκια.</li>\n<li>Προαιρετικά τα βυθίζεις σε παγωμένο νερό για 2 λεπτά ώστε να διατηρήσουν το έντονο πράσινο χρώμα τους.</li>\n<li>Τα στραγγίζεις ξανά καλά και τα μεταφέρεις σε σαλατιέρα.</li>\n<li>Σε μικρό κατσαρολάκι ζεσταίνεις λίγο από το ελαιόλαδο.</li>\n<li>Σοτάρεις ελαφρά το κρεμμύδι και το σκόρδο για 1-2 λεπτά χωρίς να πάρουν χρώμα.</li>\n<li>Προσθέτεις την τριμμένη ντομάτα, αλάτι και πιπέρι.</li>\n<li>Σιγοβράζεις για περίπου 10 λεπτά μέχρι να δέσει η σάλτσα και να εξατμιστούν τα πολλά υγρά.</li>\n<li>Αποσύρεις από τη φωτιά.</li>\n<li>Προσθέτεις το ξύδι και το υπόλοιπο ωμό ελαιόλαδο.</li>\n<li>Ρίχνεις τον ψιλοκομμένο δυόσμο, τον μαϊντανό ή και τα δύο.</li>\n<li>Περιχύνεις τα φασολάκια με τη ζεστή σάλτσα.</li>\n<li>Ανακατεύεις καλά ώστε να καλυφθούν ομοιόμορφα.</li>\n<li>Αφήνεις τη σαλάτα να σταθεί για τουλάχιστον 30 λεπτά πριν το σερβίρισμα.</li>\n<li>Προαιρετικά πασπαλίζεις με τριμμένη μυζήθρα ή βαρελίσια φέτα και λίγο επιπλέον δυόσμο.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_8\">\n<li>Bring a pot of salted water to a boil.</li>\n<li>Add the green beans and cook for about 15 minutes until tender but still slightly firm.</li>\n<li>Drain the beans.</li>\n<li>Optionally transfer them to ice water for 2 minutes to preserve their bright green color.</li>\n<li>Drain well and place them in a serving bowl.</li>\n<li>Heat a small amount of the olive oil in a saucepan.</li>\n<li>Lightly sauté the onion and garlic for 1-2 minutes without browning.</li>\n<li>Add the grated tomatoes, salt, and pepper.</li>\n<li>Simmer for about 10 minutes until the sauce thickens and excess liquid evaporates.</li>\n<li>Remove from the heat.</li>\n<li>Add the vinegar and the remaining raw olive oil.</li>\n<li>Stir in the chopped mint, parsley, or both.</li>\n<li>Pour the warm tomato sauce over the green beans.</li>\n<li>Mix well so the beans are evenly coated.</li>\n<li>Allow the salad to rest for at least 30 minutes before serving.</li>\n<li>Optionally garnish with grated mizithra cheese or barrel-aged feta and extra mint.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=0u_3IF96mdU",
+  "TagsGR": "[\"Σαλάτα\",\"Φασολάκια\",\"Ρόδος\",\"Καλοκαιρινά\",\"Παραδοσιακή Κουζίνα\"]",
+  "TagsEN": "[\"Salad\",\"Green Beans\",\"Rhodes\",\"Summer Recipes\",\"Greek Cuisine\"]",
+  "Date": "09/06/2026",
+  "ShortID": "0u_3IF96mdU"
 }
   
   
