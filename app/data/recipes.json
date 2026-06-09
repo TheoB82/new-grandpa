@@ -7674,8 +7674,28 @@
   "LinkYT": "https://www.youtube.com/watch?v=0u_3IF96mdU",
   "TagsGR": "[\"Σαλάτα\",\"Φασολάκια\",\"Ρόδος\",\"Καλοκαιρινά\",\"Παραδοσιακή Κουζίνα\"]",
   "TagsEN": "[\"Salad\",\"Green Beans\",\"Rhodes\",\"Summer Recipes\",\"Greek Cuisine\"]",
-  "Date": "09/06/2026",
+  "Date": "15/07/2026",
   "ShortID": "0u_3IF96mdU"
+},
+{
+  "CategoryGR": "Μεζέδες",
+  "CategoryEN": "Starters",
+  "Image": "TBC",
+  "TitleGR": "Γαύρος Μαρινάτος Εξπρές",
+  "TitleEN": "Quick Marinated Anchovies",
+  "ShortDescriptionGR": "Παραδοσιακός γαύρος μαρινάτος με σκόρδο, θυμάρι και καυτερή πιπεριά, έτοιμος σε λίγες ώρες.",
+  "ShortDescriptionEN": "Traditional marinated anchovies with garlic, thyme, and hot peppers, ready in just a few hours.",
+  "IngredientsGR": "<p class=\"font_7\">1 κιλό γαύρο</p>\n<p class=\"font_7\">Χοντρό αλάτι</p>\n<p class=\"font_7\">Φρέσκο θυμάρι</p>\n<p class=\"font_7\">Σκόρδο σε φέτες</p>\n<p class=\"font_7\">Καυτερές πιπερίτσες ψιλοκομμένες</p>\n<p class=\"font_7\">Φρέσκο μαϊντανό</p>\n<p class=\"font_7\">Λευκό ξύδι</p>\n<p class=\"font_7\">Ελαιόλαδο</p>\n<p class=\"font_7\">Σπορέλαιο</p>",
+  "IngredientsEN": "<p class=\"font_7\">1 kg fresh anchovies</p>\n<p class=\"font_7\">Coarse salt</p>\n<p class=\"font_7\">Fresh thyme</p>\n<p class=\"font_7\">Garlic, sliced</p>\n<p class=\"font_7\">Hot chili peppers, finely chopped</p>\n<p class=\"font_7\">Fresh parsley</p>\n<p class=\"font_7\">White vinegar</p>\n<p class=\"font_7\">Olive oil</p>\n<p class=\"font_7\">Vegetable oil</p>",
+  "LongDescriptionGR": "<p class=\"font_8\">Σήμερα φτιάχνουμε γαύρο μαρινάτο εξπρές, έναν από τους πιο αγαπημένους ελληνικούς μεζέδες. Με απλή διαδικασία και λίγες ώρες αναμονής, ο γαύρος αποκτά υπέροχη γεύση και αρωματίζεται με σκόρδο, θυμάρι, πιπερίτσα και φρέσκο μαϊντανό.</p>",
+  "LongDescriptionEN": "<p class=\"font_8\">Today we prepare quick marinated anchovies, one of the most beloved Greek seafood appetizers. With a simple process and just a few hours of waiting, the anchovies become tender and flavorful, infused with garlic, thyme, chili, and fresh parsley.</p>",
+  "ExecutionGR": "<ol class=\"font_8\">\n<li>Αφαιρείς τα κεφάλια και τα εντόσθια από τον γαύρο.</li>\n<li>Ανοίγεις κάθε ψάρι κατά μήκος με τον αντίχειρα και αφαιρείς προσεκτικά τη ραχοκοκαλιά.</li>\n<li>Πλένεις πολύ καλά τα φιλέτα και τα στραγγίζεις.</li>\n<li>Σε ένα σουρωτήρι στρώνεις μια λεπτή στρώση χοντρού αλατιού.</li>\n<li>Τοποθετείς τα φιλέτα σε στρώσεις εναλλάσσοντας την πλευρά του δέρματος.</li>\n<li>Καλύπτεις κάθε στρώση με χοντρό αλάτι και προαιρετικά λίγο φρέσκο θυμάρι.</li>\n<li>Αφήνεις τον γαύρο για 1 ώρα εκτός ψυγείου.</li>\n<li>Ξεπλένεις πολύ καλά τα φιλέτα κάτω από τρεχούμενο νερό.</li>\n<li>Τοποθετείς τα φιλέτα σε μπολ και τα καλύπτεις πλήρως με λευκό ξύδι.</li>\n<li>Αφήνεις να μαριναριστούν για έως 1 ώρα.</li>\n<li>Χωρίς να τα ξεπλύνεις, μεταφέρεις τα φιλέτα σε αποστειρωμένο βάζο.</li>\n<li>Ανάμεσα στις στρώσεις προσθέτεις φέτες σκόρδου, καυτερή πιπερίτσα, φρέσκο θυμάρι και φύλλα μαϊντανού.</li>\n<li>Συνεχίζεις μέχρι να γεμίσει το βάζο.</li>\n<li>Γεμίζεις με μείγμα ελαιόλαδου και σπορέλαιου μέχρι να καλυφθούν πλήρως τα φιλέτα.</li>\n<li>Κλείνεις καλά το βάζο και το διατηρείς στο ψυγείο.</li>\n<li>Σερβίρεις με φρυγανισμένο ψωμί, σκόρδο, ελαιόλαδο και ρίγανη.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_8\">\n<li>Remove the heads and entrails from the anchovies.</li>\n<li>Open each fish lengthwise with your thumb and carefully remove the backbone.</li>\n<li>Wash the fillets thoroughly and drain well.</li>\n<li>Spread a layer of coarse salt in a colander.</li>\n<li>Arrange the fillets in layers, alternating the skin side up and down.</li>\n<li>Cover each layer with coarse salt and optionally a little fresh thyme.</li>\n<li>Leave the anchovies at room temperature for 1 hour.</li>\n<li>Rinse the fillets thoroughly under running water.</li>\n<li>Place the fillets in a bowl and completely cover them with white vinegar.</li>\n<li>Allow them to marinate for up to 1 hour.</li>\n<li>Without rinsing, transfer the fillets to a sterilized jar.</li>\n<li>Between the layers add sliced garlic, chopped chili pepper, fresh thyme, and parsley leaves.</li>\n<li>Continue until the jar is full.</li>\n<li>Fill the jar with a mixture of olive oil and vegetable oil until the fillets are completely submerged.</li>\n<li>Seal the jar tightly and store it in the refrigerator.</li>\n<li>Serve with toasted bread rubbed with garlic, olive oil, and oregano.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=BnnSO6ZcP5s",
+  "TagsGR": "[\"Γαύρος\",\"Μαρινάτος\",\"Θαλασσινά\",\"Μεζές\",\"Παραδοσιακές Συνταγές\"]",
+  "TagsEN": "[\"Anchovies\",\"Marinated\",\"Seafood\",\"Appetizer\",\"Greek Recipes\"]",
+  "Date": "09/06/2026",
+  "ShortID": "BnnSO6ZcP5s"
 }
   
   
