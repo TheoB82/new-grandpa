@@ -7717,6 +7717,26 @@
   "TagsEN": "[\"Yogurt\",\"Apricots\",\"Summer Desserts\",\"No-Bake Dessert\",\"Honey\"]",
   "Date": "12/06/2026",
   "ShortID": "Ge6mgnN4Gxs"
+},
+{
+  "CategoryGR": "Ψωμιά & Ζύμες",
+  "CategoryEN": "Breads & Dough",
+  "Image": "TBC",
+  "TitleGR": "Τυροπιτάκια Κουρού",
+  "TitleEN": "Kourou Cheese Pies",
+  "ShortDescriptionGR": "Αφράτα και βουτυράτα τυροπιτάκια κουρού με τραγανή ζύμη και πλούσια τυρένια γέμιση.",
+  "ShortDescriptionEN": "Soft and buttery kourou cheese pies with a flaky dough and rich cheese filling.",
+  "IngredientsGR": "<p class=\"font_7\"><strong>Για τη ζύμη:</strong></p>\n<p class=\"font_7\">500 γρ. αλεύρι που φουσκώνει μόνο του</p>\n<p class=\"font_7\">200 γρ. στραγγιστό γιαούρτι</p>\n<p class=\"font_7\">110 γρ. ελαιόλαδο</p>\n<p class=\"font_7\">110 γρ. βούτυρο λιωμένο</p>\n<p class=\"font_7\">1 ασπράδι αυγού</p>\n<p class=\"font_7\">Λίγη ζάχαρη</p>\n<p class=\"font_7\">Λίγο αλάτι</p>\n<p class=\"font_7\"><strong>Για τη γέμιση:</strong></p>\n<p class=\"font_7\">200 γρ. φέτα</p>\n<p class=\"font_7\">100 γρ. κίτρινο τυρί τριμμένο</p>\n<p class=\"font_7\">1 αυγό</p>\n<p class=\"font_7\">2 κ.σ. γιαούρτι</p>\n<p class=\"font_7\">Φρέσκος δυόσμος ψιλοκομμένος (προαιρετικά)</p>\n<p class=\"font_7\">Πιπέρι (προαιρετικά)</p>\n<p class=\"font_7\"><strong>Για την επάλειψη:</strong></p>\n<p class=\"font_7\">1 κρόκος αυγού</p>\n<p class=\"font_7\">Λίγο νερό</p>\n<p class=\"font_7\">Σουσάμι (προαιρετικά)</p>",
+  "IngredientsEN": "<p class=\"font_7\"><strong>For the dough:</strong></p>\n<p class=\"font_7\">500 g self-rising flour</p>\n<p class=\"font_7\">200 g Greek strained yogurt</p>\n<p class=\"font_7\">110 g olive oil</p>\n<p class=\"font_7\">110 g melted butter</p>\n<p class=\"font_7\">1 egg white</p>\n<p class=\"font_7\">A pinch of sugar</p>\n<p class=\"font_7\">A pinch of salt</p>\n<p class=\"font_7\"><strong>For the filling:</strong></p>\n<p class=\"font_7\">200 g feta cheese</p>\n<p class=\"font_7\">100 g grated yellow cheese</p>\n<p class=\"font_7\">1 egg</p>\n<p class=\"font_7\">2 tbsp yogurt</p>\n<p class=\"font_7\">Fresh chopped mint (optional)</p>\n<p class=\"font_7\">Black pepper (optional)</p>\n<p class=\"font_7\"><strong>For brushing:</strong></p>\n<p class=\"font_7\">1 egg yolk</p>\n<p class=\"font_7\">A little water</p>\n<p class=\"font_7\">Sesame seeds (optional)</p>",
+  "LongDescriptionGR": "<p class=\"font_8\">Σήμερα φτιάχνουμε αφράτα και βουτυράτα τυροπιτάκια κουρού με πλούσια τυρένια γέμιση. Η εύκολη και μαλακή ζύμη τους τα κάνει ιδανικά για σνακ, κολατσιό ή τραπέζι με φίλους και οικογένεια.</p>",
+  "LongDescriptionEN": "<p class=\"font_8\">Today we prepare soft and buttery kourou cheese pies filled with a rich cheese mixture. Their easy and tender dough makes them perfect for snacks, lunch boxes, or sharing with family and friends.</p>",
+  "ExecutionGR": "<ol class=\"font_8\">\n<li>Σε μεγάλο μπολ ανακατεύεις το αλεύρι με λίγη ζάχαρη και αλάτι.</li>\n<li>Προσθέτεις το γιαούρτι, το ελαιόλαδο, το λιωμένο βούτυρο και το ασπράδι αυγού.</li>\n<li>Ζυμώνεις για περίπου 5 λεπτά μέχρι να σχηματιστεί μια μαλακή και εύπλαστη ζύμη.</li>\n<li>Σε δεύτερο μπολ ανακατεύεις τη φέτα, το τριμμένο κίτρινο τυρί, το αυγό και το γιαούρτι.</li>\n<li>Προσθέτεις προαιρετικά πιπέρι και ψιλοκομμένο δυόσμο.</li>\n<li>Ανοίγεις τη ζύμη με πλάστη σε πάχος περίπου 2 χιλιοστών.</li>\n<li>Κόβεις δίσκους ζύμης με φλιτζάνι ή κουπάτ.</li>\n<li>Τοποθετείς ένα κουταλάκι γέμιση στο κέντρο κάθε δίσκου.</li>\n<li>Διπλώνεις τη ζύμη σε σχήμα μισοφέγγαρου.</li>\n<li>Πιέζεις τις άκρες με πιρούνι ώστε να κλείσουν καλά και να δημιουργηθεί σχέδιο.</li>\n<li>Τοποθετείς τα τυροπιτάκια σε ταψί με αντικολλητικό χαρτί.</li>\n<li>Ανακατεύεις τον κρόκο αυγού με λίγο νερό και αλείφεις την επιφάνεια.</li>\n<li>Προαιρετικά πασπαλίζεις με σουσάμι.</li>\n<li>Ψήνεις σε προθερμασμένο φούρνο στους 180°C στις αντιστάσεις για περίπου 26 λεπτά μέχρι να ροδίσουν.</li>\n<li>Αφήνεις να κρυώσουν ελαφρώς πριν το σερβίρισμα.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_8\">\n<li>In a large bowl, mix the flour with a pinch of sugar and salt.</li>\n<li>Add the yogurt, olive oil, melted butter, and egg white.</li>\n<li>Knead for about 5 minutes until a soft and pliable dough forms.</li>\n<li>In another bowl, combine the feta cheese, grated yellow cheese, egg, and yogurt.</li>\n<li>Optionally add black pepper and chopped mint.</li>\n<li>Roll out the dough to about 2 mm thickness.</li>\n<li>Cut dough circles using a cup or pastry cutter.</li>\n<li>Place a teaspoon of filling in the center of each circle.</li>\n<li>Fold the dough into a half-moon shape.</li>\n<li>Press the edges with a fork to seal and decorate them.</li>\n<li>Place the cheese pies on a baking tray lined with parchment paper.</li>\n<li>Mix the egg yolk with a little water and brush the tops.</li>\n<li>Optionally sprinkle with sesame seeds.</li>\n<li>Bake in a preheated oven at 180°C using conventional heat for about 26 minutes until golden brown.</li>\n<li>Allow them to cool slightly before serving.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=LJEKCCpmCfc",
+  "TagsGR": "[\"Τυροπιτάκια\",\"Κουρού\",\"Πίτες\",\"Σνακ\",\"Τυρί\"]",
+  "TagsEN": "[\"Cheese Pies\",\"Kourou\",\"Pastry\",\"Snack\",\"Cheese\"]",
+  "Date": "19/06/2026",
+  "ShortID": "LJEKCCpmCfc"
 }
   
   
