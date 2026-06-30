@@ -291,20 +291,20 @@ export default function RecipeExplorer() {
                 className="card rounded-xl overflow-hidden opacity-0 animate-slideIn group hover:-translate-y-0.5 hover:shadow-xl transition-all"
                 style={{ animationDelay: `${index * 60}ms`, animationFillMode: "forwards" }}
               >
-                {/* Edge-to-edge image with category badge overlay */}
-                <div className="relative w-full aspect-video overflow-hidden">
+                {/* Edge-to-edge image */}
+                <div className="w-full aspect-video overflow-hidden">
                   <img
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     src={getThumb(r.LinkYT)}
                     alt={title}
                   />
-                  <span className="absolute top-2 left-2 px-2 py-0.5 text-[10px] font-semibold rounded-full bg-[#a06b45]/90 text-white uppercase tracking-wide backdrop-blur-sm border border-white/10">
-                    {stripAccents(category)}
-                  </span>
                 </div>
 
                 {/* Left-aligned text */}
                 <div className="p-4">
+                  <span className="inline-block px-2 py-0.5 mb-2 text-[10px] font-semibold rounded-full bg-[#a06b45] text-white uppercase tracking-wide">
+                    {stripAccents(category)}
+                  </span>
                   <h3 className="font-bold text-base leading-snug mb-1 text-[--text-primary]">{title}</h3>
                   <p className="text-sm text-[--text-secondary] opacity-70 line-clamp-2">{desc}</p>
                 </div>

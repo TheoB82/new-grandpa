@@ -8,6 +8,8 @@ import recipes from "@/data/recipes.json";
 import { getYoutubeVideoID } from "@/utils/getYoutubeVideoID";
 import { parseDate } from "@/utils/parseDate";
 
+const stripAccents = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "");
+
 const RecipeExplorer = dynamic(() => import("./components/RecipeExplorer"), {
   ssr: false,
 });
@@ -37,7 +39,7 @@ export default function Home() {
             {/* Text */}
             <div className="flex-1 text-center lg:text-left">
               <span className="inline-block px-3 py-1 mb-4 rounded-full text-xs font-semibold uppercase tracking-widest bg-[#8c5e3c]/30 text-[#fdd9a1] border border-[#8c5e3c]/40">
-                {lang === "gr" ? "Τελευταία συνταγή" : "Latest Recipe"}
+                {lang === "gr" ? stripAccents("Τελευταία συνταγή") : "Latest Recipe"}
               </span>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
                 {lang === "gr" ? featured.TitleGR : featured.TitleEN}

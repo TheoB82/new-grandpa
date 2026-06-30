@@ -148,7 +148,7 @@ export default function Header() {
       {mobileOpen && (
         <div className="sm:hidden px-4 py-4 space-y-4 bg-black/20 border-t border-[--header-border]">
 
-          {/* CLOSE + SEARCH row */}
+          {/* SEARCH + submit row */}
           <div className="flex gap-2 items-center">
             <input
               type="text"
@@ -157,12 +157,22 @@ export default function Header() {
               onChange={(e) => setSearch(e.target.value)}
               className="flex-1 px-3 py-2.5 rounded-lg bg-black/30 border border-[--chip-border] text-[--header-text] placeholder-[--header-muted]"
             />
+            {/* Search icon — closes menu and scrolls to results */}
             <button
-              onClick={() => setMobileOpen(false)}
-              aria-label="Close menu"
-              className="shrink-0 w-10 h-10 flex items-center justify-center rounded-lg border border-[--chip-border] text-[--header-text] text-lg"
+              onClick={() => {
+                setMobileOpen(false);
+                router.push("/");
+                setTimeout(() => {
+                  const el = document.getElementById("recipes-start");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }, 150);
+              }}
+              aria-label="Search"
+              className="shrink-0 w-10 h-10 flex items-center justify-center rounded-lg bg-[--brand] text-white"
             >
-              ✕
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+              </svg>
             </button>
           </div>
 
