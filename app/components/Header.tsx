@@ -86,8 +86,19 @@ export default function Header() {
             placeholder={lang === "gr" ? "Αναζήτηση..." : "Search..."}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-black/25 border border-[--header-border] text-[--header-text] placeholder-[--header-muted]"
+            className={`w-full py-2 rounded-lg bg-black/25 border border-[--header-border] text-[--header-text] placeholder-[--header-muted] ${search ? "pl-3 pr-8" : "px-3"}`}
           />
+          {search && (
+            <button
+              onClick={() => setSearch("")}
+              aria-label="Clear search"
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-[--header-muted] hover:text-[--header-text] transition"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
         </div>
 
         {/* RIGHT */}
@@ -125,7 +136,7 @@ export default function Header() {
       </div>
 
       {/* DESKTOP CATEGORIES */}
-      <nav className="hidden sm:flex justify-center gap-6 px-6 py-2 border-t border-[var(--header-border)] bg-[var(--header-bg)]">
+      <nav className="hidden sm:flex justify-center gap-6 px-6 py-2 border-t border-(--header-border) bg-(--header-bg)">
         <button
           onClick={() => applyCategory(null)}
           className={selectedCategory === null ? activeClass : inactiveClass}
@@ -150,13 +161,26 @@ export default function Header() {
 
           {/* SEARCH + submit row */}
           <div className="flex gap-2 items-center">
-            <input
-              type="text"
-              placeholder={lang === "gr" ? "Αναζήτηση..." : "Search..."}
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="flex-1 px-3 py-2.5 rounded-lg bg-black/30 border border-[--chip-border] text-[--header-text] placeholder-[--header-muted]"
-            />
+            <div className="relative flex-1">
+              <input
+                type="text"
+                placeholder={lang === "gr" ? "Αναζήτηση..." : "Search..."}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className={`w-full py-2.5 rounded-lg bg-black/30 border border-[--chip-border] text-[--header-text] placeholder-[--header-muted] ${search ? "pl-3 pr-8" : "px-3"}`}
+              />
+              {search && (
+                <button
+                  onClick={() => setSearch("")}
+                  aria-label="Clear search"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-[--header-muted] hover:text-[--header-text] transition"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              )}
+            </div>
             {/* Search icon — closes menu and scrolls to results */}
             <button
               onClick={() => {

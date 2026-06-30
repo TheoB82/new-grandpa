@@ -15,40 +15,17 @@ import { useLanguage } from "@/context/LanguageContext";
 
 function normalize(str: string): string {
   if (!str) return "";
-  return str
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .toLowerCase()
-    .replace(/ς/g, "σ");
+  return str.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/ς/g, "σ");
 }
 
-// Transliterate Greek characters to Latin so typing "pastitsio" finds
-// "Παστίτσιο" regardless of the active language.
 const GREEK_LATIN: Record<string, string> = {
-  α:"a", ά:"a", Α:"a", Ά:"a",
-  β:"v", Β:"v",
-  γ:"g", Γ:"g",
-  δ:"d", Δ:"d",
-  ε:"e", έ:"e", Ε:"e", Έ:"e",
-  ζ:"z", Ζ:"z",
-  η:"i", ή:"i", Η:"i", Ή:"i",
-  θ:"th", Θ:"th",
-  ι:"i", ί:"i", ϊ:"i", ΐ:"i", Ι:"i", Ί:"i",
-  κ:"k", Κ:"k",
-  λ:"l", Λ:"l",
-  μ:"m", Μ:"m",
-  ν:"n", Ν:"n",
-  ξ:"x", Ξ:"x",
-  ο:"o", ό:"o", Ο:"o", Ό:"o",
-  π:"p", Π:"p",
-  ρ:"r", Ρ:"r",
-  σ:"s", ς:"s", Σ:"s",
-  τ:"t", Τ:"t",
-  υ:"y", ύ:"y", ϋ:"y", ΰ:"y", Υ:"y", Ύ:"y",
-  φ:"f", Φ:"f",
-  χ:"x", Χ:"x",
-  ψ:"ps", Ψ:"ps",
-  ω:"o", ώ:"o", Ω:"o", Ώ:"o",
+  α:"a", ά:"a", Α:"a", Ά:"a", β:"v", Β:"v", γ:"g", Γ:"g", δ:"d", Δ:"d",
+  ε:"e", έ:"e", Ε:"e", Έ:"e", ζ:"z", Ζ:"z", η:"i", ή:"i", Η:"i", Ή:"i",
+  θ:"th", Θ:"th", ι:"i", ί:"i", ϊ:"i", ΐ:"i", Ι:"i", Ί:"i", κ:"k", Κ:"k",
+  λ:"l", Λ:"l", μ:"m", Μ:"m", ν:"n", Ν:"n", ξ:"x", Ξ:"x", ο:"o", ό:"o",
+  Ο:"o", Ό:"o", π:"p", Π:"p", ρ:"r", Ρ:"r", σ:"s", ς:"s", Σ:"s", τ:"t",
+  Τ:"t", υ:"y", ύ:"y", ϋ:"y", ΰ:"y", Υ:"y", Ύ:"y", φ:"f", Φ:"f", χ:"x",
+  Χ:"x", ψ:"ps", Ψ:"ps", ω:"o", ώ:"o", Ω:"o", Ώ:"o",
 };
 
 function latinize(str: string): string {
@@ -76,29 +53,47 @@ function fuzzyIncludes(text: string, word: string): boolean {
   return false;
 }
 
-// Returns true if `word` matches any searchable field of the recipe,
-// including transliterated Greek (cross-language).
-function wordMatchesRecipe(r: Recipe, word: string): boolean {
-  const ingGR = stripHtml(r.IngredientsGR || "");
-  const ingEN = stripHtml(r.IngredientsEN || "");
-  const descGR = r.ShortDescriptionGR || "";
-  const descEN = r.ShortDescriptionEN || "";
+// Score a single word against one recipe.
+// Higher = more relevant. Exact title wins, ingredient match is last resort.
+function scoreWord(r: Recipe, word: string): number {
+  const w   = normalize(word);
+  const wLat = w; // user typed Latin already
+  const titleEN  = normalize(r.TitleEN);
+  const titleGR  = normalize(r.TitleGR);
+  const titleLat = latinize(r.TitleGR);
 
-  return (
-    fuzzyIncludes(r.TitleGR,   word) ||
-    fuzzyIncludes(r.TitleEN,   word) ||
-    fuzzyIncludes(r.CategoryGR, word) ||
-    fuzzyIncludes(r.CategoryEN, word) ||
-    fuzzyIncludes(String(r.TagsGR), word) ||
-    fuzzyIncludes(String(r.TagsEN), word) ||
-    fuzzyIncludes(descGR, word) ||
-    fuzzyIncludes(descEN, word) ||
-    fuzzyIncludes(ingGR, word) ||
-    fuzzyIncludes(ingEN, word) ||
-    // cross-language: Latin search against transliterated Greek title
-    fuzzyIncludes(latinize(r.TitleGR), normalize(word)) ||
-    fuzzyIncludes(latinize(r.CategoryGR), normalize(word))
-  );
+  // Exact title match
+  if (titleEN === w || titleGR === w || titleLat === wLat) return 100;
+  // Title starts with word
+  if (titleEN.startsWith(w) || titleGR.startsWith(w) || titleLat.startsWith(wLat)) return 80;
+  // Transliterated title contains word
+  if (titleLat.includes(wLat)) return 65;
+  // Title contains word
+  if (titleEN.includes(w) || titleGR.includes(w)) return 60;
+  // Category exact
+  if (normalize(r.CategoryEN) === w || normalize(r.CategoryGR) === w) return 50;
+  // Category contains
+  if (normalize(r.CategoryEN).includes(w) || normalize(r.CategoryGR).includes(w)) return 40;
+  // Tags
+  if (fuzzyIncludes(String(r.TagsEN), word) || fuzzyIncludes(String(r.TagsGR), word)) return 30;
+  // Short description
+  if (fuzzyIncludes(r.ShortDescriptionEN, word) || fuzzyIncludes(r.ShortDescriptionGR, word)) return 20;
+  // Ingredients / steps (broadest net, lowest score)
+  if (
+    fuzzyIncludes(stripHtml(r.IngredientsEN || ""), word) ||
+    fuzzyIncludes(stripHtml(r.IngredientsGR || ""), word)
+  ) return 10;
+  // Fuzzy title fallback
+  if (fuzzyIncludes(r.TitleEN, word) || fuzzyIncludes(r.TitleGR, word)) return 5;
+  return 0;
+}
+
+function scoreRecipe(r: Recipe, words: string[]): number {
+  return words.reduce((sum, w) => sum + scoreWord(r, w), 0);
+}
+
+function wordMatchesRecipe(r: Recipe, word: string): boolean {
+  return scoreWord(r, word) > 0;
 }
 
 /* ------------------------------------------------------------------ */
@@ -109,10 +104,10 @@ function getThumb(url: string) {
   if (!url) return "/placeholder.jpg";
   try {
     const u = new URL(url);
-    if (u.hostname === "youtu.be")            return `https://img.youtube.com/vi/${u.pathname.slice(1)}/hqdefault.jpg`;
-    if (u.searchParams.get("v"))              return `https://img.youtube.com/vi/${u.searchParams.get("v")}/hqdefault.jpg`;
-    if (u.pathname.startsWith("/embed/"))     return `https://img.youtube.com/vi/${u.pathname.replace("/embed/", "")}/hqdefault.jpg`;
-    if (u.pathname.startsWith("/shorts/"))    return `https://img.youtube.com/vi/${u.pathname.replace("/shorts/", "")}/hqdefault.jpg`;
+    if (u.hostname === "youtu.be")           return `https://img.youtube.com/vi/${u.pathname.slice(1)}/hqdefault.jpg`;
+    if (u.searchParams.get("v"))             return `https://img.youtube.com/vi/${u.searchParams.get("v")}/hqdefault.jpg`;
+    if (u.pathname.startsWith("/embed/"))    return `https://img.youtube.com/vi/${u.pathname.replace("/embed/", "")}/hqdefault.jpg`;
+    if (u.pathname.startsWith("/shorts/"))   return `https://img.youtube.com/vi/${u.pathname.replace("/shorts/", "")}/hqdefault.jpg`;
     return "/placeholder.jpg";
   } catch { return "/placeholder.jpg"; }
 }
@@ -126,7 +121,6 @@ function isPublished(r: Recipe): boolean {
   return d <= today;
 }
 
-// Strip diacritics so CSS uppercase doesn't show accent marks on Greek text.
 const stripAccents = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "");
 
 /* ================================================================== */
@@ -136,8 +130,8 @@ const stripAccents = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "");
 export default function RecipeExplorer() {
   const { lang, selectedCategory, setSelectedCategory, search, setSearch } = useLanguage();
 
-  const [visible, setVisible]   = useState(12);
-  const [loading, setLoading]   = useState(false);
+  const [visible, setVisible] = useState(12);
+  const [loading, setLoading] = useState(false);
 
   const categories = categoryMapping[lang];
 
@@ -150,7 +144,6 @@ export default function RecipeExplorer() {
     []
   );
 
-  // Count recipes per category (mirrors the filter logic).
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = { all: sortedRecipes.length };
     for (const cat of categories) {
@@ -163,17 +156,18 @@ export default function RecipeExplorer() {
         } catch {}
         return (
           rCat === cat.name ||
-          (cat.tagMatch &&
-            tagsEN.some(t => t.toLowerCase().trim() === cat.tagMatch!.toLowerCase().trim()))
+          (cat.tagMatch && tagsEN.some(t => t.toLowerCase().trim() === cat.tagMatch!.toLowerCase().trim()))
         );
       }).length;
     }
     return counts;
   }, [sortedRecipes, lang, categories]);
 
-  // Multi-word AND search: every word must match at least one field.
+  // Filter + sort by relevance when searching, date otherwise.
   const filtered = useMemo(() => {
-    return sortedRecipes.filter((r) => {
+    const words = search.trim().split(/\s+/).filter(Boolean);
+
+    const matches = sortedRecipes.filter((r) => {
       const category = lang === "gr" ? r.CategoryGR : r.CategoryEN;
       const activeCategory = selectedCategory
         ? categories.find((c) => c.name === selectedCategory)
@@ -193,18 +187,23 @@ export default function RecipeExplorer() {
 
       if (!search.trim()) return matchesCategory;
 
-      // Split into words; every word must match something on the recipe.
-      const words = search.trim().split(/\s+/).filter(Boolean);
       const matchesSearch = words.every(word => wordMatchesRecipe(r, word));
-
       return matchesSearch && matchesCategory;
     });
+
+    if (!search.trim()) return matches; // already sorted by date
+
+    // Sort by relevance score (sum across all words), date as tiebreaker
+    return matches
+      .map(r => ({ r, score: scoreRecipe(r, words) }))
+      .sort((a, b) => b.score - a.score || parseDate(b.r.Date).getTime() - parseDate(a.r.Date).getTime())
+      .map(s => s.r);
   }, [sortedRecipes, search, selectedCategory, lang, categories]);
 
-  // Reset to first page whenever the filter changes.
   useEffect(() => { setVisible(12); }, [selectedCategory, search]);
 
   const visibleRecipes = filtered.slice(0, visible);
+  const isSearching = search.trim().length > 0;
 
   /* ================================================================ */
   /* UI                                                               */
@@ -213,7 +212,7 @@ export default function RecipeExplorer() {
   return (
     <div id="recipes-start">
 
-      {/* CATEGORY FILTERS — horizontal scroll on mobile */}
+      {/* CATEGORY FILTERS */}
       <div className="relative mb-4">
         <div className="absolute right-0 top-0 bottom-2 w-8 bg-linear-to-l from-[--surface] to-transparent pointer-events-none z-10 sm:hidden" />
         <div className="flex overflow-x-auto gap-2 pb-2 sm:flex-wrap sm:justify-center sm:overflow-x-visible no-scrollbar px-1">
@@ -246,13 +245,26 @@ export default function RecipeExplorer() {
         </div>
       </div>
 
-      {/* RESULT COUNT */}
+      {/* RESULT COUNT + clear search */}
       {filtered.length > 0 && (
-        <p className="text-center text-sm text-[--text-secondary] opacity-60 mb-8">
-          {lang === "gr"
-            ? `Εμφάνιση ${Math.min(visible, filtered.length)} από ${filtered.length} συνταγές`
-            : `Showing ${Math.min(visible, filtered.length)} of ${filtered.length} recipes`}
-        </p>
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <p className="text-sm text-[--text-secondary] opacity-60">
+            {lang === "gr"
+              ? `Εμφάνιση ${Math.min(visible, filtered.length)} από ${filtered.length} συνταγές`
+              : `Showing ${Math.min(visible, filtered.length)} of ${filtered.length} recipes`}
+          </p>
+          {isSearching && (
+            <button
+              onClick={() => setSearch("")}
+              className="flex items-center gap-1 px-3 py-1 rounded-full bg-[--chip-bg] border border-[--chip-border] text-[--text-secondary] text-xs font-medium hover:bg-[--chip-bg-hover] transition"
+            >
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              {lang === "gr" ? `"${search}"` : `"${search}"`}
+            </button>
+          )}
+        </div>
       )}
 
       {/* EMPTY STATE */}
@@ -263,9 +275,7 @@ export default function RecipeExplorer() {
             {lang === "gr" ? "Δεν βρέθηκαν συνταγές" : "No recipes found"}
           </h3>
           <p className="text-sm text-[--text-secondary] opacity-70 mb-6">
-            {lang === "gr"
-              ? "Δοκίμασε διαφορετική αναζήτηση ή κατηγορία."
-              : "Try a different search term or category."}
+            {lang === "gr" ? "Δοκίμασε διαφορετική αναζήτηση ή κατηγορία." : "Try a different search term or category."}
           </p>
           <button
             onClick={() => { setSelectedCategory(null); setSearch(""); }}
@@ -276,7 +286,7 @@ export default function RecipeExplorer() {
         </div>
       )}
 
-      {/* RECIPE GRID — editorial style */}
+      {/* RECIPE GRID */}
       {filtered.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {visibleRecipes.map((r, index) => {
@@ -291,7 +301,6 @@ export default function RecipeExplorer() {
                 className="card rounded-xl overflow-hidden opacity-0 animate-slideIn group hover:-translate-y-0.5 hover:shadow-xl transition-all"
                 style={{ animationDelay: `${index * 60}ms`, animationFillMode: "forwards" }}
               >
-                {/* Edge-to-edge image */}
                 <div className="w-full aspect-video overflow-hidden">
                   <img
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -299,8 +308,6 @@ export default function RecipeExplorer() {
                     alt={title}
                   />
                 </div>
-
-                {/* Left-aligned text */}
                 <div className="p-4">
                   <span className="inline-block px-2 py-0.5 mb-2 text-[10px] font-semibold rounded-full bg-[#a06b45] text-white uppercase tracking-wide">
                     {stripAccents(category)}
