@@ -22,7 +22,16 @@ export default function Home() {
     []
   );
 
-  const featured = useMemo(() => sortedByDate.find((r) => r.LinkYT), [sortedByDate]);
+  const featured = useMemo(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return sortedByDate.find((r) => {
+      if (!r.LinkYT) return false;
+      const d = parseDate(r.Date);
+      d.setHours(0, 0, 0, 0);
+      return d <= today;
+    });
+  }, [sortedByDate]);
   const videoID  = useMemo(() => (featured ? getYoutubeVideoID(featured.LinkYT) : null), [featured]);
   const thumb    = videoID ? `https://img.youtube.com/vi/${videoID}/hqdefault.jpg` : null;
 
