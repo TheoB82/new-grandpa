@@ -159,3 +159,31 @@ html, body {
   animation: none !important;
   content: none !important;
 }
+
+/* =========================
+   PRINT — recipe page only
+   Shows title, description, ingredients, steps. Hides nav/photos/share/etc.
+========================= */
+@media print {
+  header, footer {
+    display: none !important;
+  }
+
+  .print-area {
+    background: white !important;
+    color: black !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+  }
+
+  .print-area * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    border-color: #ccc !important;
+  }
+
+  .print-area a[href] {
+    text-decoration: none !important;
+  }
+}

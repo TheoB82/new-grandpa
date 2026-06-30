@@ -114,9 +114,9 @@ function ExecutionSteps({ html }: { html: string }) {
                 <span className="w-9 h-9 rounded-full bg-[#8c5e3c] text-[#fdd9a1] flex items-center justify-center font-bold text-sm shadow-md ring-2 ring-[#8c5e3c]/30 z-10">
                   {i + 1}
                 </span>
-                {!isLast && <div className="w-px flex-1 min-h-8 bg-[#8c5e3c]/30 mt-1 mb-1" />}
+                {!isLast && <div className="w-px flex-1 min-h-8 bg-[#8c5e3c]/30 mt-1 mb-1 print:hidden" />}
               </div>
-              <div className={`${isLast ? "pb-0" : "pb-8"} pt-1.5 flex-1 prose prose-invert max-w-none prose-p:mb-0 prose-p:leading-relaxed prose-strong:text-[#fdd9a1]`}>
+              <div className={`${isLast ? "pb-0" : "pb-8 print:pb-2"} pt-1.5 flex-1 prose prose-invert max-w-none prose-p:mb-0 prose-p:leading-relaxed prose-strong:text-[#fdd9a1]`}>
                 {parse(match[1])}
               </div>
             </li>
@@ -195,15 +195,15 @@ export default function RecipeClient({ recipe }: { recipe: Recipe }) {
   const date    = formatDate(recipe.Date, lang);
 
   return (
-    <div className="min-h-screen bg-[#3c2718] text-white">
+    <div className="min-h-screen bg-[#3c2718] text-white print-area">
 
       {/* ============================================================ */}
       {/* HERO                                                         */}
       {/* ============================================================ */}
-      <div className="pt-28 lg:pt-32 pb-14 px-6 border-b border-[#8c5e3c]/20">
+      <div className="pt-28 lg:pt-32 pb-14 px-6 border-b border-[#8c5e3c]/20 print:border-0 print:pt-0 print:pb-4">
 
         {/* Back link */}
-        <div className="max-w-4xl mx-auto mb-6">
+        <div className="max-w-4xl mx-auto mb-6 print:hidden">
           <Link
             href="/"
             className="inline-flex items-center gap-1.5 text-white/45 hover:text-white/80 text-sm transition"
@@ -218,7 +218,7 @@ export default function RecipeClient({ recipe }: { recipe: Recipe }) {
         {/* Centered title block */}
         <div className="max-w-3xl mx-auto text-center">
           {category && (
-            <span className="inline-block px-3 py-1 mb-5 rounded-full text-xs font-semibold uppercase tracking-widest bg-[#8c5e3c]/25 text-[#fdd9a1] border border-[#8c5e3c]/40">
+            <span className="inline-block px-3 py-1 mb-5 rounded-full text-xs font-semibold uppercase tracking-widest bg-[#8c5e3c]/25 text-[#fdd9a1] border border-[#8c5e3c]/40 print:hidden">
               {stripAccents(category)}
             </span>
           )}
@@ -227,30 +227,32 @@ export default function RecipeClient({ recipe }: { recipe: Recipe }) {
           <p className="text-base md:text-lg text-white/65 max-w-xl mx-auto mb-3">{shortDesc}</p>
 
           {date && (
-            <p className="text-xs text-white/35 mb-8">
+            <p className="text-xs text-white/35 mb-8 print:hidden">
               {lang === "gr" ? "Δημοσιεύθηκε" : "Published"} {date}
             </p>
           )}
 
           {/* Ornamental divider */}
-          <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="flex items-center justify-center gap-3 mb-6 print:hidden">
             <div className="h-px w-20 bg-linear-to-r from-transparent to-[#8c5e3c]/50" />
             <span className="text-[#8c5e3c] text-sm">✦</span>
             <div className="h-px w-20 bg-linear-to-l from-transparent to-[#8c5e3c]/50" />
           </div>
 
-          <ShareButtons title={title} lang={lang} />
+          <div className="print:hidden">
+            <ShareButtons title={title} lang={lang} />
+          </div>
         </div>
       </div>
 
       {/* ============================================================ */}
       {/* BODY                                                         */}
       {/* ============================================================ */}
-      <div className="max-w-4xl mx-auto px-6 pb-24">
+      <div className="max-w-4xl mx-auto px-6 pb-24 print:pb-0">
 
         {/* VIDEO */}
         {videoID && (
-          <div className="mt-12 w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#8c5e3c]/30">
+          <div className="mt-12 w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#8c5e3c]/30 print:hidden">
             <iframe
               className="w-full h-full"
               src={`https://www.youtube.com/embed/${videoID}`}
@@ -291,7 +293,7 @@ export default function RecipeClient({ recipe }: { recipe: Recipe }) {
 
         {/* SIMILAR RECIPES */}
         {similar.length > 0 && (
-          <div className="mt-20">
+          <div className="mt-20 print:hidden">
             <div className="flex items-center gap-4 mb-8">
               <div className="h-px flex-1 bg-[#8c5e3c]/20" />
               <h2 className="text-sm font-semibold uppercase tracking-widest text-[#fdd9a1]/70">
