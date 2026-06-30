@@ -4,8 +4,26 @@ export const runtime = "nodejs";
 
 const OWNER = "TheoB82";
 const REPO  = "new-grandpa";
-const PATH  = "app/data/recipes.json";
-const API   = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${PATH}`;
+const FILE  = "app/data/recipes.json";
+const BASE  = `https://api.github.com/repos/${OWNER}/${REPO}`;
+
+async function gh(path: string, opts: RequestInit = {}) {
+  const res = await fetch(`${BASE}${path}`, {
+    ...opts,
+    cache: "no-store",
+    headers: {
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      Accept: "application/vnd.github.v3+json",
+      "Content-Type": "application/json",
+      ...(opts.headers ?? {}),
+    },
+  });
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`GitHub ${opts.method ?? "GET"} ${path} → ${res.status}: ${body}`);
+  }
+  return res.json();
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -18,59 +36,53 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "GITHUB_TOKEN is not configured" }, { status: 500 });
     }
 
-    const headers = {
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-      Accept: "application/vnd.github.v3+json",
-      "Content-Type": "application/json",
-    };
+    // 1. Get current HEAD commit SHA + its tree SHA
+    const refData    = await gh(`/git/ref/heads/main`);
+    const commitSha  = refData.object.sha as string;
+    const commitData = await gh(`/git/commits/${commitSha}`);
+    const treeSha    = commitData.tree.sha as string;
 
-    // no-store prevents Next.js from caching the GitHub response
-    const fileRes = await fetch(API, { headers, cache: "no-store" });
-    if (!fileRes.ok) {
-      const errBody = await fileRes.text();
-      return NextResponse.json(
-        { error: `GitHub read failed (${fileRes.status}): ${errBody}` },
-        { status: 502 }
-      );
-    }
+    // 2. Get blob SHA for our file from the Contents API (no size limit on metadata)
+    const contentsData = await gh(`/contents/${FILE}`);
+    const blobSha      = contentsData.sha as string;
 
-    const fileData = await fileRes.json();
-    const sha = fileData.sha as string;
-
-    if (!fileData.content) {
-      return NextResponse.json(
-        { error: "GitHub returned no file content — file may exceed 1 MB or token lacks read access." },
-        { status: 502 }
-      );
-    }
-
-    // GitHub wraps base64 at 60 chars with newlines — strip before decoding
-    const rawB64   = (fileData.content as string).replace(/\n/g, "");
+    // 3. Read the blob content (Git Blobs API works for any file size)
+    const blobData = await gh(`/git/blobs/${blobSha}`);
+    const rawB64   = (blobData.content as string).replace(/\n/g, "");
     const existing = JSON.parse(Buffer.from(rawB64, "base64").toString("utf-8"));
 
-    // Prepend new recipe so it appears first
-    const updated = [recipe, ...existing];
-    const encoded = Buffer.from(JSON.stringify(updated, null, 2)).toString("base64");
+    // 4. Build updated JSON and create a new blob
+    const updated    = [recipe, ...existing];
+    const newContent = Buffer.from(JSON.stringify(updated, null, 2)).toString("base64");
+    const newBlob    = await gh(`/git/blobs`, {
+      method: "POST",
+      body: JSON.stringify({ content: newContent, encoding: "base64" }),
+    });
 
-    const commitRes = await fetch(API, {
-      method: "PUT",
-      headers,
-      cache: "no-store",
+    // 5. Create a new tree that replaces only our file
+    const newTree = await gh(`/git/trees`, {
+      method: "POST",
       body: JSON.stringify({
-        message: `Add recipe: ${recipe.TitleEN}`,
-        content: encoded,
-        sha,
-        branch: "main",
+        base_tree: treeSha,
+        tree: [{ path: FILE, mode: "100644", type: "blob", sha: newBlob.sha }],
       }),
     });
 
-    if (!commitRes.ok) {
-      const errBody = await commitRes.text();
-      return NextResponse.json(
-        { error: `GitHub commit failed (${commitRes.status}): ${errBody}` },
-        { status: 502 }
-      );
-    }
+    // 6. Create the commit
+    const newCommit = await gh(`/git/commits`, {
+      method: "POST",
+      body: JSON.stringify({
+        message: `Add recipe: ${recipe.TitleEN}`,
+        tree: newTree.sha,
+        parents: [commitSha],
+      }),
+    });
+
+    // 7. Advance the branch ref
+    await gh(`/git/refs/heads/main`, {
+      method: "PATCH",
+      body: JSON.stringify({ sha: newCommit.sha }),
+    });
 
     return NextResponse.json({ success: true });
   } catch (err: any) {
