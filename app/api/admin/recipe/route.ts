@@ -24,8 +24,8 @@ export async function POST(req: NextRequest) {
       "Content-Type": "application/json",
     };
 
-    // Read current file + its SHA
-    const fileRes = await fetch(API, { headers });
+    // no-store prevents Next.js from caching the GitHub response
+    const fileRes = await fetch(API, { headers, cache: "no-store" });
     if (!fileRes.ok) {
       const errBody = await fileRes.text();
       return NextResponse.json(
@@ -33,21 +33,29 @@ export async function POST(req: NextRequest) {
         { status: 502 }
       );
     }
-    const fileData = await fileRes.json();
-    const sha      = fileData.sha as string;
 
-    // GitHub returns base64 with embedded newlines — strip them before decoding
+    const fileData = await fileRes.json();
+    const sha = fileData.sha as string;
+
+    if (!fileData.content) {
+      return NextResponse.json(
+        { error: "GitHub returned no file content — file may exceed 1 MB or token lacks read access." },
+        { status: 502 }
+      );
+    }
+
+    // GitHub wraps base64 at 60 chars with newlines — strip before decoding
     const rawB64   = (fileData.content as string).replace(/\n/g, "");
     const existing = JSON.parse(Buffer.from(rawB64, "base64").toString("utf-8"));
 
-    // Prepend new recipe
+    // Prepend new recipe so it appears first
     const updated = [recipe, ...existing];
     const encoded = Buffer.from(JSON.stringify(updated, null, 2)).toString("base64");
 
-    // Commit back to main
     const commitRes = await fetch(API, {
       method: "PUT",
       headers,
+      cache: "no-store",
       body: JSON.stringify({
         message: `Add recipe: ${recipe.TitleEN}`,
         content: encoded,
