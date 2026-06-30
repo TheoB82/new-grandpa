@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { categoryMapping } from "@/utils/categoryMapping";
-import SearchSuggestions from "@/components/SearchSuggestions";
 import logo from "@/../public/logo.png";
 
 /* ----------------------------------------------------------
@@ -89,7 +88,6 @@ export default function Header() {
             onChange={(e) => setSearch(e.target.value)}
             className="w-full px-3 py-2 rounded-lg bg-black/25 border border-[--header-border] text-[--header-text] placeholder-[--header-muted]"
           />
-          <SearchSuggestions />
         </div>
 
         {/* RIGHT */}
@@ -150,14 +148,23 @@ export default function Header() {
       {mobileOpen && (
         <div className="sm:hidden px-4 py-4 space-y-4 bg-black/20 border-t border-[--header-border]">
 
-          {/* SEARCH */}
-          <input
-            type="text"
-            placeholder={lang === "gr" ? "Αναζήτηση..." : "Search..."}
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-black/30 border border-[--chip-border] text-[--header-text] placeholder-[--header-muted]"
-          />
+          {/* CLOSE + SEARCH row */}
+          <div className="flex gap-2 items-center">
+            <input
+              type="text"
+              placeholder={lang === "gr" ? "Αναζήτηση..." : "Search..."}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="flex-1 px-3 py-2.5 rounded-lg bg-black/30 border border-[--chip-border] text-[--header-text] placeholder-[--header-muted]"
+            />
+            <button
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
+              className="shrink-0 w-10 h-10 flex items-center justify-center rounded-lg border border-[--chip-border] text-[--header-text] text-lg"
+            >
+              ✕
+            </button>
+          </div>
 
           {/* LANGUAGE */}
           <div className="flex gap-2">
@@ -168,8 +175,9 @@ export default function Header() {
                   const translated = translateCategory(lang, l as any, selectedCategory);
                   setLang(l as any);
                   setSelectedCategory(translated);
+                  setMobileOpen(false);
                 }}
-                className={`flex-1 py-2 rounded border ${
+                className={`flex-1 py-2.5 rounded border ${
                   lang === l
                     ? 'bg-[--brand] text-white font-bold border border-[--brand]'
                     : 'bg-black/20 text-[--brand] border border-[--brand]'
@@ -181,10 +189,10 @@ export default function Header() {
           </div>
 
           {/* CATEGORIES */}
-          <div className="flex flex-wrap gap-2 justify-center">
+          <div className="flex flex-wrap gap-2 justify-center pb-2">
             <button
-              onClick={() => applyCategory(null)}
-              className={`px-4 py-2 rounded-full border ${
+              onClick={() => { applyCategory(null); setMobileOpen(false); }}
+              className={`px-4 py-2.5 rounded-full border ${
                 selectedCategory === null
                   ? 'bg-[--brand] text-white font-bold border border-[--brand]'
                   : 'bg-black/20 text-[--brand] border border-[--brand]'
@@ -196,8 +204,8 @@ export default function Header() {
             {categories.map((c) => (
               <button
                 key={c.name}
-                onClick={() => applyCategory(c.name)}
-                className={`px-4 py-2 rounded-full border ${
+                onClick={() => { applyCategory(c.name); setMobileOpen(false); }}
+                className={`px-4 py-2.5 rounded-full border ${
                   selectedCategory === c.name
                     ? 'bg-[--brand] text-white font-bold border border-[--brand]'
                     : 'bg-black/20 text-[--brand] border border-[--brand]'

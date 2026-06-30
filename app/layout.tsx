@@ -4,6 +4,7 @@ import Script from "next/script";
 import { LanguageProvider } from "@/context/LanguageContext";
 import Header from "@/components/Header";
 import Footer from "@/components/SiteFooter";
+import BackToTop from "@/components/BackToTop";
 import CookieBanner from "@/components/CookieBanner";
 import AdsenseLoader from "@/components/AdsenseLoader";
 
@@ -45,8 +46,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
         <LanguageProvider>
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main className="grow">{children}</main>
           <Footer />
+          <BackToTop />
         </LanguageProvider>
 
         {/* ✅ Accept / Reject banner */}
