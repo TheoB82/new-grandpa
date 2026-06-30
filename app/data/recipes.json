@@ -7757,6 +7757,26 @@
   "TagsEN": "[\"Roast Beef\",\"Hilopites\",\"Crispy Onions\",\"Viennese Cuisine\",\"Main Course\"]",
   "Date": "26/06/2026",
   "ShortID": "6KAoYYbB568"
+},
+{
+  "CategoryGR": "Μεζέδες",
+  "CategoryEN": "Starters",
+  "Image": "TBC",
+  "TitleGR": "Δροσερή και Χορταστική Σαλάτα με Ζυμαρικά",
+  "TitleEN": "Refreshing Pasta Salad",
+  "ShortDescriptionGR": "Δροσερή σαλάτα με ζυμαρικά, πολύχρωμα λαχανικά και κρεμώδες ντρέσινγκ γιαουρτιού με γλυκόξινη σάλτσα τσίλι.",
+  "ShortDescriptionEN": "Refreshing pasta salad with colorful vegetables and a creamy yogurt dressing with sweet chili sauce.",
+  "IngredientsGR": "<p class=\"font_7\"><strong>Για τη σαλάτα:</strong></p>\n<p class=\"font_7\">250 γρ. ζυμαρικά βρασμένα</p>\n<p class=\"font_7\">125 γρ. ντοματίνια χρωματιστά</p>\n<p class=\"font_7\">1 μικρό αγγουράκι</p>\n<p class=\"font_7\">125 γρ. χρωματιστές πιπεριές</p>\n<p class=\"font_7\">1 μέτριο κόκκινο κρεμμύδι</p>\n<p class=\"font_7\">1 φρέσκο κρεμμυδάκι</p>\n<p class=\"font_7\">75 γρ. γλυκό καλαμπόκι</p>\n<p class=\"font_7\">1-2 κ.σ. ψιλοκομμένο μαϊντανό</p>\n<p class=\"font_7\"><strong>Για το ντρέσινγκ:</strong></p>\n<p class=\"font_7\">175 γρ. γιαούρτι</p>\n<p class=\"font_7\">70 γρ. γλυκόξινη σάλτσα τσίλι</p>\n<p class=\"font_7\">1-2 κ.γ. ξύδι μπαλσάμικο</p>\n<p class=\"font_7\">½ κ.γ. γλυκιά πάπρικα</p>\n<p class=\"font_7\">2 κ.σ. ελαιόλαδο</p>",
+  "IngredientsEN": "<p class=\"font_7\"><strong>For the salad:</strong></p>\n<p class=\"font_7\">250 g cooked pasta</p>\n<p class=\"font_7\">125 g mixed cherry tomatoes</p>\n<p class=\"font_7\">1 small cucumber</p>\n<p class=\"font_7\">125 g mixed color peppers</p>\n<p class=\"font_7\">1 medium red onion</p>\n<p class=\"font_7\">1 spring onion</p>\n<p class=\"font_7\">75 g sweet corn</p>\n<p class=\"font_7\">1-2 tbsp chopped parsley</p>\n<p class=\"font_7\"><strong>For the dressing:</strong></p>\n<p class=\"font_7\">175 g yogurt</p>\n<p class=\"font_7\">70 g sweet chili sauce</p>\n<p class=\"font_7\">1-2 tsp balsamic vinegar</p>\n<p class=\"font_7\">½ tsp sweet paprika</p>\n<p class=\"font_7\">2 tbsp olive oil</p>",
+  "LongDescriptionGR": "<p class=\"font_8\">Σήμερα φτιάχνουμε μια δροσερή και χορταστική σαλάτα με ζυμαρικά, πολύχρωμα λαχανικά και απολαυστικό ντρέσινγκ γιαουρτιού. Ένα εύκολο και γρήγορο πιάτο ιδανικό για καλοκαιρινό τραπέζι, πικνίκ ή ελαφρύ γεύμα.</p>",
+  "LongDescriptionEN": "<p class=\"font_8\">Today we prepare a refreshing and filling pasta salad with colorful vegetables and a creamy yogurt dressing. An easy and quick dish perfect for summer meals, picnics, or a light lunch.</p>",
+  "ExecutionGR": "<ol class=\"font_8\">\n<li>Βράζεις τα ζυμαρικά σε αλατισμένο νερό σύμφωνα με τις οδηγίες της συσκευασίας.</li>\n<li>Σουρώνεις τα ζυμαρικά και τα αφήνεις να κρυώσουν καλά.</li>\n<li>Κόβεις τα ντοματίνια, το αγγούρι και τις πιπεριές σε μικρά κομμάτια.</li>\n<li>Ψιλοκόβεις το κόκκινο κρεμμύδι και το φρέσκο κρεμμυδάκι.</li>\n<li>Βάζεις όλα τα λαχανικά σε μεγάλο μπολ.</li>\n<li>Σε μικρότερο μπολ ανακατεύεις το γιαούρτι, τη γλυκόξινη σάλτσα τσίλι και το μπαλσάμικο.</li>\n<li>Προσθέτεις την πάπρικα και το ελαιόλαδο.</li>\n<li>Ανακατεύεις μέχρι να δημιουργηθεί λείο και κρεμώδες ντρέσινγκ.</li>\n<li>Προσθέτεις τα κρύα ζυμαρικά στο μπολ με τα λαχανικά.</li>\n<li>Ρίχνεις το καλαμπόκι και τον ψιλοκομμένο μαϊντανό.</li>\n<li>Περιχύνεις με το ντρέσινγκ.</li>\n<li>Ανακατεύεις πολύ καλά ώστε να καλυφθούν όλα τα υλικά.</li>\n<li>Σερβίρεις αμέσως ή αφήνεις τη σαλάτα στο ψυγείο για πιο δροσερό αποτέλεσμα.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_8\">\n<li>Cook the pasta in salted water according to the package instructions.</li>\n<li>Drain the pasta and allow it to cool completely.</li>\n<li>Chop the cherry tomatoes, cucumber, and peppers into small pieces.</li>\n<li>Finely chop the red onion and spring onion.</li>\n<li>Place all the vegetables in a large bowl.</li>\n<li>In a smaller bowl, combine the yogurt, sweet chili sauce, and balsamic vinegar.</li>\n<li>Add the paprika and olive oil.</li>\n<li>Mix until smooth and creamy.</li>\n<li>Add the cooled pasta to the bowl with the vegetables.</li>\n<li>Add the sweet corn and chopped parsley.</li>\n<li>Pour the dressing over the salad.</li>\n<li>Mix thoroughly so all ingredients are evenly coated.</li>\n<li>Serve immediately or refrigerate for an even more refreshing result.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=ho4Rx7DrRm4",
+  "TagsGR": "[\"Σαλάτα\",\"Ζυμαρικά\",\"Καλοκαιρινές Συνταγές\",\"Γιαούρτι\",\"Λαχανικά\"]",
+  "TagsEN": "[\"Salad\",\"Pasta\",\"Summer Recipes\",\"Yogurt\",\"Vegetables\"]",
+  "Date": "30/06/2026",
+  "ShortID": "ho4Rx7DrRm4"
 }
   
 
