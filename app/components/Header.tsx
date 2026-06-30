@@ -80,25 +80,49 @@ export default function Header() {
         </button>
 
         {/* SEARCH */}
-        <div className="hidden sm:block relative w-64">
-          <input
-            type="text"
-            placeholder={lang === "gr" ? "Αναζήτηση..." : "Search..."}
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className={`w-full py-2 rounded-lg bg-black/25 border border-[--header-border] text-[--header-text] placeholder-[--header-muted] ${search ? "pl-3 pr-8" : "px-3"}`}
-          />
-          {search && (
-            <button
-              onClick={() => setSearch("")}
-              aria-label="Clear search"
-              className="absolute right-2 top-1/2 -translate-y-1/2 text-[--header-muted] hover:text-[--header-text] transition"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          )}
+        <div className="hidden sm:flex items-center gap-1.5">
+          <div className="relative w-56">
+            <input
+              type="text"
+              placeholder={lang === "gr" ? "Αναζήτηση..." : "Search..."}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  router.push("/");
+                  setTimeout(() => {
+                    document.getElementById("recipes-start")?.scrollIntoView({ behavior: "smooth" });
+                  }, 150);
+                }
+              }}
+              className={`w-full py-2 rounded-lg bg-black/25 border border-[--header-border] text-[--header-text] placeholder-[--header-muted] ${search ? "pl-3 pr-8" : "px-3"}`}
+            />
+            {search && (
+              <button
+                onClick={() => setSearch("")}
+                aria-label="Clear search"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-[--header-muted] hover:text-[--header-text] transition"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
+          </div>
+          <button
+            onClick={() => {
+              router.push("/");
+              setTimeout(() => {
+                document.getElementById("recipes-start")?.scrollIntoView({ behavior: "smooth" });
+              }, 150);
+            }}
+            aria-label="Search"
+            className="w-9 h-9 flex items-center justify-center rounded-lg bg-[--brand] text-white hover:opacity-90 transition shrink-0"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+            </svg>
+          </button>
         </div>
 
         {/* RIGHT */}
