@@ -269,7 +269,7 @@ export default function AdminPage() {
             <div>
               <label className={lbl}>YouTube URL</label>
               <input
-                type="url"
+                type="text"
                 value={form.linkYT}
                 onChange={e => set("linkYT", e.target.value)}
                 placeholder="https://www.youtube.com/watch?v=..."
