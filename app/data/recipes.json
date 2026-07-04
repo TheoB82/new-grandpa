@@ -7773,5 +7773,25 @@
     "TagsEN": "[\"Salad\",\"Pasta\",\"Summer Recipes\",\"Yogurt\",\"Vegetables\"]",
     "Date": "30/06/2026",
     "ShortID": "ho4Rx7DrRm4"
-  }
+  },
+  {
+  "CategoryGR": "Μεζέδες",
+  "CategoryEN": "Starters",
+  "Image": "TBC",
+  "TitleGR": "Κολοκυθοκεφτέδες στον Φούρνο",
+  "TitleEN": "Baked Zucchini Fritters",
+  "ShortDescriptionGR": "Αφράτοι και πεντανόστιμοι κολοκυθοκεφτέδες στον φούρνο με φέτα, μυρωδικά και τραγανή υφή χωρίς τηγάνισμα.",
+  "ShortDescriptionEN": "Fluffy and delicious baked zucchini fritters with feta, fresh herbs, and a crispy texture without frying.",
+  "IngredientsGR": "<p class=\"font_7\">4 κολοκυθάκια (περίπου 800 γρ. καθαρό βάρος)</p>\n<p class=\"font_7\">1 ξερό κρεμμύδι (120 γρ.)</p>\n<p class=\"font_7\">2-3 φρέσκα κρεμμυδάκια (50 γρ.)</p>\n<p class=\"font_7\">80 γρ. κόκκινη πιπεριά</p>\n<p class=\"font_7\">300 γρ. φέτα</p>\n<p class=\"font_7\">150 γρ. μείγμα τυριών</p>\n<p class=\"font_7\">2-3 αυγά</p>\n<p class=\"font_7\">15 γρ. άνηθο</p>\n<p class=\"font_7\">15 γρ. δυόσμο</p>\n<p class=\"font_7\">1 κ.σ. φρέσκο θυμάρι</p>\n<p class=\"font_7\">40 ml ελαιόλαδο</p>\n<p class=\"font_7\">Αλάτι και ξύσμα λεμονιού</p>\n<p class=\"font_7\">220 γρ. αλεύρι που φουσκώνει μόνο του (ή όσο πάρει)</p>",
+  "IngredientsEN": "<p class=\"font_7\">4 zucchinis (about 800 g net weight)</p>\n<p class=\"font_7\">1 brown onion (120 g)</p>\n<p class=\"font_7\">2-3 spring onions (50 g)</p>\n<p class=\"font_7\">80 g red pepper</p>\n<p class=\"font_7\">300 g feta cheese</p>\n<p class=\"font_7\">150 g mixed cheeses</p>\n<p class=\"font_7\">2-3 eggs</p>\n<p class=\"font_7\">15 g dill</p>\n<p class=\"font_7\">15 g mint</p>\n<p class=\"font_7\">1 tbsp fresh thyme</p>\n<p class=\"font_7\">40 ml olive oil</p>\n<p class=\"font_7\">Salt and lemon zest</p>\n<p class=\"font_7\">220 g self-rising flour (or as much as needed)</p>",
+  "LongDescriptionGR": "<p class=\"font_8\">Σήμερα φτιάχνουμε αφράτους και πεντανόστιμους κολοκυθοκεφτέδες στον φούρνο. Είναι τόσο ροδοψημένοι και γευστικοί που κανείς δε θα πιστεύει ότι δεν τηγανίστηκαν. Μια εύκολη και πιο ελαφριά εκδοχή του αγαπημένου καλοκαιρινού μεζέ.</p>",
+  "LongDescriptionEN": "<p class=\"font_8\">Today we prepare fluffy and delicious baked zucchini fritters. They turn out so golden and flavorful that nobody will believe they were not fried. An easy and lighter version of a beloved Greek summer appetizer.</p>",
+  "ExecutionGR": "<ol class=\"font_8\">\n<li>Τρίβεις τα κολοκυθάκια και το ξερό κρεμμύδι.</li>\n<li>Προσθέτεις λίγο αλάτι και αφήνεις το μείγμα για 15-30 λεπτά.</li>\n<li>Στύβεις πάρα πολύ καλά τα κολοκυθάκια ώστε να φύγουν όλα τα υγρά.</li>\n<li>Ψιλοκόβεις τα φρέσκα κρεμμυδάκια, την πιπεριά, τον άνηθο και τον δυόσμο.</li>\n<li>Σε μεγάλο μπολ ανακατεύεις τα κολοκυθάκια με τα λαχανικά και τα μυρωδικά.</li>\n<li>Προσθέτεις τη φέτα και το μείγμα τυριών.</li>\n<li>Ρίχνεις τα αυγά, το θυμάρι, το ελαιόλαδο και λίγο ξύσμα λεμονιού.</li>\n<li>Ανακατεύεις καλά όλα τα υλικά.</li>\n<li>Προσθέτεις σταδιακά το αλεύρι μέχρι να δημιουργηθεί εύπλαστο μείγμα.</li>\n<li>Πλάθεις τους κολοκυθοκεφτέδες και τους τοποθετείς σε ταψί με αντικολλητικό χαρτί.</li>\n<li>Ψήνεις στους 190°C στον αέρα για 30-35 λεπτά μέχρι να ροδίσουν.</li>\n<li>Σερβίρεις ζεστούς ή χλιαρούς.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_8\">\n<li>Grate the zucchinis and onion.</li>\n<li>Add a little salt and leave the mixture for 15-30 minutes.</li>\n<li>Squeeze the zucchinis extremely well to remove all excess moisture.</li>\n<li>Finely chop the spring onions, red pepper, dill, and mint.</li>\n<li>In a large bowl, combine the zucchinis with the vegetables and herbs.</li>\n<li>Add the feta cheese and mixed cheeses.</li>\n<li>Add the eggs, thyme, olive oil, and some lemon zest.</li>\n<li>Mix all ingredients well.</li>\n<li>Gradually add the flour until a soft and shapeable mixture forms.</li>\n<li>Shape the fritters and place them on a baking tray lined with parchment paper.</li>\n<li>Bake at 190°C fan-forced for 30-35 minutes until golden brown.</li>\n<li>Serve warm or slightly cooled.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=8Z4q4YVpZZw",
+  "TagsGR": "[\"Κολοκυθοκεφτέδες\",\"Κολοκύθι\",\"Φούρνος\",\"Φέτα\",\"Ελληνικές Συνταγές\",\"Καλοκαιρινές Συνταγές\"]",
+  "TagsEN": "[\"Zucchini Fritters\",\"Zucchini\",\"Baked\",\"Feta\",\"Greek Recipes\",\"Summer Recipes\"]",
+  "Date": "04/07/2026",
+  "ShortID": "8Z4q4YVpZZw"
+}
 ]
