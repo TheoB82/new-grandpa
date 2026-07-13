@@ -4,7 +4,6 @@ import { getYoutubeVideoID } from "@/utils/getYoutubeVideoID";
 import { Recipe } from "@/types/recipe";
 import slugify from "@/utils/slugify";
 
-export const runtime     = "edge";
 export const contentType = "image/png";
 export const size        = { width: 1200, height: 630 };
 export const alt         = "Recipe preview";
