@@ -4,15 +4,16 @@ import { getYoutubeVideoID } from "@/utils/getYoutubeVideoID";
 import { Recipe } from "@/types/recipe";
 import slugify from "@/utils/slugify";
 
-export const runtime = "edge";
+export const runtime     = "edge";
 export const contentType = "image/png";
-export const size = { width: 1200, height: 630 };
+export const size        = { width: 1200, height: 630 };
+export const alt         = "Recipe preview";
 
-interface RouteProps {
+interface Props {
   params: Promise<{ slugOrId: string }>;
 }
 
-export default async function GET(_req: Request, { params }: RouteProps) {
+export default async function Image({ params }: Props) {
   const { slugOrId } = await params;
 
   const recipe: Recipe | undefined =
@@ -33,7 +34,6 @@ export default async function GET(_req: Request, { params }: RouteProps) {
           width: 1200,
           height: 630,
           display: "flex",
-          flexDirection: "column",
           fontFamily: "Arial, sans-serif",
           position: "relative",
           overflow: "hidden",
@@ -42,8 +42,10 @@ export default async function GET(_req: Request, { params }: RouteProps) {
       >
         {/* Background photo */}
         {thumb && (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={thumb}
+            alt=""
             style={{
               position: "absolute",
               inset: 0,
@@ -65,7 +67,7 @@ export default async function GET(_req: Request, { params }: RouteProps) {
           }}
         />
 
-        {/* Content */}
+        {/* Bottom content */}
         <div
           style={{
             position: "absolute",
@@ -95,7 +97,7 @@ export default async function GET(_req: Request, { params }: RouteProps) {
 
           <span
             style={{
-              fontSize: title.length > 40 ? 52 : 64,
+              fontSize: title.length > 40 ? 50 : 62,
               fontWeight: 900,
               color: "#ffffff",
               lineHeight: 1.1,
@@ -105,19 +107,12 @@ export default async function GET(_req: Request, { params }: RouteProps) {
             {title}
           </span>
 
-          <span
-            style={{
-              fontSize: 24,
-              color: "#fdd9a1",
-              opacity: 0.75,
-              marginTop: 4,
-            }}
-          >
+          <span style={{ fontSize: 22, color: "#fdd9a1", opacity: 0.7, marginTop: 4 }}>
             grandpatassos.cooking
           </span>
         </div>
 
-        {/* Logo area — top left */}
+        {/* Top-left branding */}
         <div
           style={{
             position: "absolute",
@@ -132,7 +127,7 @@ export default async function GET(_req: Request, { params }: RouteProps) {
             style={{
               width: 52,
               height: 52,
-              borderRadius: "50%",
+              borderRadius: 26,
               background: "#8c5e3c",
               display: "flex",
               alignItems: "center",

@@ -21,9 +21,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const recipe = findRecipe(slugOrId);
   if (!recipe) return {};
 
-  // Use the generated OG image route (1200×630, correct aspect ratio + branded)
-  const image = `/recipes/${recipe.ShortID}/opengraph-image`;
-
   const desc = recipe.ShortDescriptionEN ?? "";
 
   // Keep <title> under 60 chars for Google — branding goes in og:site_name
@@ -39,15 +36,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: desc,
       siteName: "Grandpa Tassos Cooking",
       type: "article",
-      ...(image && {
-        images: [{ url: image, width: 1280, height: 720, alt: recipe.TitleEN }],
-      }),
     },
     twitter: {
       card: "summary_large_image",
       title: recipe.TitleEN,
       description: desc,
-      ...(image && { images: [image] }),
     },
   };
 }
