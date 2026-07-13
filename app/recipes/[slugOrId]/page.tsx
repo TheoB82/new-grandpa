@@ -4,7 +4,6 @@ import slugify from "@/utils/slugify";
 import RecipeClient from "./recipe-client";
 import { notFound, redirect } from "next/navigation";
 import { Recipe } from "@/types/recipe";
-import { getYoutubeVideoID } from "@/utils/getYoutubeVideoID";
 
 interface PageProps {
   params: Promise<{ slugOrId: string }>;
@@ -22,20 +21,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const recipe = findRecipe(slugOrId);
   if (!recipe) return {};
 
-  const videoID = recipe.LinkYT ? getYoutubeVideoID(recipe.LinkYT) : null;
-  const image   = videoID
-    ? `https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`
-    : undefined;
+  // Use the generated OG image route (1200×630, correct aspect ratio + branded)
+  const image = `/recipes/${recipe.ShortID}/opengraph-image`;
 
-  const title = `${recipe.TitleEN} | Grandpa Tassos Cooking`;
-  const desc  = recipe.ShortDescriptionEN ?? "";
+  const desc = recipe.ShortDescriptionEN ?? "";
+
+  // Keep <title> under 60 chars for Google — branding goes in og:site_name
+  const pageTitle = recipe.TitleEN.length <= 57
+    ? `${recipe.TitleEN} | GTC`
+    : recipe.TitleEN.slice(0, 57) + "…";
 
   return {
-    title,
+    title: pageTitle,
     description: desc,
     openGraph: {
       title: recipe.TitleEN,
       description: desc,
+      siteName: "Grandpa Tassos Cooking",
       type: "article",
       ...(image && {
         images: [{ url: image, width: 1280, height: 720, alt: recipe.TitleEN }],
@@ -44,7 +46,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     twitter: {
       card: "summary_large_image",
       title: recipe.TitleEN,
-      description: recipe.ShortDescriptionEN ?? "",
+      description: desc,
       ...(image && { images: [image] }),
     },
   };
