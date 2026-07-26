@@ -7832,5 +7832,24 @@
     "TagsEN": "[\"Sardines\",\"Seafood\",\"Oven Baked\",\"Greek Meze\",\"Mediterranean\"]",
     "Date": "13/07/2026",
     "ShortID": "EJGBHRbXWUQ"
-  }
+  },
+  {
+  "CategoryGR": "Μεζέδες",
+  "CategoryEN": "Starters",
+  "TitleGR": "Φουρνιστοί Πατατοκεφτέδες",
+  "TitleEN": "Oven-Baked Potato Fritters",
+  "ShortDescriptionGR": "Τραγανοί πατατοκεφτέδες στον φούρνο με φέτα, κεφαλογραβιέρα, μυρωδικά και αρώματα ελληνικής κουζίνας, εύκολοι και υγιεινοί.",
+  "ShortDescriptionEN": "Crispy oven-baked potato fritters with feta, kefalotyri cheese, fresh herbs, and Greek flavors, easy and healthy.",
+  "IngredientsGR": "<p class=\"font_7\">1 κιλό πατάτες (βρασμένες και κρύες)</p>\n<p class=\"font_7\">200 γρ. φέτα θρυμματισμένη</p>\n<p class=\"font_7\">180 γρ. τριμμένη κεφαλογραβιέρα (ή άλλο κίτρινο τυρί)</p>\n<p class=\"font_7\">3 μικρά αυγά</p>\n<p class=\"font_7\">150 γρ. ξερό κρεμμύδι (ψιλοκομμένο και στυμμένο)</p>\n<p class=\"font_7\">2 φρέσκα κρεμμυδάκια (ψιλοκομμένα)</p>\n<p class=\"font_7\">20 γρ. άνηθο (ψιλοκομμένο)</p>\n<p class=\"font_7\">10 γρ. δυόσμο (ψιλοκομμένο)</p>\n<p class=\"font_7\">1 πιπεριά Φλωρίνης ψημένη (προαιρετικά)</p>\n<p class=\"font_7\">2 κ.γ. ρίγανη</p>\n<p class=\"font_7\">40 γρ. ελαιόλαδο</p>\n<p class=\"font_7\">Αλάτι &amp; πιπέρι</p>\n<p class=\"font_7\">200 γρ. αλεύρι (περίπου)</p>\n<p class=\"font_7\">1 κ.γ. baking powder</p>\n<p class=\"font_7\">Σουσάμι &amp; λίγο ελαιόλαδο για το πασπάλισμα</p>",
+  "IngredientsEN": "<p class=\"font_7\">1 kg potatoes (boiled and cooled)</p>\n<p class=\"font_7\">200 g feta cheese, crumbled</p>\n<p class=\"font_7\">180 g grated kefalotyri cheese (or another hard yellow cheese)</p>\n<p class=\"font_7\">3 small eggs</p>\n<p class=\"font_7\">150 g onion (finely chopped and squeezed)</p>\n<p class=\"font_7\">2 spring onions (finely chopped)</p>\n<p class=\"font_7\">20 g fresh dill (finely chopped)</p>\n<p class=\"font_7\">10 g fresh mint (finely chopped)</p>\n<p class=\"font_7\">1 roasted Florina pepper (optional)</p>\n<p class=\"font_7\">2 tsp dried oregano</p>\n<p class=\"font_7\">40 g olive oil</p>\n<p class=\"font_7\">Salt &amp; black pepper</p>\n<p class=\"font_7\">200 g plain flour (approximately)</p>\n<p class=\"font_7\">1 tsp baking powder</p>\n<p class=\"font_7\">Sesame seeds &amp; a little olive oil for topping</p>",
+  "LongDescriptionGR": "<p class=\"font_8\">Σήμερα φτιάχνουμε πεντανόστιμους και υγιεινούς πατατοκεφτέδες στο φούρνο! Μια εύκολη συνταγή, ιδανική για το καλοκαίρι, που θα λατρέψουν μικροί και μεγάλοι. Γίνονται τραγανοί απ' έξω, αφράτοι από μέσα και γεμάτοι αρώματα από τα τυριά και τα μυρωδικά μας.</p>",
+  "LongDescriptionEN": "<p class=\"font_8\">Today we are making delicious and healthy oven-baked potato fritters! An easy recipe, perfect for summer, that both kids and adults will love. They are crispy on the outside, fluffy on the inside, and full of flavor from the cheeses and fresh herbs.</p>",
+  "ExecutionGR": "<ol class=\"font_8\">\n<li>Περνάμε τις βρασμένες πατάτες από την πρέσα για να γίνουν πουρές.</li>\n<li>Προσθέτουμε τα τυριά, τα αυγά, τα κρεμμύδια, τα μυρωδικά, το ελαιόλαδο και τα μπαχαρικά. Ανακατεύουμε καλά.</li>\n<li>Ρίχνουμε σιγά-σιγά το αλεύρι μαζί με το baking powder μέχρι να έχουμε ένα μείγμα που δεν κολλάει πολύ στα χέρια.</li>\n<li>Αφήνουμε το μείγμα στο ψυγείο για 30 λεπτά.</li>\n<li>Πλάθουμε σε μικρά κεφτεδάκια και τα τοποθετούμε σε ταψί με αντικολλητικό χαρτί.</li>\n<li>Ραντίζουμε με λίγο ελαιόλαδο και πασπαλίζουμε με σουσάμι.</li>\n<li>Ψήνουμε σε προθερμασμένο φούρνο στους 190°C στον αέρα για περίπου 40 λεπτά, μέχρι να ροδίσουν.</li>\n<li>Σερβίρουμε με τζατζίκι ή γιαούρτι.</li>\n</ol>",
+  "ExecutionEN": "<ol class=\"font_8\">\n<li>Pass the boiled potatoes through a potato ricer to make a smooth mash.</li>\n<li>Add the cheeses, eggs, onions, herbs, olive oil, and spices. Mix well.</li>\n<li>Gradually add the flour and baking powder until you have a mixture that is not too sticky and can be shaped easily.</li>\n<li>Refrigerate the mixture for 30 minutes.</li>\n<li>Shape into small fritters and place them on a baking tray lined with parchment paper.</li>\n<li>Drizzle with a little olive oil and sprinkle with sesame seeds.</li>\n<li>Bake in a preheated fan oven at 190°C for approximately 40 minutes, until golden and crispy.</li>\n<li>Serve with tzatziki or Greek yogurt.</li>\n</ol>",
+  "LinkYT": "https://www.youtube.com/watch?v=qyVYzeAHzFI",
+  "TagsGR": "[\"Πατατοκεφτέδες\",\"Πατάτες\",\"Φούρνου\",\"Μεζές\",\"Ελληνική Κουζίνα\",\"Χορτοφαγικό\",\"Φέτα\",\"Μυρωδικά\"]",
+  "TagsEN": "[\"Potato Fritters\",\"Potatoes\",\"Oven Baked\",\"Greek Meze\",\"Greek Cuisine\",\"Vegetarian\",\"Feta Cheese\",\"Fresh Herbs\"]",
+  "Date": "26/07/2026",
+  "ShortID": "qyVYzeAHzFI"
+}
 ]
