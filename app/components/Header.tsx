@@ -124,6 +124,16 @@ export default function Header() {
         {/* RIGHT */}
         <div className="flex items-center gap-3">
 
+          {/* PAGE LINKS — desktop only */}
+          <div className="hidden sm:flex items-center gap-4 text-sm">
+            <Link href="/meal-planner" className={inactiveClass}>
+              {lang === "gr" ? "Γεύματα" : "Meal Planner"}
+            </Link>
+            <Link href="/about" className={inactiveClass}>
+              {lang === "gr" ? "Ο Παππούς" : "About"}
+            </Link>
+          </div>
+
           {/* SOCIAL ICONS — desktop only */}
           <div className="hidden sm:flex items-center gap-1.5">
             {[
@@ -189,14 +199,6 @@ export default function Header() {
             {c.name}
           </button>
         ))}
-
-        <Link href="/meal-planner" className={inactiveClass}>
-          {lang === "gr" ? "Πρόγραμμα Γευμάτων" : "Meal Planner"}
-        </Link>
-
-        <Link href="/about" className={inactiveClass}>
-          {lang === "gr" ? "Ο Παππούς" : "About"}
-        </Link>
       </nav>
 
       {/* MOBILE MENU */}
@@ -300,7 +302,7 @@ export default function Header() {
               onClick={() => setMobileOpen(false)}
               className="px-4 py-2.5 rounded-full bg-black/20 text-[--brand] border border-[--brand]"
             >
-              {lang === "gr" ? "Πρόγραμμα Γευμάτων" : "Meal Planner"}
+              {lang === "gr" ? "Γεύματα" : "Meal Planner"}
             </Link>
 
             <Link
