@@ -22,6 +22,17 @@ function getThumb(photoUrl: string | undefined, url: string) {
   }
 }
 
+const DIFFICULTY_GR: Record<string, string> = { Easy: "Εύκολο", Medium: "Μέτριο", Hard: "Δύσκολο" };
+
+// Compact "45m · Easy" line for recipe cards — total time + difficulty, omitted if neither is set.
+function cardMeta(r: Recipe, lang: "gr" | "en"): string {
+  const totalMinutes = (r.PrepTimeMinutes ?? 0) + (r.CookTimeMinutes ?? 0);
+  const parts: string[] = [];
+  if (totalMinutes > 0) parts.push(`${totalMinutes}${lang === "gr" ? "λ." : "m"}`);
+  if (r.Difficulty) parts.push(lang === "gr" ? (DIFFICULTY_GR[r.Difficulty] || r.Difficulty) : r.Difficulty);
+  return parts.join(" · ");
+}
+
 export default function SearchClient({ initialQuery, recipes }: { initialQuery: string; recipes: Recipe[] }) {
   const { lang } = useLanguage();
   const router = useRouter();
@@ -84,6 +95,7 @@ export default function SearchClient({ initialQuery, recipes }: { initialQuery: 
           {results.slice(0, 60).map((r, index) => {
             const title = lang === "gr" ? r.TitleGR : r.TitleEN;
             const desc = lang === "gr" ? r.ShortDescriptionGR : r.ShortDescriptionEN;
+            const meta = cardMeta(r, lang);
             return (
               <Link
                 key={r.ShortID}
@@ -101,6 +113,7 @@ export default function SearchClient({ initialQuery, recipes }: { initialQuery: 
                 <div className="p-4">
                   <h3 className="font-bold text-base leading-snug mb-1 text-[--text-primary]">{title}</h3>
                   <p className="text-sm text-[--text-secondary] opacity-70 line-clamp-2">{desc}</p>
+                  {meta && <p className="mt-1.5 text-xs text-[--text-secondary] opacity-50">{meta}</p>}
                 </div>
               </Link>
             );

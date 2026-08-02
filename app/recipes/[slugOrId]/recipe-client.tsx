@@ -152,9 +152,17 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 const DIFFICULTY_GR: Record<string, string> = { Easy: "Εύκολο", Medium: "Μέτριο", Hard: "Δύσκολο" };
 
+// Soft, semantic tint per difficulty so it reads at a glance without parsing the (Greek) word.
+const DIFFICULTY_STYLE: Record<string, string> = {
+  Easy:   "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+  Medium: "bg-amber-500/15 text-amber-300 border-amber-500/30",
+  Hard:   "bg-rose-500/15 text-rose-300 border-rose-500/30",
+};
+const DEFAULT_PILL_STYLE = "bg-[#8c5e3c]/20 text-[#fdd9a1] border-[#8c5e3c]/40";
+
 function RecipeMeta({ recipe, lang }: { recipe: Recipe; lang: "gr" | "en" }) {
-  const iconCls = "w-4 h-4 shrink-0 text-[#fdd9a1]/70";
-  const items: { key: string; icon: React.ReactNode; label: string }[] = [];
+  const iconCls = "w-4 h-4 shrink-0";
+  const items: { key: string; icon: React.ReactNode; value: string; label: string; style: string }[] = [];
 
   if (recipe.PrepTimeMinutes != null) {
     items.push({
@@ -164,7 +172,9 @@ function RecipeMeta({ recipe, lang }: { recipe: Recipe; lang: "gr" | "en" }) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      label: `${lang === "gr" ? "Προετ." : "Prep"} ${recipe.PrepTimeMinutes}${lang === "gr" ? "λ." : "m"}`,
+      value: `${recipe.PrepTimeMinutes}′`,
+      label: lang === "gr" ? "Προετοιμασία" : "Prep",
+      style: DEFAULT_PILL_STYLE,
     });
   }
   if (recipe.CookTimeMinutes != null) {
@@ -172,10 +182,12 @@ function RecipeMeta({ recipe, lang }: { recipe: Recipe; lang: "gr" | "en" }) {
       key: "cook",
       icon: (
         <svg className={iconCls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M5 10h14l-1 8.2a2 2 0 01-2 1.8H8a2 2 0 01-2-1.8L5 10zM3.5 10h17M8 10V8a4 4 0 018 0v2" />
         </svg>
       ),
-      label: `${lang === "gr" ? "Μαγ." : "Cook"} ${recipe.CookTimeMinutes}${lang === "gr" ? "λ." : "m"}`,
+      value: `${recipe.CookTimeMinutes}′`,
+      label: lang === "gr" ? "Μαγείρεμα" : "Cook",
+      style: DEFAULT_PILL_STYLE,
     });
   }
   if (recipe.Servings != null) {
@@ -186,7 +198,9 @@ function RecipeMeta({ recipe, lang }: { recipe: Recipe; lang: "gr" | "en" }) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.1a7.5 7.5 0 0115 0" />
         </svg>
       ),
-      label: `${recipe.Servings} ${lang === "gr" ? "μερίδες" : "servings"}`,
+      value: `${recipe.Servings}`,
+      label: lang === "gr" ? "Μερίδες" : "Servings",
+      style: DEFAULT_PILL_STYLE,
     });
   }
   if (recipe.Difficulty) {
@@ -197,7 +211,9 @@ function RecipeMeta({ recipe, lang }: { recipe: Recipe; lang: "gr" | "en" }) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 20V10M12 20V4M20 20v-7" />
         </svg>
       ),
+      value: "",
       label: lang === "gr" ? (DIFFICULTY_GR[recipe.Difficulty] || recipe.Difficulty) : recipe.Difficulty,
+      style: DIFFICULTY_STYLE[recipe.Difficulty] || DEFAULT_PILL_STYLE,
     });
   }
   if (recipe.CaloriesPerServing != null) {
@@ -208,18 +224,24 @@ function RecipeMeta({ recipe, lang }: { recipe: Recipe; lang: "gr" | "en" }) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15.4 5.2A8.25 8.25 0 0112 21a8.25 8.25 0 01-5.96-13.95A8.3 8.3 0 009 9.6a9 9 0 013.36-6.87 8.2 8.2 0 003 2.48z" />
         </svg>
       ),
-      label: `${recipe.CaloriesEstimated ? "~" : ""}${recipe.CaloriesPerServing} ${lang === "gr" ? "θερμ./μερίδα" : "kcal/serving"}`,
+      value: `${recipe.CaloriesEstimated ? "~" : ""}${recipe.CaloriesPerServing}`,
+      label: lang === "gr" ? "θερμίδες" : "kcal",
+      style: DEFAULT_PILL_STYLE,
     });
   }
 
   if (items.length === 0) return null;
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mb-6 text-sm text-white/60">
+    <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
       {items.map((item) => (
-        <span key={item.key} className="inline-flex items-center gap-1.5">
+        <span
+          key={item.key}
+          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border ${item.style}`}
+        >
           {item.icon}
-          {item.label}
+          {item.value && <span>{item.value}</span>}
+          <span className={item.value ? "font-medium opacity-80" : ""}>{item.label}</span>
         </span>
       ))}
     </div>
