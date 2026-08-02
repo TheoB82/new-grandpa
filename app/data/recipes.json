@@ -3617,7 +3617,7 @@
     "CaloriesEstimated": true
   },
   {
-    "CategoryGR": "Γλυκά ",
+    "CategoryGR": "Γλυκά",
     "CategoryEN": "Desserts",
     "Image": "TBC",
     "TitleGR": "Ροξάκια της γιαγιάς",
@@ -5209,7 +5209,7 @@
     "CaloriesEstimated": true
   },
   {
-    "CategoryGR": " Κυρίως ",
+    "CategoryGR": "Κυρίως",
     "CategoryEN": "Mains",
     "Image": "wix:image://v1/bc7fb2_cac44c9990b54fb59d83052b575eb179~mv2.jpg/Gemista%20Biftekia.jpg#originWidth=3282&originHeight=1846",
     "TitleGR": "Γεμιστά μπιφτέκια φούρνου με πατάτες",
@@ -9629,8 +9629,8 @@
     "CaloriesEstimated": true
   },
   {
-    "CategoryGR": "Κυρίως Πιάτα",
-    "CategoryEN": "Main Dishes",
+    "CategoryGR": "Κυρίως",
+    "CategoryEN": "Mains",
     "Image": "TBC",
     "TitleGR": "Νηστίσιμες Πατάτες Ογκρατέν",
     "TitleEN": "Vegan Potato Gratin",
@@ -9680,8 +9680,8 @@
     "Servings": 10
   },
   {
-    "CategoryGR": "Κυρίως Πιάτα",
-    "CategoryEN": "Main Dishes",
+    "CategoryGR": "Κυρίως",
+    "CategoryEN": "Mains",
     "Image": "",
     "TitleGR": "Συκωταριά Αρνίσια στο Τηγάνι με Λεμόνι",
     "TitleEN": "Pan-Fried Lamb Offal with Lemon",
@@ -9808,7 +9808,7 @@
   },
   {
     "CategoryGR": "Κυρίως",
-    "CategoryEN": "Main",
+    "CategoryEN": "Mains",
     "Image": "",
     "TitleGR": "Γιαχνί Μανιταριών με Λαχανικά",
     "TitleEN": "Mushroom and Vegetable Stew (Yahni)",
@@ -9860,7 +9860,7 @@
   },
   {
     "CategoryGR": "Κυρίως",
-    "CategoryEN": "Main",
+    "CategoryEN": "Mains",
     "Image": "",
     "TitleGR": "Γλώσσα Μοσχαρίσια με Κρέμα Λαδολέμονου",
     "TitleEN": "Beef Tongue with Lemon-Olive Oil Sauce",
@@ -9886,7 +9886,7 @@
   },
   {
     "CategoryGR": "Κυρίως",
-    "CategoryEN": "Main",
+    "CategoryEN": "Mains",
     "Image": "TBC",
     "TitleGR": "Μελιτζάνες στο Φούρνο με Πατάτες",
     "TitleEN": "Baked Eggplants with Potatoes",
@@ -9912,7 +9912,7 @@
   },
   {
     "CategoryGR": "Κυρίως",
-    "CategoryEN": "Main",
+    "CategoryEN": "Mains",
     "Image": "TBC",
     "TitleGR": "Άδανα Κεμπάπ",
     "TitleEN": "Adana Kebabs",
@@ -10016,7 +10016,7 @@
   },
   {
     "CategoryGR": "Κυρίως",
-    "CategoryEN": "Main",
+    "CategoryEN": "Mains",
     "Image": "TBC",
     "TitleGR": "Σκουμπρί στο Τηγάνι με Σάλτσα Ταρτάρ",
     "TitleEN": "Pan-Fried Mackerel with Tartar Sauce",
@@ -10145,7 +10145,7 @@
   },
   {
     "CategoryGR": "Κυρίως",
-    "CategoryEN": "Main",
+    "CategoryEN": "Mains",
     "TitleGR": "Βιεννέζικη Μπριζόλα με Τραγανά Κρεμμύδια και Χυλοπίτες",
     "TitleEN": "Viennese Roast Beef with Crispy Onions and Hilopites",
     "ShortDescriptionGR": "Ζουμερή βιεννέζικη μπριζόλα με τραγανά κρεμμύδια, πλούσια σάλτσα κρασιού και ελληνικές χυλοπίτες με μυζήθρα.",

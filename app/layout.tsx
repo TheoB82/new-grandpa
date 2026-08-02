@@ -38,6 +38,23 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             });
           `}
         </Script>
+
+        {/* ✅ Google Analytics (GA4) — loads after the consent default above is set,
+            so it starts in Consent Mode's cookieless/modeled state until CookieBanner
+            calls gtag('consent', 'update', ...) on accept. */}
+        <Script
+          id="ga4-lib"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-4N3N576X3P"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4N3N576X3P');
+          `}
+        </Script>
       </head>
 
       <body className="min-h-screen flex flex-col">
