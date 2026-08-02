@@ -100,6 +100,12 @@ export default function Footer() {
 
           {/* RIGHT — Legal */}
           <div className="flex gap-6 text-xs opacity-80">
+            <Link href="/about" className="hover:opacity-100 transition">
+              About
+            </Link>
+            <Link href="/media-kit" className="hover:opacity-100 transition">
+              Media Kit
+            </Link>
             <Link href="/privacy" className="hover:opacity-100 transition">
               Privacy Policy
             </Link>

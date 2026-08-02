@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { categoryMapping } from "@/utils/categoryMapping";
@@ -188,6 +189,10 @@ export default function Header() {
             {c.name}
           </button>
         ))}
+
+        <Link href="/about" className={inactiveClass}>
+          {lang === "gr" ? "Ο Παππούς" : "About"}
+        </Link>
       </nav>
 
       {/* MOBILE MENU */}
@@ -285,6 +290,14 @@ export default function Header() {
                 {c.name}
               </button>
             ))}
+
+            <Link
+              href="/about"
+              onClick={() => setMobileOpen(false)}
+              className="px-4 py-2.5 rounded-full bg-black/20 text-[--brand] border border-[--brand]"
+            >
+              {lang === "gr" ? "Ο Παππούς" : "About"}
+            </Link>
           </div>
         </div>
       )}
