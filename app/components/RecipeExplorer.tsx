@@ -3,7 +3,6 @@
 import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 
-import recipes from "@/data/recipes.json";
 import type { Recipe } from "@/types/recipe";
 import { categoryMapping } from "@/utils/categoryMapping";
 import { matchesCategory } from "@/utils/matchesCategory";
@@ -15,7 +14,8 @@ import { useLanguage } from "@/context/LanguageContext";
 /* Other utilities                                                     */
 /* ------------------------------------------------------------------ */
 
-function getThumb(url: string) {
+function getThumb(photoUrl: string | undefined, url: string) {
+  if (photoUrl) return photoUrl;
   if (!url) return "/placeholder.jpg";
   try {
     const u = new URL(url);
@@ -42,7 +42,7 @@ const stripAccents = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "");
 /* RecipeExplorer                                                      */
 /* ================================================================== */
 
-export default function RecipeExplorer() {
+export default function RecipeExplorer({ recipes }: { recipes: Recipe[] }) {
   const { lang, selectedCategory, setSelectedCategory, search, setSearch } = useLanguage();
 
   const [visible, setVisible] = useState(12);
@@ -186,7 +186,7 @@ export default function RecipeExplorer() {
                 <div className="w-full aspect-video overflow-hidden">
                   <img
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    src={getThumb(r.LinkYT)}
+                    src={getThumb(r.Image, r.LinkYT)}
                     alt={title}
                   />
                 </div>

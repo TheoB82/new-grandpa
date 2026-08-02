@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import recipes from "@/data/recipes.json";
+import { getAllRecipes } from "@/utils/recipesData";
 import { getYoutubeVideoID } from "@/utils/getYoutubeVideoID";
 import { Recipe } from "@/types/recipe";
 import slugify from "@/utils/slugify";
@@ -14,17 +14,17 @@ interface Props {
 
 export default async function Image({ params }: Props) {
   const { slugOrId } = await params;
+  const recipes = await getAllRecipes();
 
   const recipe: Recipe | undefined =
-    (recipes as Recipe[]).find((r) => r.ShortID === slugOrId) ??
-    (recipes as Recipe[]).find((r) => slugify(r.TitleEN || "") === slugify(slugOrId));
+    recipes.find((r) => r.ShortID === slugOrId) ??
+    recipes.find((r) => slugify(r.TitleEN || "") === slugify(slugOrId));
 
   const title    = recipe?.TitleEN    ?? "Grandpa Tassos Cooking";
   const category = recipe?.CategoryEN ?? "";
   const videoID  = recipe?.LinkYT ? getYoutubeVideoID(recipe.LinkYT) : null;
-  const thumb    = videoID
-    ? `https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`
-    : null;
+  const thumb    = recipe?.Image
+    ?? (videoID ? `https://img.youtube.com/vi/${videoID}/maxresdefault.jpg` : null);
 
   return new ImageResponse(
     (

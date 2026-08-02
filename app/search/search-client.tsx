@@ -3,12 +3,12 @@
 import { useState, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import recipes from "@/data/recipes.json";
 import type { Recipe } from "@/types/recipe";
 import { searchRecipes } from "@/utils/searchRecipes";
 import { useLanguage } from "@/context/LanguageContext";
 
-function getThumb(url: string) {
+function getThumb(photoUrl: string | undefined, url: string) {
+  if (photoUrl) return photoUrl;
   if (!url) return "/placeholder.jpg";
   try {
     const u = new URL(url);
@@ -22,7 +22,7 @@ function getThumb(url: string) {
   }
 }
 
-export default function SearchClient({ initialQuery }: { initialQuery: string }) {
+export default function SearchClient({ initialQuery, recipes }: { initialQuery: string; recipes: Recipe[] }) {
   const { lang } = useLanguage();
   const router = useRouter();
   const [query, setQuery] = useState(initialQuery);
@@ -35,7 +35,7 @@ export default function SearchClient({ initialQuery }: { initialQuery: string })
     return () => clearTimeout(timeout);
   }, [query, router]);
 
-  const results = useMemo(() => searchRecipes(recipes as Recipe[], query), [query]);
+  const results = useMemo(() => searchRecipes(recipes, query), [recipes, query]);
   const isSearching = query.trim().length > 0;
 
   return (
@@ -94,7 +94,7 @@ export default function SearchClient({ initialQuery }: { initialQuery: string })
                 <div className="w-full aspect-video overflow-hidden">
                   <img
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    src={getThumb(r.LinkYT)}
+                    src={getThumb(r.Image, r.LinkYT)}
                     alt={title}
                   />
                 </div>

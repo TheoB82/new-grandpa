@@ -1,12 +1,13 @@
 import type { MetadataRoute } from "next";
-import recipes from "@/data/recipes.json";
+import { getAllRecipes } from "@/utils/recipesData";
 import { categoryMapping } from "@/utils/categoryMapping";
 import { parseDate } from "@/utils/parseDate";
-import type { Recipe } from "@/types/recipe";
 
 const BASE_URL = "https://www.grandpatassos.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const recipes = await getAllRecipes();
+
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL, changeFrequency: "daily", priority: 1 },
     { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.6 },
@@ -21,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const recipePages: MetadataRoute.Sitemap = (recipes as Recipe[]).map((r) => ({
+  const recipePages: MetadataRoute.Sitemap = recipes.map((r) => ({
     url: `${BASE_URL}/recipes/${r.ShortID}`,
     lastModified: parseDate(r.Date),
     changeFrequency: "monthly",

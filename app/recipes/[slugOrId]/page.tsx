@@ -1,25 +1,28 @@
 import type { Metadata } from "next";
-import recipes from "@/data/recipes.json";
+import { getAllRecipes } from "@/utils/recipesData";
 import slugify from "@/utils/slugify";
 import RecipeClient from "./recipe-client";
 import { notFound, redirect } from "next/navigation";
 import { Recipe } from "@/types/recipe";
 import { buildRecipeJsonLd } from "@/utils/recipeJsonLd";
 
+export const revalidate = 60;
+
 interface PageProps {
   params: Promise<{ slugOrId: string }>;
 }
 
-function findRecipe(slugOrId: string): Recipe | undefined {
+async function findRecipe(slugOrId: string): Promise<Recipe | undefined> {
+  const recipes = await getAllRecipes();
   return (
-    (recipes as Recipe[]).find((r) => r.ShortID === slugOrId) ??
-    (recipes as Recipe[]).find((r) => slugify(r.TitleEN || "") === slugify(slugOrId))
+    recipes.find((r) => r.ShortID === slugOrId) ??
+    recipes.find((r) => slugify(r.TitleEN || "") === slugify(slugOrId))
   );
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slugOrId } = await params;
-  const recipe = findRecipe(slugOrId);
+  const recipe = await findRecipe(slugOrId);
   if (!recipe) return {};
 
   const desc = recipe.ShortDescriptionEN ?? "";
@@ -51,8 +54,10 @@ export default async function RecipePage({ params }: PageProps) {
 
   if (!slugOrId) return notFound();
 
+  const recipes = await getAllRecipes();
+
   // 1️⃣ Try SHORT ID (canonical)
-  let recipe: Recipe | undefined = (recipes as Recipe[]).find(
+  let recipe: Recipe | undefined = recipes.find(
     (r) => r.ShortID === slugOrId
   );
 
@@ -65,13 +70,13 @@ export default async function RecipePage({ params }: PageProps) {
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <RecipeClient recipe={recipe} />
+        <RecipeClient recipe={recipe} recipes={recipes} />
       </>
     );
   }
 
   // 2️⃣ Try SLUG -> redirect to ShortID
-  recipe = (recipes as Recipe[]).find(
+  recipe = recipes.find(
     (r) => slugify(r.TitleEN || "") === slugify(slugOrId)
   );
 

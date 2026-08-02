@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { getAllRecipes } from "@/utils/recipesData";
 import SearchClient from "./search-client";
+
+export const revalidate = 60;
 
 interface PageProps {
   searchParams: Promise<{ q?: string }>;
@@ -25,5 +28,6 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
 
 export default async function SearchPage({ searchParams }: PageProps) {
   const { q } = await searchParams;
-  return <SearchClient initialQuery={q || ""} />;
+  const recipes = await getAllRecipes();
+  return <SearchClient initialQuery={q || ""} recipes={recipes} />;
 }

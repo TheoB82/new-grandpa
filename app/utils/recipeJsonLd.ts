@@ -62,10 +62,12 @@ export function buildRecipeJsonLd(recipe: Recipe) {
     },
   };
 
-  const image = videoID
-    ? [`https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`]
-    : recipe.Image
+  // Prefer a real recipe photo over the YouTube thumbnail when one exists —
+  // more accurate for Google's recipe rich results than a video thumbnail.
+  const image = recipe.Image
     ? [recipe.Image]
+    : videoID
+    ? [`https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`]
     : undefined;
   if (image) jsonLd.image = image;
 

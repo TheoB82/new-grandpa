@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import parse from "html-react-parser";
 import { useLanguage } from "@/context/LanguageContext";
-import recipes from "@/data/recipes.json";
 import slugify from "@/utils/slugify";
 import { getYoutubeVideoID } from "@/utils/getYoutubeVideoID";
 import { Recipe } from "@/types/recipe";
@@ -231,7 +230,7 @@ function RecipeMeta({ recipe, lang }: { recipe: Recipe; lang: "gr" | "en" }) {
 /* Similar recipes helper                                              */
 /* ------------------------------------------------------------------ */
 
-function getSimilarRecipes(current: Recipe, lang: "gr" | "en", limit = 3) {
+function getSimilarRecipes(allRecipes: Recipe[], current: Recipe, lang: "gr" | "en", limit = 3) {
   const titleKey    = lang === "gr" ? "TitleGR"    : "TitleEN";
   const tagKey      = lang === "gr" ? "TagsGR"     : "TagsEN";
   const categoryKey = lang === "gr" ? "CategoryGR" : "CategoryEN";
@@ -240,7 +239,7 @@ function getSimilarRecipes(current: Recipe, lang: "gr" | "en", limit = 3) {
     try { return JSON.parse(current[tagKey] || "[]"); } catch { return []; }
   })();
 
-  return (recipes as Recipe[])
+  return allRecipes
     .filter((r) => r[titleKey] !== current[titleKey])
     .map((r) => {
       let tags: string[] = [];
@@ -260,7 +259,15 @@ function getSimilarRecipes(current: Recipe, lang: "gr" | "en", limit = 3) {
 /* Main component                                                      */
 /* ================================================================== */
 
-export default function RecipeClient({ recipe }: { recipe: Recipe }) {
+export default function RecipeClient({
+  recipe,
+  recipes = [],
+  previewMode = false,
+}: {
+  recipe: Recipe;
+  recipes?: Recipe[];
+  previewMode?: boolean;
+}) {
   const { lang } = useLanguage();
 
   const title       = lang === "gr" ? recipe.TitleGR            : recipe.TitleEN;
@@ -271,29 +278,31 @@ export default function RecipeClient({ recipe }: { recipe: Recipe }) {
   const category    = lang === "gr" ? recipe.CategoryGR         : recipe.CategoryEN;
 
   const videoID = recipe.LinkYT ? getYoutubeVideoID(recipe.LinkYT) : null;
-  const similar = getSimilarRecipes(recipe, lang);
+  const similar = getSimilarRecipes(recipes, recipe, lang);
   const date    = formatDate(recipe.Date, lang);
 
   return (
-    <div className="min-h-screen bg-[#3c2718] text-white print-area">
+    <div className={`${previewMode ? "" : "min-h-screen"} bg-[#3c2718] text-white print-area`}>
 
       {/* ============================================================ */}
       {/* HERO                                                         */}
       {/* ============================================================ */}
-      <div className="pt-28 lg:pt-32 pb-14 px-6 border-b border-[#8c5e3c]/20 print:border-0 print:pt-0 print:pb-4">
+      <div className={`${previewMode ? "pt-8" : "pt-28 lg:pt-32"} pb-14 px-6 border-b border-[#8c5e3c]/20 print:border-0 print:pt-0 print:pb-4`}>
 
         {/* Back link */}
-        <div className="max-w-4xl mx-auto mb-6 print:hidden">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1.5 text-white/45 hover:text-white/80 text-sm transition"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            {lang === "gr" ? "Όλες οι συνταγές" : "All Recipes"}
-          </Link>
-        </div>
+        {!previewMode && (
+          <div className="max-w-4xl mx-auto mb-6 print:hidden">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-white/45 hover:text-white/80 text-sm transition"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              {lang === "gr" ? "Όλες οι συνταγές" : "All Recipes"}
+            </Link>
+          </div>
+        )}
 
         {/* Centered title block */}
         <div className="max-w-3xl mx-auto text-center">
@@ -390,9 +399,8 @@ export default function RecipeClient({ recipe }: { recipe: Recipe }) {
                 const simCat   = lang === "gr" ? r.CategoryGR : r.CategoryEN;
                 const link     = `/recipes/${slugify(r.TitleEN)}`;
                 const vid      = r.LinkYT ? getYoutubeVideoID(r.LinkYT) : null;
-                const thumb    = vid
-                  ? `https://img.youtube.com/vi/${vid}/hqdefault.jpg`
-                  : r.Image || "/placeholder.jpg";
+                const thumb    = r.Image
+                  || (vid ? `https://img.youtube.com/vi/${vid}/hqdefault.jpg` : "/placeholder.jpg");
 
                 return (
                   <Link

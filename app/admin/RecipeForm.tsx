@@ -1,0 +1,540 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import { getYoutubeVideoID } from "@/utils/getYoutubeVideoID";
+import { recipeToRow } from "@/utils/mapRecipeRow";
+import type { Recipe } from "@/types/recipe";
+import RecipeClient from "../recipes/[slugOrId]/recipe-client";
+
+/* ------------------------------------------------------------------ */
+/* Constants                                                           */
+/* ------------------------------------------------------------------ */
+
+const CATEGORIES = [
+  { en: "Starters",       gr: "Μεζέδες" },
+  { en: "Mains",          gr: "Κυρίως" },
+  { en: "Breads & Dough", gr: "Ψωμιά & Ζύμες" },
+  { en: "Specials",       gr: "Μερακλίδικα" },
+  { en: "Barbecue",       gr: "Μπάρμπεκιου" },
+  { en: "Festive",        gr: "Εορταστικά" },
+  { en: "Desserts",       gr: "Γλυκά" },
+];
+
+/* ------------------------------------------------------------------ */
+/* HTML <-> plain-text helpers                                         */
+/* One line per paragraph/step in the textareas; converted to simple   */
+/* <p>/<li> HTML on save, matching what RecipeClient already expects.  */
+/* Note: this strips any inline formatting (e.g. <strong>) that may    */
+/* exist in older recipes — a known trade-off for keeping editing      */
+/* simple (plain lines) rather than building a rich-text editor.       */
+/* ------------------------------------------------------------------ */
+
+function toIngredients(text: string): string {
+  return text.split("\n").map((l) => l.trim()).filter(Boolean).map((l) => `<p>${l}</p>`).join("\n");
+}
+
+function toSteps(text: string): string {
+  const items = text.split("\n").map((l) => l.trim()).filter(Boolean)
+    .map((l) => `  <li><p>${l}</p></li>`).join("\n");
+  return `<ol>\n${items}\n</ol>`;
+}
+
+function toTags(text: string): string {
+  return JSON.stringify(text.split(",").map((t) => t.trim()).filter(Boolean));
+}
+
+function htmlToLines(html: string): string {
+  if (!html) return "";
+  const matches = [...html.matchAll(/<(?:p|li)[^>]*>([\s\S]*?)<\/(?:p|li)>/gi)];
+  const lines = matches.length ? matches.map((m) => m[1]) : [html];
+  return lines
+    .map((l) => l.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").trim())
+    .filter(Boolean)
+    .join("\n");
+}
+
+function tagsJsonToCsv(json: string): string {
+  try {
+    const arr = JSON.parse(json || "[]");
+    return Array.isArray(arr) ? arr.join(", ") : "";
+  } catch {
+    return "";
+  }
+}
+
+function dmyToISO(dmy: string): string {
+  const [d, m, y] = (dmy || "").split("/");
+  if (!d || !m || !y) return new Date().toISOString().split("T")[0];
+  return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
+}
+
+function isoToDMY(iso: string): string {
+  const [y, m, d] = iso.split("-");
+  return `${d}/${m}/${y}`;
+}
+
+/* ------------------------------------------------------------------ */
+/* Form state                                                          */
+/* ------------------------------------------------------------------ */
+
+type Form = {
+  categoryEN: string;
+  date: string; // yyyy-mm-dd, for <input type="date">
+  linkYT: string;
+  titleGR: string; titleEN: string;
+  shortDescGR: string; shortDescEN: string;
+  ingredientsGR: string; ingredientsEN: string;
+  stepsGR: string; stepsEN: string;
+  longDescGR: string; longDescEN: string;
+  tagsGR: string; tagsEN: string;
+  photoUrl: string;
+  prepTimeMinutes: string;
+  cookTimeMinutes: string;
+  servings: string;
+  difficulty: "" | "Easy" | "Medium" | "Hard";
+  caloriesPerServing: string;
+};
+
+function recipeToForm(recipe: Recipe | null): Form {
+  if (!recipe) {
+    return {
+      categoryEN: "Desserts",
+      date: new Date().toISOString().split("T")[0],
+      linkYT: "",
+      titleGR: "", titleEN: "",
+      shortDescGR: "", shortDescEN: "",
+      ingredientsGR: "", ingredientsEN: "",
+      stepsGR: "", stepsEN: "",
+      longDescGR: "", longDescEN: "",
+      tagsGR: "", tagsEN: "",
+      photoUrl: "",
+      prepTimeMinutes: "", cookTimeMinutes: "", servings: "",
+      difficulty: "", caloriesPerServing: "",
+    };
+  }
+  return {
+    categoryEN: recipe.CategoryEN,
+    date: dmyToISO(recipe.Date),
+    linkYT: recipe.LinkYT,
+    titleGR: recipe.TitleGR, titleEN: recipe.TitleEN,
+    shortDescGR: recipe.ShortDescriptionGR, shortDescEN: recipe.ShortDescriptionEN,
+    ingredientsGR: htmlToLines(recipe.IngredientsGR), ingredientsEN: htmlToLines(recipe.IngredientsEN),
+    stepsGR: htmlToLines(recipe.ExecutionGR || ""), stepsEN: htmlToLines(recipe.ExecutionEN || ""),
+    longDescGR: recipe.LongDescriptionGR || "", longDescEN: recipe.LongDescriptionEN || "",
+    tagsGR: tagsJsonToCsv(recipe.TagsGR), tagsEN: tagsJsonToCsv(recipe.TagsEN),
+    photoUrl: recipe.Image || "",
+    prepTimeMinutes: recipe.PrepTimeMinutes?.toString() || "",
+    cookTimeMinutes: recipe.CookTimeMinutes?.toString() || "",
+    servings: recipe.Servings?.toString() || "",
+    difficulty: recipe.Difficulty || "",
+    caloriesPerServing: recipe.CaloriesPerServing?.toString() || "",
+  };
+}
+
+function formToRecipe(form: Form, shortId: string): Recipe {
+  const cat = CATEGORIES.find((c) => c.en === form.categoryEN);
+  return {
+    CategoryEN: form.categoryEN,
+    CategoryGR: cat?.gr ?? form.categoryEN,
+    Image: form.photoUrl || undefined,
+    TitleGR: form.titleGR,
+    TitleEN: form.titleEN,
+    ShortDescriptionGR: form.shortDescGR,
+    ShortDescriptionEN: form.shortDescEN,
+    LongDescriptionGR: form.longDescGR || undefined,
+    LongDescriptionEN: form.longDescEN || undefined,
+    IngredientsGR: toIngredients(form.ingredientsGR),
+    IngredientsEN: toIngredients(form.ingredientsEN),
+    ExecutionGR: toSteps(form.stepsGR),
+    ExecutionEN: toSteps(form.stepsEN),
+    TagsGR: toTags(form.tagsGR),
+    TagsEN: toTags(form.tagsEN),
+    LinkYT: form.linkYT,
+    Date: isoToDMY(form.date),
+    ShortID: shortId,
+    PrepTimeMinutes: form.prepTimeMinutes ? Number(form.prepTimeMinutes) : undefined,
+    CookTimeMinutes: form.cookTimeMinutes ? Number(form.cookTimeMinutes) : undefined,
+    Servings: form.servings ? Number(form.servings) : undefined,
+    Difficulty: form.difficulty || undefined,
+    CaloriesPerServing: form.caloriesPerServing ? Number(form.caloriesPerServing) : undefined,
+    CaloriesEstimated: false,
+  };
+}
+
+/* ================================================================== */
+/* Component                                                           */
+/* ================================================================== */
+
+export default function RecipeForm({
+  password,
+  recipe,
+  allRecipes,
+  onDone,
+  onCancel,
+}: {
+  password: string;
+  recipe: Recipe | null; // null = creating new
+  allRecipes: Recipe[];
+  onDone: () => void;
+  onCancel: () => void;
+}) {
+  const isEditing = recipe !== null;
+  const [form, setForm] = useState<Form>(() => recipeToForm(recipe));
+  const [status, setStatus] = useState<"idle" | "saving" | "error">("idle");
+  const [errMsg, setErrMsg] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+  const [deleting, setDeleting] = useState(false);
+  const [showPreview, setShowPreview] = useState(true);
+
+  const set = (key: keyof Form, val: string) => setForm((f) => ({ ...f, [key]: val }));
+
+  const inp  = "w-full px-3 py-2.5 rounded-lg border border-[#d9b08c] bg-white text-[#3e2c18] text-sm focus:outline-none focus:ring-2 focus:ring-[#a06b45] transition";
+  const area = `${inp} resize-y min-h-[130px]`;
+  const lbl  = "block text-[11px] font-bold text-[#5c4321] uppercase tracking-widest mb-1.5";
+  const card = "bg-white rounded-2xl border border-[#d9b08c] p-6 shadow-sm space-y-4";
+
+  const videoID = form.linkYT ? getYoutubeVideoID(form.linkYT) : null;
+  const ytThumb = videoID ? `https://img.youtube.com/vi/${videoID}/hqdefault.jpg` : null;
+
+  // Live draft, fed directly into the real RecipeClient template.
+  const draftRecipe = useMemo(
+    () => formToRecipe(form, recipe?.ShortID ?? "preview"),
+    [form, recipe]
+  );
+
+  async function handlePhotoUpload(file: File) {
+    setUploading(true);
+    setUploadError("");
+    try {
+      const body = new FormData();
+      body.append("password", password);
+      body.append("file", file);
+      const res = await fetch("/api/admin/photo", { method: "POST", body });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Upload failed");
+      set("photoUrl", data.url);
+    } catch (err: any) {
+      setUploadError(err.message);
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("saving");
+    setErrMsg("");
+
+    const draft = formToRecipe(form, recipe?.ShortID ?? "");
+    const row = recipeToRow(draft);
+
+    try {
+      const res = await fetch("/api/admin/recipe", {
+        method: isEditing ? "PUT" : "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(
+          isEditing ? { password, shortId: recipe!.ShortID, recipe: row } : { password, recipe: row }
+        ),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Unknown error");
+      onDone();
+    } catch (err: any) {
+      setStatus("error");
+      setErrMsg(err.message);
+    }
+  }
+
+  async function handleDelete() {
+    if (!recipe) return;
+    if (!confirm(`Delete "${recipe.TitleEN}"? This cannot be undone.`)) return;
+    setDeleting(true);
+    try {
+      const res = await fetch("/api/admin/recipe", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password, shortId: recipe.ShortID }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Unknown error");
+      onDone();
+    } catch (err: any) {
+      alert(`Failed to delete: ${err.message}`);
+      setDeleting(false);
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-[#f4ede4] pt-32 pb-24 px-4">
+      <div className="max-w-7xl mx-auto">
+
+        <div className="flex items-center justify-between mb-1">
+          <h1 className="text-3xl font-bold text-[#3e2c18]">
+            {isEditing ? "Edit Recipe" : "New Recipe"}
+          </h1>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setShowPreview((p) => !p)}
+              className="text-xs text-[#a06b45] hover:underline lg:hidden"
+            >
+              {showPreview ? "Hide preview" : "Show preview"}
+            </button>
+            <button onClick={onCancel} className="text-xs text-[#a06b45] hover:underline">
+              ← Back to list
+            </button>
+          </div>
+        </div>
+        <p className="text-sm text-[#5c4321] mb-8">
+          {isEditing
+            ? "Changes save straight to the live site — no rebuild needed."
+            : "Fill in the form and click Save. It goes live immediately."}
+        </p>
+
+        {status === "error" && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-300 rounded-xl text-red-800 text-sm">
+            <strong>Error:</strong> {errMsg}
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+          {/* ══════════════════ FORM ══════════════════ */}
+          <form onSubmit={handleSubmit} className="space-y-6">
+
+            {/* ── META ─────────────────────────────────── */}
+            <div className={card}>
+              <h2 className="font-bold text-[#3e2c18] text-base">Recipe Info</h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className={lbl}>Category</label>
+                  <select value={form.categoryEN} onChange={(e) => set("categoryEN", e.target.value)} className={inp}>
+                    {CATEGORIES.map((c) => (
+                      <option key={c.en} value={c.en}>{c.en} / {c.gr}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className={lbl}>Date</label>
+                  <input type="date" value={form.date} onChange={(e) => set("date", e.target.value)} className={inp} />
+                </div>
+              </div>
+
+              <div>
+                <label className={lbl}>YouTube URL</label>
+                <input
+                  type="text"
+                  value={form.linkYT}
+                  onChange={(e) => set("linkYT", e.target.value)}
+                  placeholder="https://www.youtube.com/watch?v=..."
+                  className={inp}
+                />
+              </div>
+
+              {/* Photo upload */}
+              <div>
+                <label className={lbl}>Recipe Photo</label>
+                <div className="flex items-center gap-4">
+                  {(form.photoUrl || ytThumb) && (
+                    <img
+                      src={form.photoUrl || ytThumb || ""}
+                      alt="Preview"
+                      className="w-24 h-24 rounded-xl object-cover border border-[#d9b08c]"
+                    />
+                  )}
+                  <div className="flex-1">
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp"
+                      disabled={uploading}
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) handlePhotoUpload(file);
+                      }}
+                      className="text-sm text-[#5c4321]"
+                    />
+                    {uploading && <p className="text-xs text-[#a06b45] mt-1">Uploading…</p>}
+                    {uploadError && <p className="text-xs text-red-600 mt-1">{uploadError}</p>}
+                    {!form.photoUrl && ytThumb && (
+                      <p className="text-xs text-[#5c4321] mt-1">No photo yet — using the YouTube thumbnail for now.</p>
+                    )}
+                    {form.photoUrl && (
+                      <button
+                        type="button"
+                        onClick={() => set("photoUrl", "")}
+                        className="text-xs text-red-600 hover:underline mt-1"
+                      >
+                        Remove photo
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ── TITLE + SHORT DESC ───────────────────── */}
+            <div className={card}>
+              <h2 className="font-bold text-[#3e2c18] text-base">Title & Short Description</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div>
+                    <label className={lbl}>🇬🇷 Title (Greek)</label>
+                    <input id="field-titleGR" required value={form.titleGR} onChange={(e) => set("titleGR", e.target.value)} className={inp} />
+                  </div>
+                  <div>
+                    <label className={lbl}>🇬🇷 Short Description</label>
+                    <textarea id="field-shortDescGR" required rows={3} value={form.shortDescGR} onChange={(e) => set("shortDescGR", e.target.value)} className={`${inp} resize-none`} />
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <label className={lbl}>🇬🇧 Title (English)</label>
+                    <input id="field-titleEN" required value={form.titleEN} onChange={(e) => set("titleEN", e.target.value)} className={inp} />
+                  </div>
+                  <div>
+                    <label className={lbl}>🇬🇧 Short Description</label>
+                    <textarea id="field-shortDescEN" required rows={3} value={form.shortDescEN} onChange={(e) => set("shortDescEN", e.target.value)} className={`${inp} resize-none`} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ── TIME / SERVINGS / DIFFICULTY / CALORIES ── */}
+            <div className={card}>
+              <h2 className="font-bold text-[#3e2c18] text-base">
+                Time & Nutrition <span className="text-xs font-normal text-[#a06b45]">optional</span>
+              </h2>
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+                <div>
+                  <label className={lbl}>Prep (min)</label>
+                  <input type="number" min="0" value={form.prepTimeMinutes} onChange={(e) => set("prepTimeMinutes", e.target.value)} className={inp} />
+                </div>
+                <div>
+                  <label className={lbl}>Cook (min)</label>
+                  <input type="number" min="0" value={form.cookTimeMinutes} onChange={(e) => set("cookTimeMinutes", e.target.value)} className={inp} />
+                </div>
+                <div>
+                  <label className={lbl}>Servings</label>
+                  <input type="number" min="0" value={form.servings} onChange={(e) => set("servings", e.target.value)} className={inp} />
+                </div>
+                <div>
+                  <label className={lbl}>Difficulty</label>
+                  <select value={form.difficulty} onChange={(e) => set("difficulty", e.target.value)} className={inp}>
+                    <option value="">—</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                  </select>
+                </div>
+                <div>
+                  <label className={lbl}>Calories</label>
+                  <input type="number" min="0" value={form.caloriesPerServing} onChange={(e) => set("caloriesPerServing", e.target.value)} className={inp} />
+                </div>
+              </div>
+            </div>
+
+            {/* ── INGREDIENTS ──────────────────────────── */}
+            <div className={card}>
+              <h2 className="font-bold text-[#3e2c18] text-base">Ingredients</h2>
+              <p className="text-xs text-[#5c4321]">One ingredient per line — each line becomes a separate item.</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className={lbl}>🇬🇷 Greek</label>
+                  <textarea id="field-ingredientsGR" required value={form.ingredientsGR} onChange={(e) => set("ingredientsGR", e.target.value)} className={area} />
+                </div>
+                <div>
+                  <label className={lbl}>🇬🇧 English</label>
+                  <textarea id="field-ingredientsEN" required value={form.ingredientsEN} onChange={(e) => set("ingredientsEN", e.target.value)} className={area} />
+                </div>
+              </div>
+            </div>
+
+            {/* ── STEPS ────────────────────────────────── */}
+            <div className={card}>
+              <h2 className="font-bold text-[#3e2c18] text-base">Steps</h2>
+              <p className="text-xs text-[#5c4321]">One step per line — they'll be numbered automatically on the recipe page.</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className={lbl}>🇬🇷 Greek</label>
+                  <textarea id="field-stepsGR" required value={form.stepsGR} onChange={(e) => set("stepsGR", e.target.value)} className={area} />
+                </div>
+                <div>
+                  <label className={lbl}>🇬🇧 English</label>
+                  <textarea id="field-stepsEN" required value={form.stepsEN} onChange={(e) => set("stepsEN", e.target.value)} className={area} />
+                </div>
+              </div>
+            </div>
+
+            {/* ── STORY (optional) ─────────────────────── */}
+            <div className={card}>
+              <h2 className="font-bold text-[#3e2c18] text-base">
+                Story / Long Description <span className="text-xs font-normal text-[#a06b45]">optional</span>
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className={lbl}>🇬🇷 Greek</label>
+                  <textarea value={form.longDescGR} onChange={(e) => set("longDescGR", e.target.value)} className={area} />
+                </div>
+                <div>
+                  <label className={lbl}>🇬🇧 English</label>
+                  <textarea value={form.longDescEN} onChange={(e) => set("longDescEN", e.target.value)} className={area} />
+                </div>
+              </div>
+            </div>
+
+            {/* ── TAGS (optional) ──────────────────────── */}
+            <div className={card}>
+              <h2 className="font-bold text-[#3e2c18] text-base">
+                Tags <span className="text-xs font-normal text-[#a06b45]">optional</span>
+              </h2>
+              <p className="text-xs text-[#5c4321]">Comma-separated. Used for search, categories, and similar-recipe suggestions.</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className={lbl}>🇬🇷 Greek tags</label>
+                  <input value={form.tagsGR} onChange={(e) => set("tagsGR", e.target.value)} placeholder="Γλυκό, Παραδοσιακό, ..." className={inp} />
+                </div>
+                <div>
+                  <label className={lbl}>🇬🇧 English tags</label>
+                  <input value={form.tagsEN} onChange={(e) => set("tagsEN", e.target.value)} placeholder="Dessert, Traditional, ..." className={inp} />
+                </div>
+              </div>
+            </div>
+
+            {/* ── SUBMIT ───────────────────────────────── */}
+            <div className="flex items-center justify-between pt-2">
+              {isEditing ? (
+                <button
+                  type="button"
+                  onClick={handleDelete}
+                  disabled={deleting}
+                  className="px-5 py-3 text-red-700 hover:bg-red-50 disabled:opacity-50 font-semibold rounded-xl transition-colors text-sm"
+                >
+                  {deleting ? "Deleting…" : "Delete Recipe"}
+                </button>
+              ) : <span />}
+              <button
+                type="submit"
+                disabled={status === "saving"}
+                className="px-8 py-3 bg-[#8c5e3c] hover:bg-[#a06b45] disabled:opacity-50 text-white font-semibold rounded-xl transition-colors shadow-lg text-sm"
+              >
+                {status === "saving" ? "Saving…" : isEditing ? "Save Changes →" : "Publish Recipe →"}
+              </button>
+            </div>
+          </form>
+
+          {/* ══════════════════ LIVE PREVIEW ══════════════════ */}
+          <div className={`${showPreview ? "block" : "hidden"} lg:block lg:sticky lg:top-24`}>
+            <p className="text-[11px] font-bold text-[#5c4321] uppercase tracking-widest mb-2">
+              Live Preview — exactly what visitors will see
+            </p>
+            <div className="rounded-2xl border border-[#8c5e3c]/40 shadow-lg overflow-hidden max-h-[80vh] overflow-y-auto">
+              <RecipeClient recipe={draftRecipe} recipes={allRecipes} previewMode />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}

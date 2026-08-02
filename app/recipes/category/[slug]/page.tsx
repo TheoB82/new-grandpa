@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { categoryMapping } from "@/utils/categoryMapping";
+import { getAllRecipes } from "@/utils/recipesData";
 import CategoryClient from "./category-client";
+
+export const revalidate = 60;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -41,5 +44,7 @@ export default async function CategoryPage({ params }: PageProps) {
   const category = findCategory(slug);
   if (!category) return notFound();
 
-  return <CategoryClient category={category} />;
+  const recipes = await getAllRecipes();
+
+  return <CategoryClient category={category} recipes={recipes} />;
 }

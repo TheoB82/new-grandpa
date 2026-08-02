@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import recipes from "@/data/recipes.json";
 import type { Recipe } from "@/types/recipe";
 import type { CategoryItem } from "@/utils/categoryMapping";
 import { categoryMapping } from "@/utils/categoryMapping";
@@ -11,7 +10,8 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const stripAccents = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "");
 
-function getThumb(url: string) {
+function getThumb(photoUrl: string | undefined, url: string) {
+  if (photoUrl) return photoUrl;
   if (!url) return "/placeholder.jpg";
   try {
     const u = new URL(url);
@@ -25,11 +25,11 @@ function getThumb(url: string) {
   }
 }
 
-export default function CategoryClient({ category }: { category: CategoryItem }) {
+export default function CategoryClient({ category, recipes }: { category: CategoryItem; recipes: Recipe[] }) {
   const { lang } = useLanguage();
   const displayName = lang === "gr" ? category.gr : category.en;
 
-  const matched = (recipes as Recipe[])
+  const matched = recipes
     .filter((r) => matchesCategory(r, category, lang))
     .sort((a, b) => parseDate(b.Date).getTime() - parseDate(a.Date).getTime());
 
@@ -86,7 +86,7 @@ export default function CategoryClient({ category }: { category: CategoryItem })
                 <div className="w-full aspect-video overflow-hidden">
                   <img
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    src={getThumb(r.LinkYT)}
+                    src={getThumb(r.Image, r.LinkYT)}
                     alt={title}
                   />
                 </div>
