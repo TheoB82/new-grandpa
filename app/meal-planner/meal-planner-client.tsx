@@ -82,6 +82,12 @@ function fromStoredDays(stored: StoredDay[], recipes: Recipe[]): DayPlan[] {
 export default function MealPlannerClient({ recipes }: { recipes: Recipe[] }) {
   const { lang } = useLanguage();
 
+  // Not yet public — gated behind the same admin password until this is fully worked out.
+  const [unlocked, setUnlocked] = useState(false);
+  const [gatePassword, setGatePassword] = useState("");
+  const [gateError, setGateError] = useState("");
+  const [checkingGate, setCheckingGate] = useState(false);
+
   const [hydrated, setHydrated] = useState(false);
   const [familySize, setFamilySize] = useState(4);
   const [fastingEnabled, setFastingEnabled] = useState(true);
@@ -210,8 +216,67 @@ export default function MealPlannerClient({ recipes }: { recipes: Recipe[] }) {
     }
   }
 
-  const dayNames = DAY_NAMES[lang];
   const inp = "px-3 py-2 rounded-lg border border-[#d9b08c] bg-white text-[#3e2c18] text-sm focus:outline-none focus:ring-2 focus:ring-[#a06b45] transition";
+
+  async function handleUnlockGate(e: React.FormEvent) {
+    e.preventDefault();
+    setCheckingGate(true);
+    setGateError("");
+    try {
+      const res = await fetch("/api/admin/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: gatePassword }),
+      });
+      if (res.ok) {
+        setUnlocked(true);
+      } else {
+        setGateError("Wrong password.");
+        setGatePassword("");
+      }
+    } catch {
+      setGateError("Could not reach server. Try again.");
+    } finally {
+      setCheckingGate(false);
+    }
+  }
+
+  if (!unlocked) {
+    return (
+      <div className="min-h-screen bg-[#f4ede4] flex items-center justify-center px-4">
+        <div className="bg-white rounded-2xl border border-[#d9b08c] p-8 shadow-sm w-full max-w-sm">
+          <div className="text-4xl mb-4 text-center">🚧</div>
+          <h1 className="text-2xl font-bold text-[#3e2c18] mb-1 text-center">
+            {lang === "gr" ? "Έρχεται σύντομα" : "Coming soon"}
+          </h1>
+          <p className="text-sm text-[#5c4321] mb-6 text-center">
+            {lang === "gr" ? "Αυτή η σελίδα είναι ακόμα υπό κατασκευή." : "This page is still being worked on."}
+          </p>
+          {gateError && <p className="text-red-600 text-sm mb-4 text-center font-medium">{gateError}</p>}
+          <form onSubmit={handleUnlockGate} className="space-y-4">
+            <input
+              type="password"
+              required
+              autoFocus
+              value={gatePassword}
+              onChange={(e) => setGatePassword(e.target.value)}
+              placeholder="Password"
+              className={`${inp} w-full`}
+            />
+            <button
+              type="submit"
+              disabled={checkingGate}
+              className="w-full py-3 bg-[#8c5e3c] hover:bg-[#a06b45] disabled:opacity-50 text-white font-semibold rounded-xl transition-colors text-sm"
+            >
+              {checkingGate ? "Checking…" : "Enter →"}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  const dayNames = DAY_NAMES[lang];
 
   const groupedShopping: Record<string, ShoppingItem[]> = {};
   for (const item of shoppingList ?? []) {

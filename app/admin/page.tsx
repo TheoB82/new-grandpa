@@ -153,12 +153,17 @@ export default function AdminPage() {
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center justify-between mb-1">
           <h1 className="text-3xl font-bold text-[#3e2c18]">Recipes</h1>
-          <button
-            onClick={() => { setUnlocked(false); setPassword(""); }}
-            className="text-xs text-[#a06b45] hover:underline"
-          >
-            🔒 Lock
-          </button>
+          <div className="flex items-center gap-4">
+            <a href="/meal-planner" target="_blank" rel="noopener noreferrer" className="text-xs text-[#a06b45] hover:underline">
+              🍽️ Preview Suggestions
+            </a>
+            <button
+              onClick={() => { setUnlocked(false); setPassword(""); }}
+              className="text-xs text-[#a06b45] hover:underline"
+            >
+              🔒 Lock
+            </button>
+          </div>
         </div>
         <p className="text-sm text-[#5c4321] mb-8">
           {recipes.length} recipe{recipes.length === 1 ? "" : "s"}. Click one to edit, or create a new one.

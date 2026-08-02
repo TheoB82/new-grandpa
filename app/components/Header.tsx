@@ -126,9 +126,6 @@ export default function Header() {
 
           {/* PAGE LINKS — desktop only */}
           <div className="hidden sm:flex items-center gap-4 text-sm">
-            <Link href="/meal-planner" className={inactiveClass}>
-              {lang === "gr" ? "Προτάσεις" : "Suggestions"}
-            </Link>
             <Link href="/about" className={inactiveClass}>
               {lang === "gr" ? "Ο Παππούς" : "About"}
             </Link>
@@ -296,14 +293,6 @@ export default function Header() {
                 {c.name}
               </button>
             ))}
-
-            <Link
-              href="/meal-planner"
-              onClick={() => setMobileOpen(false)}
-              className="px-4 py-2.5 rounded-full bg-black/20 text-[--brand] border border-[--brand]"
-            >
-              {lang === "gr" ? "Προτάσεις" : "Suggestions"}
-            </Link>
 
             <Link
               href="/about"
