@@ -224,7 +224,7 @@ export default function MealPlannerClient({ recipes }: { recipes: Recipe[] }) {
 
         <div className="text-center mb-10">
           <h1 className="text-3xl sm:text-4xl font-bold text-[#3e2c18] mb-3">
-            {lang === "gr" ? "Πρόγραμμα Γευμάτων Εβδομάδας" : "Weekly Meal Planner"}
+            {lang === "gr" ? "Προτάσεις Εβδομάδας" : "Weekly Suggestions"}
           </h1>
           <p className="text-[#5c4321] max-w-xl mx-auto">
             {lang === "gr"

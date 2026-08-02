@@ -34,17 +34,17 @@ export type ShoppingItem = { name: string; quantity: string; category: string };
 const COPY = {
   gr: {
     eyebrow: "Ο παππούς ο Τάσος μαγειρεύει",
-    title: "Το εβδομαδιαίο πρόγραμμα γευμάτων σου",
+    title: "Οι προτάσεις της εβδομάδας σου",
     fastingBadge: "Νηστίσιμο",
     shoppingHeading: "Λίστα για ψώνια",
-    subject: "Το εβδομαδιαίο πρόγραμμα γευμάτων σου",
+    subject: "Οι προτάσεις της εβδομάδας σου",
   },
   en: {
     eyebrow: "Grandpa Tassos Cooking",
-    title: "Your weekly meal plan",
+    title: "Your weekly suggestions",
     fastingBadge: "Fasting day",
     shoppingHeading: "Shopping list",
-    subject: "Your weekly meal plan",
+    subject: "Your weekly suggestions",
   },
 };
 
