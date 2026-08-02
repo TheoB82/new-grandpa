@@ -148,6 +148,86 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Recipe meta bar — prep/cook time, servings, difficulty, calories    */
+/* ------------------------------------------------------------------ */
+
+const DIFFICULTY_GR: Record<string, string> = { Easy: "Εύκολο", Medium: "Μέτριο", Hard: "Δύσκολο" };
+
+function RecipeMeta({ recipe, lang }: { recipe: Recipe; lang: "gr" | "en" }) {
+  const iconCls = "w-4 h-4 shrink-0 text-[#fdd9a1]/70";
+  const items: { key: string; icon: React.ReactNode; label: string }[] = [];
+
+  if (recipe.PrepTimeMinutes != null) {
+    items.push({
+      key: "prep",
+      icon: (
+        <svg className={iconCls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      label: `${lang === "gr" ? "Προετ." : "Prep"} ${recipe.PrepTimeMinutes}${lang === "gr" ? "λ." : "m"}`,
+    });
+  }
+  if (recipe.CookTimeMinutes != null) {
+    items.push({
+      key: "cook",
+      icon: (
+        <svg className={iconCls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      label: `${lang === "gr" ? "Μαγ." : "Cook"} ${recipe.CookTimeMinutes}${lang === "gr" ? "λ." : "m"}`,
+    });
+  }
+  if (recipe.Servings != null) {
+    items.push({
+      key: "servings",
+      icon: (
+        <svg className={iconCls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.1a7.5 7.5 0 0115 0" />
+        </svg>
+      ),
+      label: `${recipe.Servings} ${lang === "gr" ? "μερίδες" : "servings"}`,
+    });
+  }
+  if (recipe.Difficulty) {
+    items.push({
+      key: "difficulty",
+      icon: (
+        <svg className={iconCls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 20V10M12 20V4M20 20v-7" />
+        </svg>
+      ),
+      label: lang === "gr" ? (DIFFICULTY_GR[recipe.Difficulty] || recipe.Difficulty) : recipe.Difficulty,
+    });
+  }
+  if (recipe.CaloriesPerServing != null) {
+    items.push({
+      key: "calories",
+      icon: (
+        <svg className={iconCls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15.4 5.2A8.25 8.25 0 0112 21a8.25 8.25 0 01-5.96-13.95A8.3 8.3 0 009 9.6a9 9 0 013.36-6.87 8.2 8.2 0 003 2.48z" />
+        </svg>
+      ),
+      label: `${recipe.CaloriesEstimated ? "~" : ""}${recipe.CaloriesPerServing} ${lang === "gr" ? "θερμ./μερίδα" : "kcal/serving"}`,
+    });
+  }
+
+  if (items.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mb-6 text-sm text-white/60">
+      {items.map((item) => (
+        <span key={item.key} className="inline-flex items-center gap-1.5">
+          {item.icon}
+          {item.label}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* Similar recipes helper                                              */
 /* ------------------------------------------------------------------ */
 
@@ -225,6 +305,8 @@ export default function RecipeClient({ recipe }: { recipe: Recipe }) {
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">{title}</h1>
           <p className="text-base md:text-lg text-white/65 max-w-xl mx-auto mb-3">{shortDesc}</p>
+
+          <RecipeMeta recipe={recipe} lang={lang} />
 
           {date && (
             <p className="text-xs text-white/35 mb-8 print:hidden">
