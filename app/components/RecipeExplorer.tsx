@@ -7,95 +7,9 @@ import recipes from "@/data/recipes.json";
 import type { Recipe } from "@/types/recipe";
 import { categoryMapping } from "@/utils/categoryMapping";
 import { matchesCategory } from "@/utils/matchesCategory";
+import { searchRecipes } from "@/utils/searchRecipes";
 import { parseDate } from "@/utils/parseDate";
 import { useLanguage } from "@/context/LanguageContext";
-
-/* ------------------------------------------------------------------ */
-/* Search utilities                                                    */
-/* ------------------------------------------------------------------ */
-
-function normalize(str: string): string {
-  if (!str) return "";
-  return str.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/ς/g, "σ");
-}
-
-const GREEK_LATIN: Record<string, string> = {
-  α:"a", ά:"a", Α:"a", Ά:"a", β:"v", Β:"v", γ:"g", Γ:"g", δ:"d", Δ:"d",
-  ε:"e", έ:"e", Ε:"e", Έ:"e", ζ:"z", Ζ:"z", η:"i", ή:"i", Η:"i", Ή:"i",
-  θ:"th", Θ:"th", ι:"i", ί:"i", ϊ:"i", ΐ:"i", Ι:"i", Ί:"i", κ:"k", Κ:"k",
-  λ:"l", Λ:"l", μ:"m", Μ:"m", ν:"n", Ν:"n", ξ:"x", Ξ:"x", ο:"o", ό:"o",
-  Ο:"o", Ό:"o", π:"p", Π:"p", ρ:"r", Ρ:"r", σ:"s", ς:"s", Σ:"s", τ:"t",
-  Τ:"t", υ:"y", ύ:"y", ϋ:"y", ΰ:"y", Υ:"y", Ύ:"y", φ:"f", Φ:"f", χ:"x",
-  Χ:"x", ψ:"ps", Ψ:"ps", ω:"o", ώ:"o", Ω:"o", Ώ:"o",
-};
-
-function latinize(str: string): string {
-  return str.split("").map(ch => GREEK_LATIN[ch] ?? ch).join("").toLowerCase();
-}
-
-function stripHtml(html: string): string {
-  return html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-}
-
-function fuzzyIncludes(text: string, word: string): boolean {
-  if (!text || !word) return false;
-  const t = normalize(text);
-  const w = normalize(word);
-  if (t.includes(w)) return true;
-  const maxDist = w.length <= 4 ? 1 : 2;
-  for (let i = 0; i <= t.length - w.length; i++) {
-    let dist = 0;
-    for (let j = 0; j < w.length; j++) {
-      if (t[i + j] !== w[j]) dist++;
-      if (dist > maxDist) break;
-    }
-    if (dist <= maxDist) return true;
-  }
-  return false;
-}
-
-// Score a single word against one recipe.
-// Higher = more relevant. Exact title wins, ingredient match is last resort.
-function scoreWord(r: Recipe, word: string): number {
-  const w   = normalize(word);
-  const wLat = w; // user typed Latin already
-  const titleEN  = normalize(r.TitleEN);
-  const titleGR  = normalize(r.TitleGR);
-  const titleLat = latinize(r.TitleGR);
-
-  // Exact title match
-  if (titleEN === w || titleGR === w || titleLat === wLat) return 100;
-  // Title starts with word
-  if (titleEN.startsWith(w) || titleGR.startsWith(w) || titleLat.startsWith(wLat)) return 80;
-  // Transliterated title contains word
-  if (titleLat.includes(wLat)) return 65;
-  // Title contains word
-  if (titleEN.includes(w) || titleGR.includes(w)) return 60;
-  // Category exact
-  if (normalize(r.CategoryEN) === w || normalize(r.CategoryGR) === w) return 50;
-  // Category contains
-  if (normalize(r.CategoryEN).includes(w) || normalize(r.CategoryGR).includes(w)) return 40;
-  // Tags
-  if (fuzzyIncludes(String(r.TagsEN), word) || fuzzyIncludes(String(r.TagsGR), word)) return 30;
-  // Short description
-  if (fuzzyIncludes(r.ShortDescriptionEN, word) || fuzzyIncludes(r.ShortDescriptionGR, word)) return 20;
-  // Ingredients / steps (broadest net, lowest score)
-  if (
-    fuzzyIncludes(stripHtml(r.IngredientsEN || ""), word) ||
-    fuzzyIncludes(stripHtml(r.IngredientsGR || ""), word)
-  ) return 10;
-  // Fuzzy title fallback
-  if (fuzzyIncludes(r.TitleEN, word) || fuzzyIncludes(r.TitleGR, word)) return 5;
-  return 0;
-}
-
-function scoreRecipe(r: Recipe, words: string[]): number {
-  return words.reduce((sum, w) => sum + scoreWord(r, w), 0);
-}
-
-function wordMatchesRecipe(r: Recipe, word: string): boolean {
-  return scoreWord(r, word) > 0;
-}
 
 /* ------------------------------------------------------------------ */
 /* Other utilities                                                     */
@@ -153,30 +67,19 @@ export default function RecipeExplorer() {
     return counts;
   }, [sortedRecipes, lang, categories]);
 
-  // Filter + sort by relevance when searching, date otherwise.
+  // Filter by category first, then search + relevance-sort within that set.
   const filtered = useMemo(() => {
-    const words = search.trim().split(/\s+/).filter(Boolean);
+    const activeCategory = selectedCategory
+      ? categories.find((c) => c.name === selectedCategory)
+      : null;
 
-    const matches = sortedRecipes.filter((r) => {
-      const activeCategory = selectedCategory
-        ? categories.find((c) => c.name === selectedCategory)
-        : null;
+    const inCategory = activeCategory
+      ? sortedRecipes.filter((r) => matchesCategory(r, activeCategory, lang))
+      : sortedRecipes;
 
-      const isInCategory = !activeCategory || matchesCategory(r, activeCategory, lang);
+    if (!search.trim()) return inCategory; // already sorted by date
 
-      if (!search.trim()) return isInCategory;
-
-      const matchesSearch = words.every(word => wordMatchesRecipe(r, word));
-      return matchesSearch && isInCategory;
-    });
-
-    if (!search.trim()) return matches; // already sorted by date
-
-    // Sort by relevance score (sum across all words), date as tiebreaker
-    return matches
-      .map(r => ({ r, score: scoreRecipe(r, words) }))
-      .sort((a, b) => b.score - a.score || parseDate(b.r.Date).getTime() - parseDate(a.r.Date).getTime())
-      .map(s => s.r);
+    return searchRecipes(inCategory, search);
   }, [sortedRecipes, search, selectedCategory, lang, categories]);
 
   useEffect(() => { setVisible(12); }, [selectedCategory, search]);

@@ -41,6 +41,11 @@ export default function Header() {
 
   const categories = categoryMapping[lang];
 
+  const goToSearch = () => {
+    const q = search.trim();
+    router.push(q ? `/search?q=${encodeURIComponent(q)}` : "/search");
+  };
+
   const goHomeAndTop = () => {
     router.push("/");
     setSelectedCategory(null);
@@ -88,12 +93,7 @@ export default function Header() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  router.push("/");
-                  setTimeout(() => {
-                    document.getElementById("recipes-start")?.scrollIntoView({ behavior: "smooth" });
-                  }, 150);
-                }
+                if (e.key === "Enter") goToSearch();
               }}
               className={`w-full py-2 rounded-lg bg-black/25 border border-[--header-border] text-[--header-text] placeholder-[--header-muted] ${search ? "pl-3 pr-8" : "px-3"}`}
             />
@@ -110,12 +110,7 @@ export default function Header() {
             )}
           </div>
           <button
-            onClick={() => {
-              router.push("/");
-              setTimeout(() => {
-                document.getElementById("recipes-start")?.scrollIntoView({ behavior: "smooth" });
-              }, 150);
-            }}
+            onClick={goToSearch}
             aria-label="Search"
             className="w-9 h-9 flex items-center justify-center rounded-lg bg-[--brand] text-white hover:opacity-90 transition shrink-0"
           >
@@ -207,6 +202,12 @@ export default function Header() {
                 placeholder={lang === "gr" ? "Αναζήτηση..." : "Search..."}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    setMobileOpen(false);
+                    goToSearch();
+                  }
+                }}
                 className={`w-full py-2.5 rounded-lg bg-black/30 border border-[--chip-border] text-[--header-text] placeholder-[--header-muted] ${search ? "pl-3 pr-8" : "px-3"}`}
               />
               {search && (
@@ -221,15 +222,11 @@ export default function Header() {
                 </button>
               )}
             </div>
-            {/* Search icon — closes menu and scrolls to results */}
+            {/* Search icon — closes menu, navigates to /search */}
             <button
               onClick={() => {
                 setMobileOpen(false);
-                router.push("/");
-                setTimeout(() => {
-                  const el = document.getElementById("recipes-start");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }, 150);
+                goToSearch();
               }}
               aria-label="Search"
               className="shrink-0 w-10 h-10 flex items-center justify-center rounded-lg bg-[--brand] text-white"
