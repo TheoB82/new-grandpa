@@ -26,7 +26,15 @@ export interface Recipe {
 
     ShortID: string;
 
-  
+
     Date: string; // dd/mm/yyyy or yyyy-mm-dd
+
+    // Enrichment fields (backfilled via scripts/enrich-recipes.mjs; optional until fully populated)
+    PrepTimeMinutes?: number;
+    CookTimeMinutes?: number;
+    Servings?: number;
+    Difficulty?: "Easy" | "Medium" | "Hard";
+    CaloriesPerServing?: number;
+    CaloriesEstimated?: boolean; // true = AI-estimated, not lab-verified
   }
   
