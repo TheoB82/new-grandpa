@@ -227,6 +227,82 @@ function RecipeMeta({ recipe, lang }: { recipe: Recipe; lang: "gr" | "en" }) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Photo gallery — extra recipe photos, with a lightbox                */
+/* ------------------------------------------------------------------ */
+
+function PhotoGallery({ photos, title }: { photos: string[]; title: string }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  if (photos.length === 0) return null;
+
+  return (
+    <>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {photos.map((url, i) => (
+          <button
+            key={url}
+            type="button"
+            onClick={() => setOpenIndex(i)}
+            className="group relative aspect-square rounded-xl overflow-hidden border border-[#8c5e3c]/30 hover:border-[#8c5e3c]/70 transition"
+          >
+            <img
+              src={url}
+              alt={`${title} ${i + 1}`}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </button>
+        ))}
+      </div>
+
+      {openIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6 print:hidden"
+          onClick={() => setOpenIndex(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setOpenIndex(null)}
+            className="absolute top-5 right-5 text-white/70 hover:text-white text-3xl leading-none"
+            aria-label="Close"
+          >
+            &times;
+          </button>
+
+          {photos.length > 1 && (
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); setOpenIndex((openIndex - 1 + photos.length) % photos.length); }}
+              className="absolute left-3 sm:left-6 text-white/70 hover:text-white text-4xl px-2"
+              aria-label="Previous photo"
+            >
+              ‹
+            </button>
+          )}
+
+          <img
+            src={photos[openIndex]}
+            alt={`${title} ${openIndex + 1}`}
+            className="max-w-full max-h-full rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {photos.length > 1 && (
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); setOpenIndex((openIndex + 1) % photos.length); }}
+              className="absolute right-3 sm:right-6 text-white/70 hover:text-white text-4xl px-2"
+              aria-label="Next photo"
+            >
+              ›
+            </button>
+          )}
+        </div>
+      )}
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* Similar recipes helper                                              */
 /* ------------------------------------------------------------------ */
 
@@ -381,6 +457,14 @@ export default function RecipeClient({
           </div>
 
         </div>
+
+        {/* PHOTOS */}
+        {recipe.GalleryPhotos && recipe.GalleryPhotos.length > 0 && (
+          <div className="mt-14">
+            <SectionHeading>{lang === "gr" ? "Φωτογραφίες" : "Photos"}</SectionHeading>
+            <PhotoGallery photos={recipe.GalleryPhotos} title={title} />
+          </div>
+        )}
 
         {/* SIMILAR RECIPES */}
         {similar.length > 0 && (

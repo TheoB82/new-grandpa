@@ -3,7 +3,8 @@ export interface Recipe {
     CategoryEN: string;
   
     Image?: string;
-  
+    GalleryPhotos?: string[]; // additional photos shown on the recipe page itself
+
     TitleGR: string;
     TitleEN: string;
   

@@ -88,6 +88,7 @@ type Form = {
   longDescGR: string; longDescEN: string;
   tagsGR: string; tagsEN: string;
   photoUrl: string;
+  galleryPhotos: string[];
   prepTimeMinutes: string;
   cookTimeMinutes: string;
   servings: string;
@@ -108,6 +109,7 @@ function recipeToForm(recipe: Recipe | null): Form {
       longDescGR: "", longDescEN: "",
       tagsGR: "", tagsEN: "",
       photoUrl: "",
+      galleryPhotos: [],
       prepTimeMinutes: "", cookTimeMinutes: "", servings: "",
       difficulty: "", caloriesPerServing: "",
     };
@@ -123,6 +125,7 @@ function recipeToForm(recipe: Recipe | null): Form {
     longDescGR: recipe.LongDescriptionGR || "", longDescEN: recipe.LongDescriptionEN || "",
     tagsGR: tagsJsonToCsv(recipe.TagsGR), tagsEN: tagsJsonToCsv(recipe.TagsEN),
     photoUrl: recipe.Image || "",
+    galleryPhotos: recipe.GalleryPhotos || [],
     prepTimeMinutes: recipe.PrepTimeMinutes?.toString() || "",
     cookTimeMinutes: recipe.CookTimeMinutes?.toString() || "",
     servings: recipe.Servings?.toString() || "",
@@ -137,6 +140,7 @@ function formToRecipe(form: Form, shortId: string): Recipe {
     CategoryEN: form.categoryEN,
     CategoryGR: cat?.gr ?? form.categoryEN,
     Image: form.photoUrl || undefined,
+    GalleryPhotos: form.galleryPhotos,
     TitleGR: form.titleGR,
     TitleEN: form.titleEN,
     ShortDescriptionGR: form.shortDescGR,
@@ -186,6 +190,10 @@ export default function RecipeForm({
   const [uploadError, setUploadError] = useState("");
   const [deleting, setDeleting] = useState(false);
   const [showPreview, setShowPreview] = useState(true);
+  const [translating, setTranslating] = useState(false);
+  const [translateError, setTranslateError] = useState("");
+  const [enriching, setEnriching] = useState(false);
+  const [enrichError, setEnrichError] = useState("");
 
   const set = (key: keyof Form, val: string) => setForm((f) => ({ ...f, [key]: val }));
 
@@ -203,21 +211,110 @@ export default function RecipeForm({
     [form, recipe]
   );
 
-  async function handlePhotoUpload(file: File) {
+  async function handlePhotoUpload(files: FileList) {
     setUploading(true);
     setUploadError("");
     try {
-      const body = new FormData();
-      body.append("password", password);
-      body.append("file", file);
-      const res = await fetch("/api/admin/photo", { method: "POST", body });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Upload failed");
-      set("photoUrl", data.url);
+      const uploaded: string[] = [];
+      for (const file of Array.from(files)) {
+        const body = new FormData();
+        body.append("password", password);
+        body.append("file", file);
+        const res = await fetch("/api/admin/photo", { method: "POST", body });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Upload failed");
+        uploaded.push(data.url);
+      }
+      setForm((f) => ({
+        ...f,
+        galleryPhotos: [...f.galleryPhotos, ...uploaded],
+        photoUrl: f.photoUrl || uploaded[0], // first photo ever becomes the cover automatically
+      }));
     } catch (err: any) {
       setUploadError(err.message);
     } finally {
       setUploading(false);
+    }
+  }
+
+  function removePhoto(url: string) {
+    setForm((f) => {
+      const galleryPhotos = f.galleryPhotos.filter((u) => u !== url);
+      return {
+        ...f,
+        galleryPhotos,
+        photoUrl: f.photoUrl === url ? (galleryPhotos[0] || "") : f.photoUrl,
+      };
+    });
+  }
+
+  async function handleTranslate() {
+    const hasExistingEN = !!(form.titleEN || form.shortDescEN || form.ingredientsEN || form.stepsEN);
+    if (hasExistingEN && !confirm("This will overwrite the existing English fields with a fresh translation. Continue?")) {
+      return;
+    }
+    setTranslating(true);
+    setTranslateError("");
+    try {
+      const res = await fetch("/api/admin/translate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          password,
+          titleGR: form.titleGR,
+          shortDescGR: form.shortDescGR,
+          longDescGR: form.longDescGR,
+          ingredientsGR: form.ingredientsGR.split("\n").map((l) => l.trim()).filter(Boolean),
+          stepsGR: form.stepsGR.split("\n").map((l) => l.trim()).filter(Boolean),
+          tagsGR: form.tagsGR.split(",").map((t) => t.trim()).filter(Boolean),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Translation failed");
+      setForm((f) => ({
+        ...f,
+        titleEN: data.titleEN ?? f.titleEN,
+        shortDescEN: data.shortDescEN ?? f.shortDescEN,
+        longDescEN: data.longDescEN ?? f.longDescEN,
+        ingredientsEN: Array.isArray(data.ingredientsEN) ? data.ingredientsEN.join("\n") : f.ingredientsEN,
+        stepsEN: Array.isArray(data.stepsEN) ? data.stepsEN.join("\n") : f.stepsEN,
+        tagsEN: Array.isArray(data.tagsEN) ? data.tagsEN.join(", ") : f.tagsEN,
+      }));
+    } catch (err: any) {
+      setTranslateError(err.message);
+    } finally {
+      setTranslating(false);
+    }
+  }
+
+  async function handleAutoFillNutrition() {
+    setEnriching(true);
+    setEnrichError("");
+    try {
+      const res = await fetch("/api/admin/enrich", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          password,
+          title: form.titleEN || form.titleGR,
+          ingredients: (form.ingredientsEN || form.ingredientsGR),
+          steps: (form.stepsEN || form.stepsGR),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Auto-fill failed");
+      setForm((f) => ({
+        ...f,
+        prepTimeMinutes: data.prepTimeMinutes != null ? String(data.prepTimeMinutes) : f.prepTimeMinutes,
+        cookTimeMinutes: data.cookTimeMinutes != null ? String(data.cookTimeMinutes) : f.cookTimeMinutes,
+        servings: data.servings != null ? String(data.servings) : f.servings,
+        difficulty: data.difficulty || f.difficulty,
+        caloriesPerServing: data.caloriesPerServing != null ? String(data.caloriesPerServing) : f.caloriesPerServing,
+      }));
+    } catch (err: any) {
+      setEnrichError(err.message);
+    } finally {
+      setEnriching(false);
     }
   }
 
@@ -275,6 +372,14 @@ export default function RecipeForm({
           </h1>
           <div className="flex items-center gap-4">
             <button
+              type="button"
+              onClick={handleTranslate}
+              disabled={translating || !(form.titleGR || form.ingredientsGR || form.stepsGR)}
+              className="text-xs px-3 py-1.5 rounded-lg bg-[#8c5e3c]/10 text-[#8c5e3c] hover:bg-[#8c5e3c]/20 disabled:opacity-40 font-semibold transition-colors whitespace-nowrap"
+            >
+              {translating ? "Translating…" : "🌐 Translate GR → EN"}
+            </button>
+            <button
               onClick={() => setShowPreview((p) => !p)}
               className="text-xs text-[#a06b45] hover:underline lg:hidden"
             >
@@ -294,6 +399,12 @@ export default function RecipeForm({
         {status === "error" && (
           <div className="mb-6 p-4 bg-red-50 border border-red-300 rounded-xl text-red-800 text-sm">
             <strong>Error:</strong> {errMsg}
+          </div>
+        )}
+
+        {translateError && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-300 rounded-xl text-red-800 text-sm">
+            <strong>Translation failed:</strong> {translateError}
           </div>
         )}
 
@@ -332,44 +443,72 @@ export default function RecipeForm({
                 />
               </div>
 
-              {/* Photo upload */}
+              {/* Photos */}
               <div>
-                <label className={lbl}>Recipe Photo</label>
-                <div className="flex items-center gap-4">
-                  {(form.photoUrl || ytThumb) && (
-                    <img
-                      src={form.photoUrl || ytThumb || ""}
-                      alt="Preview"
-                      className="w-24 h-24 rounded-xl object-cover border border-[#d9b08c]"
-                    />
-                  )}
-                  <div className="flex-1">
-                    <input
-                      type="file"
-                      accept="image/jpeg,image/png,image/webp"
-                      disabled={uploading}
-                      onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) handlePhotoUpload(file);
-                      }}
-                      className="text-sm text-[#5c4321]"
-                    />
-                    {uploading && <p className="text-xs text-[#a06b45] mt-1">Uploading…</p>}
-                    {uploadError && <p className="text-xs text-red-600 mt-1">{uploadError}</p>}
-                    {!form.photoUrl && ytThumb && (
-                      <p className="text-xs text-[#5c4321] mt-1">No photo yet — using the YouTube thumbnail for now.</p>
-                    )}
-                    {form.photoUrl && (
-                      <button
-                        type="button"
-                        onClick={() => set("photoUrl", "")}
-                        className="text-xs text-red-600 hover:underline mt-1"
-                      >
-                        Remove photo
-                      </button>
-                    )}
+                <label className={lbl}>Photos</label>
+                <p className="text-xs text-[#5c4321] mb-2">
+                  Upload one or more. The ★ cover photo is used for thumbnails across the site; every photo here also
+                  shows in a gallery on the recipe page itself.
+                </p>
+
+                <input
+                  type="file"
+                  multiple
+                  accept="image/jpeg,image/png,image/webp"
+                  disabled={uploading}
+                  onChange={(e) => {
+                    const files = e.target.files;
+                    if (files && files.length) handlePhotoUpload(files);
+                    e.target.value = "";
+                  }}
+                  className="text-sm text-[#5c4321]"
+                />
+                {uploading && <p className="text-xs text-[#a06b45] mt-1">Uploading…</p>}
+                {uploadError && <p className="text-xs text-red-600 mt-1">{uploadError}</p>}
+                {form.galleryPhotos.length === 0 && ytThumb && (
+                  <p className="text-xs text-[#5c4321] mt-1">No photos yet — using the YouTube thumbnail for now.</p>
+                )}
+
+                {form.galleryPhotos.length > 0 && (
+                  <div className="grid grid-cols-4 sm:grid-cols-5 gap-2 mt-3">
+                    {form.galleryPhotos.map((url) => {
+                      const isCover = url === form.photoUrl;
+                      return (
+                        <div
+                          key={url}
+                          className={`group relative rounded-lg overflow-hidden border-2 ${isCover ? "border-[#8c5e3c]" : "border-transparent"}`}
+                        >
+                          <img src={url} alt="" className="w-full h-20 object-cover" />
+                          {isCover && (
+                            <span className="absolute top-1 left-1 text-[9px] font-bold bg-[#8c5e3c] text-white px-1.5 py-0.5 rounded-full">
+                              ★ Cover
+                            </span>
+                          )}
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition flex items-center justify-center gap-1.5 opacity-0 group-hover:opacity-100">
+                            {!isCover && (
+                              <button
+                                type="button"
+                                onClick={() => set("photoUrl", url)}
+                                title="Set as cover"
+                                className="text-[10px] font-semibold bg-white/95 hover:bg-white px-1.5 py-0.5 rounded"
+                              >
+                                ★
+                              </button>
+                            )}
+                            <button
+                              type="button"
+                              onClick={() => removePhoto(url)}
+                              title="Remove photo"
+                              className="text-[10px] font-semibold bg-white/95 hover:bg-white text-red-600 px-1.5 py-0.5 rounded"
+                            >
+                              ×
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
-                </div>
+                )}
               </div>
             </div>
 
@@ -402,9 +541,20 @@ export default function RecipeForm({
 
             {/* ── TIME / SERVINGS / DIFFICULTY / CALORIES ── */}
             <div className={card}>
-              <h2 className="font-bold text-[#3e2c18] text-base">
-                Time & Nutrition <span className="text-xs font-normal text-[#a06b45]">optional</span>
-              </h2>
+              <div className="flex items-center justify-between gap-3">
+                <h2 className="font-bold text-[#3e2c18] text-base">
+                  Time & Nutrition <span className="text-xs font-normal text-[#a06b45]">optional</span>
+                </h2>
+                <button
+                  type="button"
+                  onClick={handleAutoFillNutrition}
+                  disabled={enriching || !(form.ingredientsEN || form.ingredientsGR || form.stepsEN || form.stepsGR)}
+                  className="text-xs px-3 py-1.5 rounded-lg bg-[#8c5e3c]/10 text-[#8c5e3c] hover:bg-[#8c5e3c]/20 disabled:opacity-40 font-semibold transition-colors whitespace-nowrap"
+                >
+                  {enriching ? "Estimating…" : "✨ Auto-fill"}
+                </button>
+              </div>
+              {enrichError && <p className="text-xs text-red-600">{enrichError}</p>}
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
                 <div>
                   <label className={lbl}>Prep (min)</label>

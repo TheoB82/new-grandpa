@@ -18,6 +18,7 @@ export type RecipeRow = {
   tags_gr: string[];
   link_yt: string | null;
   photo_url: string | null;
+  gallery_photo_urls: string[];
   recipe_date: string | null; // yyyy-mm-dd from Postgres
   prep_time_minutes: number | null;
   cook_time_minutes: number | null;
@@ -42,6 +43,7 @@ export function mapRecipeRow(row: RecipeRow): Recipe {
     CategoryGR: row.category_gr,
     CategoryEN: row.category_en,
     Image: row.photo_url ?? undefined,
+    GalleryPhotos: row.gallery_photo_urls ?? [],
     TitleGR: row.title_gr,
     TitleEN: row.title_en,
     ShortDescriptionGR: row.short_description_gr,
@@ -94,6 +96,7 @@ export function recipeToRow(recipe: Recipe): Omit<RecipeRow, "short_id"> {
     tags_gr: tagsGr,
     link_yt: recipe.LinkYT || null,
     photo_url: recipe.Image || null,
+    gallery_photo_urls: recipe.GalleryPhotos ?? [],
     recipe_date,
     prep_time_minutes: recipe.PrepTimeMinutes ?? null,
     cook_time_minutes: recipe.CookTimeMinutes ?? null,

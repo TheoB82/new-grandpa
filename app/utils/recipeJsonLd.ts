@@ -64,10 +64,13 @@ export function buildRecipeJsonLd(recipe: Recipe) {
 
   // Prefer a real recipe photo over the YouTube thumbnail when one exists —
   // more accurate for Google's recipe rich results than a video thumbnail.
+  const gallery = (recipe.GalleryPhotos ?? []).filter((url) => url !== recipe.Image);
   const image = recipe.Image
-    ? [recipe.Image]
+    ? [recipe.Image, ...gallery]
     : videoID
-    ? [`https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`]
+    ? [`https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`, ...gallery]
+    : gallery.length
+    ? gallery
     : undefined;
   if (image) jsonLd.image = image;
 
