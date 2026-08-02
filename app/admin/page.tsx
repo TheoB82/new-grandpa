@@ -24,6 +24,21 @@ export default function AdminPage() {
 
   const inp = "w-full px-3 py-2.5 rounded-lg border border-[#d9b08c] bg-white text-[#3e2c18] text-sm focus:outline-none focus:ring-2 focus:ring-[#a06b45] transition";
 
+  function emailBadge(r: Recipe): { text: string; className: string } | null {
+    const [d, m, y] = (r.Date || "").split("/").map(Number);
+    if (!d || !m || !y) return null;
+    const recipeDate = new Date(y, m - 1, d);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (recipeDate > today) {
+      return { text: `⏳ Scheduled ${r.Date}`, className: "bg-amber-100 text-amber-800" };
+    }
+    if (r.NotifiedAt) {
+      return { text: "📧 Notified", className: "bg-emerald-100 text-emerald-800" };
+    }
+    return null;
+  }
+
   async function loadRecipes() {
     setLoadingList(true);
     setListError("");
@@ -175,21 +190,31 @@ export default function AdminPage() {
           <p className="text-sm text-[#5c4321]">Loading…</p>
         ) : (
           <div className="bg-white rounded-2xl border border-[#d9b08c] shadow-sm divide-y divide-[#f0e2d0]">
-            {filteredRecipes.map((r) => (
-              <button
-                key={r.ShortID}
-                onClick={() => setEditingRecipe(r)}
-                className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-[#f9f3ea] transition"
-              >
-                <div className="min-w-0">
-                  <div className="font-semibold text-[#3e2c18] truncate">{r.TitleEN}</div>
-                  <div className="text-xs text-[#a06b45]">{r.TitleGR}</div>
-                </div>
-                <span className="shrink-0 px-2.5 py-1 text-[11px] font-semibold rounded-full bg-[#f0e2d0] text-[#5c4321] uppercase tracking-wide">
-                  {r.CategoryEN}
-                </span>
-              </button>
-            ))}
+            {filteredRecipes.map((r) => {
+              const badge = emailBadge(r);
+              return (
+                <button
+                  key={r.ShortID}
+                  onClick={() => setEditingRecipe(r)}
+                  className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-[#f9f3ea] transition"
+                >
+                  <div className="min-w-0">
+                    <div className="font-semibold text-[#3e2c18] truncate">{r.TitleEN}</div>
+                    <div className="text-xs text-[#a06b45]">{r.TitleGR}</div>
+                  </div>
+                  <div className="shrink-0 flex items-center gap-2">
+                    {badge && (
+                      <span className={`px-2.5 py-1 text-[11px] font-semibold rounded-full whitespace-nowrap ${badge.className}`}>
+                        {badge.text}
+                      </span>
+                    )}
+                    <span className="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-[#f0e2d0] text-[#5c4321] uppercase tracking-wide">
+                      {r.CategoryEN}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
             {filteredRecipes.length === 0 && (
               <p className="px-5 py-8 text-center text-sm text-[#5c4321]">No recipes found.</p>
             )}

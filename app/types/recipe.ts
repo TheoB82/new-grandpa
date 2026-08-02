@@ -37,5 +37,7 @@ export interface Recipe {
     Difficulty?: "Easy" | "Medium" | "Hard";
     CaloriesPerServing?: number;
     CaloriesEstimated?: boolean; // true = AI-estimated, not lab-verified
+
+    NotifiedAt?: string; // ISO timestamp — set once the "new recipe" email has gone out
   }
   

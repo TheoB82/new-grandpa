@@ -16,7 +16,7 @@ export default function EmailSignup({ source = "footer" }: { source?: string }) 
     if (status === "loading") return;
 
     setStatus("loading");
-    const { error } = await supabase.from("subscribers").insert({ email: email.trim().toLowerCase(), source });
+    const { error } = await supabase.from("subscribers").insert({ email: email.trim().toLowerCase(), source, lang });
 
     if (!error) {
       setStatus("success");
