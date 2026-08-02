@@ -29,6 +29,7 @@ export type RecipeRow = {
   // Optional here (not on recipeToRow's write payload): admin saves must never
   // touch this column — only the notify-new-recipes cron route sets it.
   notified_at?: string | null;
+  seasons: string[];
 };
 
 function toDMY(isoDate: string | null): string {
@@ -69,6 +70,7 @@ export function mapRecipeRow(row: RecipeRow): Recipe {
     CaloriesPerServing: row.calories_per_serving ?? undefined,
     CaloriesEstimated: row.calories_estimated,
     NotifiedAt: row.notified_at ?? undefined,
+    Seasons: row.seasons ?? [],
   };
 }
 
@@ -108,5 +110,6 @@ export function recipeToRow(recipe: Recipe): Omit<RecipeRow, "short_id"> {
     difficulty: recipe.Difficulty ?? null,
     calories_per_serving: recipe.CaloriesPerServing ?? null,
     calories_estimated: !!recipe.CaloriesEstimated,
+    seasons: recipe.Seasons ?? [],
   };
 }

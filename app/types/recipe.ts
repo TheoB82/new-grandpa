@@ -39,5 +39,7 @@ export interface Recipe {
     CaloriesEstimated?: boolean; // true = AI-estimated, not lab-verified
 
     NotifiedAt?: string; // ISO timestamp — set once the "new recipe" email has gone out
+
+    Seasons?: string[]; // "spring" | "summer" | "autumn" | "winter" — empty/undefined = any season
   }
   

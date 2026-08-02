@@ -190,6 +190,10 @@ export default function Header() {
           </button>
         ))}
 
+        <Link href="/meal-planner" className={inactiveClass}>
+          {lang === "gr" ? "Πρόγραμμα Γευμάτων" : "Meal Planner"}
+        </Link>
+
         <Link href="/about" className={inactiveClass}>
           {lang === "gr" ? "Ο Παππούς" : "About"}
         </Link>
@@ -290,6 +294,14 @@ export default function Header() {
                 {c.name}
               </button>
             ))}
+
+            <Link
+              href="/meal-planner"
+              onClick={() => setMobileOpen(false)}
+              className="px-4 py-2.5 rounded-full bg-black/20 text-[--brand] border border-[--brand]"
+            >
+              {lang === "gr" ? "Πρόγραμμα Γευμάτων" : "Meal Planner"}
+            </Link>
 
             <Link
               href="/about"

@@ -94,7 +94,15 @@ type Form = {
   servings: string;
   difficulty: "" | "Easy" | "Medium" | "Hard";
   caloriesPerServing: string;
+  seasons: string[];
 };
+
+const SEASONS: { value: string; en: string; gr: string }[] = [
+  { value: "spring", en: "Spring", gr: "Άνοιξη" },
+  { value: "summer", en: "Summer", gr: "Καλοκαίρι" },
+  { value: "autumn", en: "Autumn", gr: "Φθινόπωρο" },
+  { value: "winter", en: "Winter", gr: "Χειμώνας" },
+];
 
 function recipeToForm(recipe: Recipe | null): Form {
   if (!recipe) {
@@ -112,6 +120,7 @@ function recipeToForm(recipe: Recipe | null): Form {
       galleryPhotos: [],
       prepTimeMinutes: "", cookTimeMinutes: "", servings: "",
       difficulty: "", caloriesPerServing: "",
+      seasons: [],
     };
   }
   return {
@@ -131,6 +140,7 @@ function recipeToForm(recipe: Recipe | null): Form {
     servings: recipe.Servings?.toString() || "",
     difficulty: recipe.Difficulty || "",
     caloriesPerServing: recipe.CaloriesPerServing?.toString() || "",
+    seasons: recipe.Seasons || [],
   };
 }
 
@@ -162,6 +172,7 @@ function formToRecipe(form: Form, shortId: string): Recipe {
     Difficulty: form.difficulty || undefined,
     CaloriesPerServing: form.caloriesPerServing ? Number(form.caloriesPerServing) : undefined,
     CaloriesEstimated: false,
+    Seasons: form.seasons,
   };
 }
 
@@ -310,6 +321,7 @@ export default function RecipeForm({
         servings: data.servings != null ? String(data.servings) : f.servings,
         difficulty: data.difficulty || f.difficulty,
         caloriesPerServing: data.caloriesPerServing != null ? String(data.caloriesPerServing) : f.caloriesPerServing,
+        seasons: Array.isArray(data.seasons) && f.seasons.length === 0 ? data.seasons : f.seasons,
       }));
     } catch (err: any) {
       setEnrichError(err.message);
@@ -580,6 +592,35 @@ export default function RecipeForm({
                 <div>
                   <label className={lbl}>Calories</label>
                   <input type="number" min="0" value={form.caloriesPerServing} onChange={(e) => set("caloriesPerServing", e.target.value)} className={inp} />
+                </div>
+              </div>
+
+              <div>
+                <label className={lbl}>Season(s)</label>
+                <p className="text-xs text-[#5c4321] mb-2">Used by the weekly meal planner. Leave none selected for an any-season dish.</p>
+                <div className="flex flex-wrap gap-2">
+                  {SEASONS.map((s) => {
+                    const active = form.seasons.includes(s.value);
+                    return (
+                      <button
+                        key={s.value}
+                        type="button"
+                        onClick={() =>
+                          setForm((f) => ({
+                            ...f,
+                            seasons: active ? f.seasons.filter((v) => v !== s.value) : [...f.seasons, s.value],
+                          }))
+                        }
+                        className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
+                          active
+                            ? "bg-[#8c5e3c] text-white border-[#8c5e3c]"
+                            : "bg-white text-[#5c4321] border-[#d9b08c] hover:bg-[#f9f3ea]"
+                        }`}
+                      >
+                        {s.en} / {s.gr}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>
