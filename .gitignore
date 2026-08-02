@@ -44,4 +44,5 @@ next-env.d.ts
 # enrichment script working files
 /scripts/.transcript-cache.json
 /scripts/enrichment-preview.json
+/scripts/dietary-classification-preview.json
 /scripts/backups/

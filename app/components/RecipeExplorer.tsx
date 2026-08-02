@@ -6,6 +6,7 @@ import Link from "next/link";
 import recipes from "@/data/recipes.json";
 import type { Recipe } from "@/types/recipe";
 import { categoryMapping } from "@/utils/categoryMapping";
+import { matchesCategory } from "@/utils/matchesCategory";
 import { parseDate } from "@/utils/parseDate";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -147,18 +148,7 @@ export default function RecipeExplorer() {
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = { all: sortedRecipes.length };
     for (const cat of categories) {
-      counts[cat.name] = sortedRecipes.filter((r) => {
-        const rCat = lang === "gr" ? r.CategoryGR : r.CategoryEN;
-        let tagsEN: string[] = [];
-        try {
-          const raw = (r as any).TagsEN;
-          tagsEN = Array.isArray(raw) ? raw : JSON.parse(raw);
-        } catch {}
-        return (
-          rCat === cat.name ||
-          (cat.tagMatch && tagsEN.some(t => t.toLowerCase().trim() === cat.tagMatch!.toLowerCase().trim()))
-        );
-      }).length;
+      counts[cat.name] = sortedRecipes.filter((r) => matchesCategory(r, cat, lang)).length;
     }
     return counts;
   }, [sortedRecipes, lang, categories]);
@@ -168,27 +158,16 @@ export default function RecipeExplorer() {
     const words = search.trim().split(/\s+/).filter(Boolean);
 
     const matches = sortedRecipes.filter((r) => {
-      const category = lang === "gr" ? r.CategoryGR : r.CategoryEN;
       const activeCategory = selectedCategory
         ? categories.find((c) => c.name === selectedCategory)
         : null;
 
-      let tagsEN: string[] = [];
-      try {
-        const raw = (r as any).TagsEN;
-        tagsEN = Array.isArray(raw) ? raw : JSON.parse(raw);
-      } catch {}
+      const isInCategory = !activeCategory || matchesCategory(r, activeCategory, lang);
 
-      const matchesCategory =
-        !selectedCategory ||
-        category === selectedCategory ||
-        (activeCategory?.tagMatch &&
-          tagsEN.some(t => t.toLowerCase().trim() === activeCategory.tagMatch!.toLowerCase().trim()));
-
-      if (!search.trim()) return matchesCategory;
+      if (!search.trim()) return isInCategory;
 
       const matchesSearch = words.every(word => wordMatchesRecipe(r, word));
-      return matchesSearch && matchesCategory;
+      return matchesSearch && isInCategory;
     });
 
     if (!search.trim()) return matches; // already sorted by date

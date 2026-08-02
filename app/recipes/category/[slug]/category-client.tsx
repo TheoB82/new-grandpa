@@ -5,6 +5,7 @@ import recipes from "@/data/recipes.json";
 import type { Recipe } from "@/types/recipe";
 import type { CategoryItem } from "@/utils/categoryMapping";
 import { categoryMapping } from "@/utils/categoryMapping";
+import { matchesCategory } from "@/utils/matchesCategory";
 import { parseDate } from "@/utils/parseDate";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -27,23 +28,9 @@ function getThumb(url: string) {
 export default function CategoryClient({ category }: { category: CategoryItem }) {
   const { lang } = useLanguage();
   const displayName = lang === "gr" ? category.gr : category.en;
-  const matchName = lang === "gr" ? category.gr : category.en;
 
   const matched = (recipes as Recipe[])
-    .filter((r) => {
-      const rCat = lang === "gr" ? r.CategoryGR : r.CategoryEN;
-      if (rCat === matchName) return true;
-      if (category.tagMatch) {
-        let tags: string[] = [];
-        try {
-          tags = JSON.parse((lang === "gr" ? r.TagsGR : r.TagsEN) || "[]");
-        } catch {
-          /* ignore malformed tags */
-        }
-        return tags.some((t) => t.toLowerCase().trim() === category.tagMatch!.toLowerCase().trim());
-      }
-      return false;
-    })
+    .filter((r) => matchesCategory(r, category, lang))
     .sort((a, b) => parseDate(b.Date).getTime() - parseDate(a.Date).getTime());
 
   const otherCategories = categoryMapping[lang].filter((c) => c.path !== category.path && c.en !== category.en);
