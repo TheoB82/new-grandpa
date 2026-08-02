@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import MetiflowLogo from "@/components/MetiflowLogo";
+import EmailSignup from "@/components/EmailSignup";
 
 const SOCIALS = [
   {
@@ -55,6 +56,11 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#2a1b12] text-white py-8 border-t border-[#4b3425] relative z-50">
       <div className="max-w-6xl mx-auto px-6 space-y-6">
+
+        {/* EMAIL SIGNUP */}
+        <div className="pb-6 border-b border-[#4b3425]">
+          <EmailSignup source="footer" />
+        </div>
 
         {/* SOCIAL ICONS */}
         <div className="flex items-center justify-center gap-4">
