@@ -4,6 +4,7 @@ import slugify from "@/utils/slugify";
 import RecipeClient from "./recipe-client";
 import { notFound, redirect } from "next/navigation";
 import { Recipe } from "@/types/recipe";
+import { buildRecipeJsonLd } from "@/utils/recipeJsonLd";
 
 interface PageProps {
   params: Promise<{ slugOrId: string }>;
@@ -56,7 +57,17 @@ export default async function RecipePage({ params }: PageProps) {
   );
 
   if (recipe) {
-    return <RecipeClient recipe={recipe} />;
+    const jsonLd = buildRecipeJsonLd(recipe);
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <RecipeClient recipe={recipe} />
+      </>
+    );
   }
 
   // 2️⃣ Try SLUG -> redirect to ShortID

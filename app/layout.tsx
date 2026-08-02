@@ -9,6 +9,7 @@ import CookieBanner from "@/components/CookieBanner";
 import AdsenseLoader from "@/components/AdsenseLoader";
 
 export const metadata = {
+  metadataBase: new URL("https://www.grandpatassos.com"),
   title: "Grandpa Tassos Cooking",
   description: "Authentic Greek & Mediterranean Recipes",
 };
