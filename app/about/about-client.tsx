@@ -3,6 +3,9 @@
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
+// Strip diacritics so CSS `uppercase` doesn't show accents on Greek text.
+const stripAccents = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "");
+
 const CONTENT = {
   en: {
     tag: "The story behind the channel",
@@ -54,7 +57,7 @@ export default function AboutClient() {
       <div className="pt-28 lg:pt-32 pb-14 px-6 border-b border-[#8c5e3c]/20">
         <div className="max-w-3xl mx-auto text-center">
           <span className="inline-block px-3 py-1 mb-5 rounded-full text-xs font-semibold uppercase tracking-widest bg-[#8c5e3c]/25 text-[#fdd9a1] border border-[#8c5e3c]/40">
-            {t.tag}
+            {stripAccents(t.tag)}
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">{t.title}</h1>
           <p className="text-base md:text-lg text-white/65 max-w-xl mx-auto">{t.tagline}</p>
@@ -96,7 +99,7 @@ export default function AboutClient() {
 
         {/* CONTACT */}
         <div className="text-center">
-          <h2 className="text-xl font-bold uppercase tracking-widest text-[#fdd9a1] mb-2">{t.ctaHeading}</h2>
+          <h2 className="text-xl font-bold uppercase tracking-widest text-[#fdd9a1] mb-2">{stripAccents(t.ctaHeading)}</h2>
           <p className="text-white/65 mb-2">{t.ctaBody}</p>
           <a href={`mailto:${t.emailLabel}`} className="text-[#fdd9a1] underline hover:text-white transition">
             {t.emailLabel}

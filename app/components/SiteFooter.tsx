@@ -95,7 +95,13 @@ export default function Footer() {
           {/* CENTER — Powered by Metiflow */}
           <div className="flex items-center gap-2 text-sm opacity-90">
             <span>Powered by</span>
-            <MetiflowLogo size={45} textSize="text-sm" />
+            <a
+              href="mailto:admin@metiflow.com"
+              aria-label="Contact Metiflow"
+              className="hover:opacity-80 transition"
+            >
+              <MetiflowLogo size={45} textSize="text-sm" />
+            </a>
           </div>
 
           {/* RIGHT — Legal */}

@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
+// Strip diacritics so CSS `uppercase` doesn't show accents on Greek text.
+const stripAccents = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "");
+
 const STATS = [
   { value: "203K", en: "YouTube subscribers", gr: "Συνδρομητές YouTube" },
   { value: "118K", en: "Facebook followers", gr: "Ακόλουθοι Facebook" },
@@ -84,7 +87,7 @@ export default function MediaKitClient() {
       <div className="pt-28 lg:pt-32 pb-14 px-6 border-b border-[#8c5e3c]/20">
         <div className="max-w-3xl mx-auto text-center">
           <span className="inline-block px-3 py-1 mb-5 rounded-full text-xs font-semibold uppercase tracking-widest bg-[#8c5e3c]/25 text-[#fdd9a1] border border-[#8c5e3c]/40">
-            {copy.tag}
+            {stripAccents(copy.tag)}
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">{copy.title}</h1>
           <p className="text-base md:text-lg text-white/65 max-w-xl mx-auto">{copy.tagline}</p>
@@ -107,7 +110,7 @@ export default function MediaKitClient() {
 
         {/* ABOUT */}
         <div className="mb-16">
-          <h2 className="text-xl font-bold uppercase tracking-widest text-[#fdd9a1] mb-3">{copy.aboutHeading}</h2>
+          <h2 className="text-xl font-bold uppercase tracking-widest text-[#fdd9a1] mb-3">{stripAccents(copy.aboutHeading)}</h2>
           <p className="text-white/80 leading-relaxed mb-3">{copy.aboutBody}</p>
           <Link href="/about" className="text-[#fdd9a1] underline hover:text-white transition inline-flex items-center gap-1">
             {copy.aboutLink}
@@ -119,7 +122,7 @@ export default function MediaKitClient() {
 
         {/* CONTENT PILLARS */}
         <div className="mb-16">
-          <h2 className="text-xl font-bold uppercase tracking-widest text-[#fdd9a1] mb-1">{copy.pillarsHeading}</h2>
+          <h2 className="text-xl font-bold uppercase tracking-widest text-[#fdd9a1] mb-1">{stripAccents(copy.pillarsHeading)}</h2>
           <p className="text-sm text-white/50 mb-6">{copy.pillarsSub}</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {PILLARS.map((p) => (
@@ -136,7 +139,7 @@ export default function MediaKitClient() {
 
         {/* WHY PARTNER */}
         <div className="mb-16">
-          <h2 className="text-xl font-bold uppercase tracking-widest text-[#fdd9a1] mb-4">{copy.fitHeading}</h2>
+          <h2 className="text-xl font-bold uppercase tracking-widest text-[#fdd9a1] mb-4">{stripAccents(copy.fitHeading)}</h2>
           <ul className="space-y-2 mb-8">
             {copy.fitReasons.map((r, i) => (
               <li key={i} className="flex items-start gap-2 text-white/80">
@@ -147,7 +150,7 @@ export default function MediaKitClient() {
           </ul>
 
           <h3 className="text-sm font-semibold uppercase tracking-widest text-[#fdd9a1]/70 mb-3">
-            {copy.fitListHeading}
+            {stripAccents(copy.fitListHeading)}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {fitList.map((f, i) => (
@@ -170,7 +173,7 @@ export default function MediaKitClient() {
 
         {/* CONTACT */}
         <div className="text-center">
-          <h2 className="text-xl font-bold uppercase tracking-widest text-[#fdd9a1] mb-3">{copy.contactHeading}</h2>
+          <h2 className="text-xl font-bold uppercase tracking-widest text-[#fdd9a1] mb-3">{stripAccents(copy.contactHeading)}</h2>
           <a
             href="mailto:grandpatassos@gmail.com?subject=Partnership%20inquiry"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#8c5e3c] hover:bg-[#a06b45] text-white font-semibold rounded-xl transition-colors shadow-lg"
