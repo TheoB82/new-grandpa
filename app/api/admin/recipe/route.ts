@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import { supabaseAdmin } from "@/utils/supabaseServerClient";
+import { categoryMapping } from "@/utils/categoryMapping";
 
 export const runtime = "nodejs";
 
@@ -13,11 +14,21 @@ function generateShortID(): string {
   return Array.from({ length: 7 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
 }
 
-function revalidateRecipePaths(shortId?: string, categoryPaths: string[] = []) {
+// Pages with `revalidate` set (see plan note in app/page.tsx etc.) rely on this for
+// instant freshness on save — the passive ISR window is intentionally long since this
+// already covers the paths that matter.
+function revalidateRecipePaths(shortId?: string, categoriesEN: (string | undefined)[] = []) {
   revalidatePath("/");
   revalidatePath("/sitemap.xml");
   if (shortId) revalidatePath(`/recipes/${shortId}`);
-  for (const path of categoryPaths) revalidatePath(`/recipes/category/${path}`);
+  const seen = new Set<string>();
+  for (const categoryEN of categoriesEN) {
+    const categoryPath = categoryMapping.en.find((c) => c.en === categoryEN)?.path;
+    if (categoryPath && !seen.has(categoryPath)) {
+      seen.add(categoryPath);
+      revalidatePath(`/recipes/category/${categoryPath}`);
+    }
+  }
 }
 
 /* ------------------------------------------------------------------ */
@@ -34,7 +45,7 @@ export async function POST(req: NextRequest) {
     const { error } = await supabaseAdmin.from("recipes").insert({ ...recipe, short_id });
     if (error) throw new Error(error.message);
 
-    revalidateRecipePaths(short_id);
+    revalidateRecipePaths(short_id, [recipe.category_en]);
     return NextResponse.json({ success: true, shortId: short_id });
   } catch (err: any) {
     return NextResponse.json({ error: err?.message ?? "Unexpected server error" }, { status: 500 });
@@ -54,10 +65,12 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ error: "shortId is required" }, { status: 400 });
     }
 
+    const { data: existing } = await supabaseAdmin.from("recipes").select("category_en").eq("short_id", shortId).single();
+
     const { error } = await supabaseAdmin.from("recipes").update(recipe).eq("short_id", shortId);
     if (error) throw new Error(error.message);
 
-    revalidateRecipePaths(shortId);
+    revalidateRecipePaths(shortId, [existing?.category_en, recipe.category_en]);
     return NextResponse.json({ success: true, shortId });
   } catch (err: any) {
     return NextResponse.json({ error: err?.message ?? "Unexpected server error" }, { status: 500 });
@@ -77,10 +90,12 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: "shortId is required" }, { status: 400 });
     }
 
+    const { data: existing } = await supabaseAdmin.from("recipes").select("category_en").eq("short_id", shortId).single();
+
     const { error } = await supabaseAdmin.from("recipes").delete().eq("short_id", shortId);
     if (error) throw new Error(error.message);
 
-    revalidateRecipePaths(shortId);
+    revalidateRecipePaths(shortId, [existing?.category_en]);
     return NextResponse.json({ success: true });
   } catch (err: any) {
     return NextResponse.json({ error: err?.message ?? "Unexpected server error" }, { status: 500 });

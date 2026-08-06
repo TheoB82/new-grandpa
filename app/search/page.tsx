@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getAllRecipes } from "@/utils/recipesData";
 import SearchClient from "./search-client";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 interface PageProps {
   searchParams: Promise<{ q?: string }>;
