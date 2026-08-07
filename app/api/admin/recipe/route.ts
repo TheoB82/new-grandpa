@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { supabaseAdmin } from "@/utils/supabaseServerClient";
 import { categoryMapping } from "@/utils/categoryMapping";
 
@@ -18,6 +18,7 @@ function generateShortID(): string {
 // instant freshness on save — the passive ISR window is intentionally long since this
 // already covers the paths that matter.
 function revalidateRecipePaths(shortId?: string, categoriesEN: (string | undefined)[] = []) {
+  revalidateTag("recipes", {}); // clears the unstable_cache in recipesData.ts
   revalidatePath("/");
   revalidatePath("/sitemap.xml");
   if (shortId) revalidatePath(`/recipes/${shortId}`);

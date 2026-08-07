@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getAllRecipes } from "@/utils/recipesData";
+import { getAllRecipes, getRecipeByShortId } from "@/utils/recipesData";
 import slugify from "@/utils/slugify";
 import RecipeClient from "./recipe-client";
 import { notFound, redirect } from "next/navigation";
@@ -13,11 +13,12 @@ interface PageProps {
 }
 
 async function findRecipe(slugOrId: string): Promise<Recipe | undefined> {
+  // Try short ID first (single-row query, cheaper on cache miss)
+  const byId = await getRecipeByShortId(slugOrId);
+  if (byId) return byId;
+  // Fall back to slug scan against the cached list
   const recipes = await getAllRecipes();
-  return (
-    recipes.find((r) => r.ShortID === slugOrId) ??
-    recipes.find((r) => slugify(r.TitleEN || "") === slugify(slugOrId))
-  );
+  return recipes.find((r) => slugify(r.TitleEN || "") === slugify(slugOrId));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -54,14 +55,12 @@ export default async function RecipePage({ params }: PageProps) {
 
   if (!slugOrId) return notFound();
 
-  const recipes = await getAllRecipes();
-
-  // 1️⃣ Try SHORT ID (canonical)
-  let recipe: Recipe | undefined = recipes.find(
-    (r) => r.ShortID === slugOrId
-  );
+  // 1️⃣ Try SHORT ID (canonical) — single-row query, much cheaper than full list
+  const recipe = await getRecipeByShortId(slugOrId);
 
   if (recipe) {
+    // getAllRecipes() is cache-shared with any other concurrent renders this hour
+    const recipes = await getAllRecipes();
     const jsonLd = buildRecipeJsonLd(recipe);
     return (
       <>
@@ -76,11 +75,12 @@ export default async function RecipePage({ params }: PageProps) {
   }
 
   // 2️⃣ Try SLUG -> redirect to ShortID
-  recipe = recipes.find(
+  const recipes = await getAllRecipes();
+  const bySlug = recipes.find(
     (r) => slugify(r.TitleEN || "") === slugify(slugOrId)
   );
 
-  if (!recipe) return notFound();
+  if (!bySlug) return notFound();
 
-  return redirect(`/recipes/${recipe.ShortID}`);
+  return redirect(`/recipes/${bySlug.ShortID}`);
 }
