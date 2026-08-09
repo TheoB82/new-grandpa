@@ -1,12 +1,12 @@
 import { ImageResponse } from "next/og";
-import { getAllRecipes } from "@/utils/recipesData";
+import { getRecipeByShortId } from "@/utils/recipesData";
 import { getYoutubeVideoID } from "@/utils/getYoutubeVideoID";
 import { Recipe } from "@/types/recipe";
-import slugify from "@/utils/slugify";
 
 export const contentType = "image/png";
 export const size        = { width: 1200, height: 630 };
 export const alt         = "Recipe preview";
+export const revalidate  = 3600;
 
 interface Props {
   params: Promise<{ slugOrId: string }>;
@@ -14,11 +14,8 @@ interface Props {
 
 export default async function Image({ params }: Props) {
   const { slugOrId } = await params;
-  const recipes = await getAllRecipes();
-
-  const recipe: Recipe | undefined =
-    recipes.find((r) => r.ShortID === slugOrId) ??
-    recipes.find((r) => slugify(r.TitleEN || "") === slugify(slugOrId));
+  // OG image URLs always use the canonical shortId, so fetch just this one recipe
+  const recipe: Recipe | null = await getRecipeByShortId(slugOrId);
 
   const title    = recipe?.TitleEN    ?? "Grandpa Tassos Cooking";
   const category = recipe?.CategoryEN ?? "";
