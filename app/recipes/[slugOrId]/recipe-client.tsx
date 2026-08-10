@@ -100,34 +100,63 @@ function ShareButtons({ title, lang }: { title: string; lang: "gr" | "en" }) {
 /* ------------------------------------------------------------------ */
 
 function ExecutionSteps({ html }: { html: string }) {
-  const liMatches = [...html.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)];
+  // Parse into sections: [{heading?, steps[]}]
+  const sections: { heading?: string; steps: string[] }[] = [];
+  let current: { heading?: string; steps: string[] } = { steps: [] };
+  let hasTokens = false;
 
-  if (liMatches.length > 0) {
+  for (const m of html.matchAll(/<(h3|li)[^>]*>([\s\S]*?)<\/\1>/gi)) {
+    hasTokens = true;
+    if (m[1].toLowerCase() === "h3") {
+      if (current.steps.length || current.heading) sections.push(current);
+      current = { heading: m[2].replace(/<[^>]+>/g, "").trim(), steps: [] };
+    } else {
+      current.steps.push(m[2]);
+    }
+  }
+  if (current.steps.length || current.heading) sections.push(current);
+
+  if (!hasTokens) {
     return (
-      <ol className="space-y-0">
-        {liMatches.map((match, i) => {
-          const isLast = i === liMatches.length - 1;
-          return (
-            <li key={i} className="flex gap-4 items-start">
-              <div className="flex flex-col items-center shrink-0 w-10">
-                <span className="w-9 h-9 rounded-full bg-[#8c5e3c] text-[#fdd9a1] flex items-center justify-center font-bold text-sm shadow-md ring-2 ring-[#8c5e3c]/30 z-10">
-                  {i + 1}
-                </span>
-                {!isLast && <div className="w-px flex-1 min-h-8 bg-[#8c5e3c]/30 mt-1 mb-1 print:hidden" />}
-              </div>
-              <div className={`${isLast ? "pb-0" : "pb-8 print:pb-2"} pt-1.5 flex-1 prose prose-invert max-w-none prose-p:mb-0 prose-p:leading-relaxed prose-strong:text-[#fdd9a1]`}>
-                {parse(match[1])}
-              </div>
-            </li>
-          );
-        })}
-      </ol>
+      <div className="prose prose-invert max-w-none prose-p:mb-4 prose-strong:text-[#fdd9a1]">
+        {parse(html)}
+      </div>
     );
   }
 
+  const lastSectionIdx = sections.length - 1;
+
   return (
-    <div className="prose prose-invert max-w-none prose-p:mb-4 prose-strong:text-[#fdd9a1]">
-      {parse(html)}
+    <div className="space-y-8">
+      {sections.map((section, sIdx) => (
+        <div key={sIdx}>
+          {section.heading && (
+            <p className="text-xs font-bold uppercase tracking-widest text-[#fdd9a1]/60 mb-4 print:hidden">
+              {section.heading}
+            </p>
+          )}
+          <ol className="space-y-0">
+            {section.steps.map((stepHtml, i) => {
+              const isLastInSection = i === section.steps.length - 1;
+              const isLastOverall = isLastInSection && sIdx === lastSectionIdx;
+              const showLine = !isLastInSection;
+              return (
+                <li key={i} className="flex gap-4 items-start">
+                  <div className="flex flex-col items-center shrink-0 w-10">
+                    <span className="w-9 h-9 rounded-full bg-[#8c5e3c] text-[#fdd9a1] flex items-center justify-center font-bold text-sm shadow-md ring-2 ring-[#8c5e3c]/30 z-10">
+                      {i + 1}
+                    </span>
+                    {showLine && <div className="w-px flex-1 min-h-8 bg-[#8c5e3c]/30 mt-1 mb-1 print:hidden" />}
+                  </div>
+                  <div className={`${isLastOverall ? "pb-0" : "pb-8 print:pb-2"} pt-1.5 flex-1 prose prose-invert max-w-none prose-p:mb-0 prose-p:leading-relaxed prose-strong:text-[#fdd9a1]`}>
+                    {parse(stepHtml)}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      ))}
     </div>
   );
 }

@@ -17,7 +17,10 @@ const CATEGORIES = [
   { en: "Specials",       gr: "Μερακλίδικα" },
   { en: "Barbecue",       gr: "Μπάρμπεκιου" },
   { en: "Festive",        gr: "Εορταστικά" },
+  { en: "Lenten",         gr: "Νηστίσιμα" },
+  { en: "Vegetarian",     gr: "Χορτοφαγικά" },
   { en: "Desserts",       gr: "Γλυκά" },
+
 ];
 
 /* ------------------------------------------------------------------ */
@@ -34,9 +37,21 @@ function toIngredients(text: string): string {
 }
 
 function toSteps(text: string): string {
-  const items = text.split("\n").map((l) => l.trim()).filter(Boolean)
-    .map((l) => `  <li><p>${l}</p></li>`).join("\n");
-  return `<ol>\n${items}\n</ol>`;
+  const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
+  if (lines.length === 0) return "";
+  const parts: string[] = [];
+  let inList = false;
+  for (const line of lines) {
+    if (line.startsWith("# ")) {
+      if (inList) { parts.push("</ol>"); inList = false; }
+      parts.push(`<h3>${line.slice(2)}</h3>`);
+    } else {
+      if (!inList) { parts.push("<ol>"); inList = true; }
+      parts.push(`  <li><p>${line}</p></li>`);
+    }
+  }
+  if (inList) parts.push("</ol>");
+  return parts.join("\n");
 }
 
 function toTags(text: string): string {
@@ -45,12 +60,15 @@ function toTags(text: string): string {
 
 function htmlToLines(html: string): string {
   if (!html) return "";
-  const matches = [...html.matchAll(/<(?:p|li)[^>]*>([\s\S]*?)<\/(?:p|li)>/gi)];
-  const lines = matches.length ? matches.map((m) => m[1]) : [html];
-  return lines
-    .map((l) => l.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").trim())
-    .filter(Boolean)
-    .join("\n");
+  const lines: string[] = [];
+  // Match h3 (section headings) and li (steps) in document order
+  for (const m of html.matchAll(/<(h3|li)[^>]*>([\s\S]*?)<\/\1>/gi)) {
+    const text = m[2].replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").trim();
+    if (text) lines.push(m[1].toLowerCase() === "h3" ? `# ${text}` : text);
+  }
+  if (lines.length) return lines.join("\n");
+  // Fallback for plain-text or older formats
+  return html.replace(/<[^>]+>/g, "").trim();
 }
 
 function tagsJsonToCsv(json: string): string {
@@ -78,6 +96,7 @@ function isoToDMY(iso: string): string {
 /* ------------------------------------------------------------------ */
 
 type Form = {
+  categoryGR: string;
   categoryEN: string;
   date: string; // yyyy-mm-dd, for <input type="date">
   linkYT: string;
@@ -107,6 +126,7 @@ const SEASONS: { value: string; en: string; gr: string }[] = [
 function recipeToForm(recipe: Recipe | null): Form {
   if (!recipe) {
     return {
+      categoryGR: "Γλυκά",
       categoryEN: "Desserts",
       date: new Date().toISOString().split("T")[0],
       linkYT: "",
@@ -124,6 +144,7 @@ function recipeToForm(recipe: Recipe | null): Form {
     };
   }
   return {
+    categoryGR: recipe.CategoryGR || CATEGORIES.find((c) => c.en === recipe.CategoryEN)?.gr || "Γλυκά",
     categoryEN: recipe.CategoryEN,
     date: dmyToISO(recipe.Date),
     linkYT: recipe.LinkYT,
@@ -145,10 +166,9 @@ function recipeToForm(recipe: Recipe | null): Form {
 }
 
 function formToRecipe(form: Form, shortId: string): Recipe {
-  const cat = CATEGORIES.find((c) => c.en === form.categoryEN);
   return {
     CategoryEN: form.categoryEN,
-    CategoryGR: cat?.gr ?? form.categoryEN,
+    CategoryGR: form.categoryGR,
     Image: form.photoUrl || undefined,
     GalleryPhotos: form.galleryPhotos,
     TitleGR: form.titleGR,
@@ -205,6 +225,8 @@ export default function RecipeForm({
   const [translateError, setTranslateError] = useState("");
   const [enriching, setEnriching] = useState(false);
   const [enrichError, setEnrichError] = useState("");
+  const [tagging, setTagging] = useState(false);
+  const [tagError, setTagError] = useState("");
 
   const set = (key: keyof Form, val: string) => setForm((f) => ({ ...f, [key]: val }));
 
@@ -330,6 +352,38 @@ export default function RecipeForm({
     }
   }
 
+  async function handleAutoTag() {
+    setTagging(true);
+    setTagError("");
+    try {
+      const res = await fetch("/api/admin/generate-tags", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          password,
+          title: form.titleEN || form.titleGR,
+          categoryGR: form.categoryGR,
+          categoryEN: form.categoryEN,
+          ingredientsGR: form.ingredientsGR.split("\n").map((l) => l.trim()).filter(Boolean),
+          ingredientsEN: form.ingredientsEN.split("\n").map((l) => l.trim()).filter(Boolean),
+          stepsGR: form.stepsGR.split("\n").map((l) => l.trim()).filter(Boolean),
+          stepsEN: form.stepsEN.split("\n").map((l) => l.trim()).filter(Boolean),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Auto-tag failed");
+      setForm((f) => ({
+        ...f,
+        tagsGR: Array.isArray(data.tagsGR) ? data.tagsGR.join(", ") : f.tagsGR,
+        tagsEN: Array.isArray(data.tagsEN) ? data.tagsEN.join(", ") : f.tagsEN,
+      }));
+    } catch (err: any) {
+      setTagError(err.message);
+    } finally {
+      setTagging(false);
+    }
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("saving");
@@ -429,12 +483,42 @@ export default function RecipeForm({
             <div className={card}>
               <h2 className="font-bold text-[#3e2c18] text-base">Recipe Info</h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                  <label className={lbl}>Category</label>
-                  <select value={form.categoryEN} onChange={(e) => set("categoryEN", e.target.value)} className={inp}>
+                  <label className={lbl}>Category (Greek)</label>
+                  <select
+                    value={form.categoryGR}
+                    onChange={(e) => {
+                      const grVal = e.target.value;
+                      const cat = CATEGORIES.find((c) => c.gr === grVal);
+                      if (grVal !== "Νηστίσιμα" && cat) {
+                        setForm((f) => ({ ...f, categoryGR: grVal, categoryEN: cat.en }));
+                      } else {
+                        set("categoryGR", grVal);
+                      }
+                    }}
+                    className={inp}
+                  >
                     {CATEGORIES.map((c) => (
-                      <option key={c.en} value={c.en}>{c.en} / {c.gr}</option>
+                      <option key={c.gr} value={c.gr}>{c.gr}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className={lbl}>
+                    Category (English)
+                    {form.categoryGR === "Νηστίσιμα" && (
+                      <span className="ml-1 normal-case tracking-normal font-normal text-[#a06b45]">— choose manually</span>
+                    )}
+                  </label>
+                  <select
+                    value={form.categoryEN}
+                    onChange={(e) => set("categoryEN", e.target.value)}
+                    disabled={form.categoryGR !== "Νηστίσιμα"}
+                    className={`${inp} ${form.categoryGR !== "Νηστίσιμα" ? "opacity-60" : ""}`}
+                  >
+                    {CATEGORIES.map((c) => (
+                      <option key={c.en} value={c.en}>{c.en}</option>
                     ))}
                   </select>
                 </div>
@@ -644,7 +728,12 @@ export default function RecipeForm({
             {/* ── STEPS ────────────────────────────────── */}
             <div className={card}>
               <h2 className="font-bold text-[#3e2c18] text-base">Steps</h2>
-              <p className="text-xs text-[#5c4321]">One step per line — they'll be numbered automatically on the recipe page.</p>
+              <p className="text-xs text-[#5c4321]">
+                One step per line — numbered automatically. For multi-part recipes, start a section with{" "}
+                <code className="bg-[#f0e2d0] px-1 rounded text-[10px]"># Section Name</code> on its own line (e.g.{" "}
+                <code className="bg-[#f0e2d0] px-1 rounded text-[10px]"># Κρέμα βάσης</code>), then list its steps below.
+                Each section restarts numbering from 1.
+              </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className={lbl}>🇬🇷 Greek</label>
@@ -676,9 +765,20 @@ export default function RecipeForm({
 
             {/* ── TAGS (optional) ──────────────────────── */}
             <div className={card}>
-              <h2 className="font-bold text-[#3e2c18] text-base">
-                Tags <span className="text-xs font-normal text-[#a06b45]">optional</span>
-              </h2>
+              <div className="flex items-center justify-between gap-3">
+                <h2 className="font-bold text-[#3e2c18] text-base">
+                  Tags <span className="text-xs font-normal text-[#a06b45]">optional</span>
+                </h2>
+                <button
+                  type="button"
+                  onClick={handleAutoTag}
+                  disabled={tagging || !(form.ingredientsGR || form.ingredientsEN || form.titleGR || form.titleEN)}
+                  className="text-xs px-3 py-1.5 rounded-lg bg-[#8c5e3c]/10 text-[#8c5e3c] hover:bg-[#8c5e3c]/20 disabled:opacity-40 font-semibold transition-colors whitespace-nowrap"
+                >
+                  {tagging ? "Generating…" : "🏷️ Auto-tag"}
+                </button>
+              </div>
+              {tagError && <p className="text-xs text-red-600">{tagError}</p>}
               <p className="text-xs text-[#5c4321]">Comma-separated. Used for search, categories, and similar-recipe suggestions.</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
