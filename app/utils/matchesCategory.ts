@@ -20,9 +20,9 @@ function tagMatchesVariant(tag: string, variant: string): boolean {
 }
 
 export function matchesCategory(recipe: Recipe, cat: CategoryItem, lang: "gr" | "en"): boolean {
-  const primaryCategory = lang === "gr" ? recipe.CategoryGR : recipe.CategoryEN;
+  const categories = lang === "gr" ? recipe.CategoryGR : recipe.CategoryEN;
   const catName = lang === "gr" ? cat.gr : cat.en;
-  if (primaryCategory === catName) return true;
+  if (categories.includes(catName)) return true;
 
   if (!cat.tagVariants || cat.tagVariants.length === 0) return false;
 

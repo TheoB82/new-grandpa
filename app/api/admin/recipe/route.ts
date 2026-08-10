@@ -17,17 +17,29 @@ function generateShortID(): string {
 // Pages with `revalidate` set (see plan note in app/page.tsx etc.) rely on this for
 // instant freshness on save — the passive ISR window is intentionally long since this
 // already covers the paths that matter.
-function revalidateRecipePaths(shortId?: string, categoriesEN: (string | undefined)[] = []) {
+function parseRawCategory(raw: string | undefined): string[] {
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [String(parsed)];
+  } catch {
+    return [raw];
+  }
+}
+
+function revalidateRecipePaths(shortId?: string, rawCategoriesEN: (string | undefined)[] = []) {
   revalidateTag("recipes", {}); // clears the unstable_cache in recipesData.ts
   revalidatePath("/");
   revalidatePath("/sitemap.xml");
   if (shortId) revalidatePath(`/recipes/${shortId}`);
   const seen = new Set<string>();
-  for (const categoryEN of categoriesEN) {
-    const categoryPath = categoryMapping.en.find((c) => c.en === categoryEN)?.path;
-    if (categoryPath && !seen.has(categoryPath)) {
-      seen.add(categoryPath);
-      revalidatePath(`/recipes/category/${categoryPath}`);
+  for (const raw of rawCategoriesEN) {
+    for (const categoryEN of parseRawCategory(raw)) {
+      const categoryPath = categoryMapping.en.find((c) => c.en === categoryEN)?.path;
+      if (categoryPath && !seen.has(categoryPath)) {
+        seen.add(categoryPath);
+        revalidatePath(`/recipes/category/${categoryPath}`);
+      }
     }
   }
 }

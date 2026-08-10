@@ -341,7 +341,7 @@ export default function MealPlannerClient({ recipes }: { recipes: Recipe[] }) {
             {weekPlan.map((day, i) => {
               const r = day.recipe;
               const title = r ? (lang === "gr" ? r.TitleGR : r.TitleEN) : "";
-              const category = r ? (lang === "gr" ? r.CategoryGR : r.CategoryEN) : "";
+              const category = r ? (lang === "gr" ? r.CategoryGR.join(" · ") : r.CategoryEN.join(" · ")) : "";
               return (
                 <div key={i} className="bg-white rounded-2xl border border-[#d9b08c] shadow-sm overflow-hidden flex flex-col">
                   <div className="px-4 pt-4 flex items-center justify-between">

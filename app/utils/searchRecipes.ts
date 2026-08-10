@@ -54,8 +54,8 @@ function scoreWord(r: Recipe, word: string): number {
   if (titleEN.startsWith(w) || titleGR.startsWith(w) || titleLat.startsWith(wLat)) return 80;
   if (titleLat.includes(wLat)) return 65;
   if (titleEN.includes(w) || titleGR.includes(w)) return 60;
-  if (normalize(r.CategoryEN) === w || normalize(r.CategoryGR) === w) return 50;
-  if (normalize(r.CategoryEN).includes(w) || normalize(r.CategoryGR).includes(w)) return 40;
+  if (r.CategoryEN.some(c => normalize(c) === w) || r.CategoryGR.some(c => normalize(c) === w)) return 50;
+  if (r.CategoryEN.some(c => normalize(c).includes(w)) || r.CategoryGR.some(c => normalize(c).includes(w))) return 40;
   if (fuzzyIncludes(String(r.TagsEN), word) || fuzzyIncludes(String(r.TagsGR), word)) return 30;
   if (fuzzyIncludes(r.ShortDescriptionEN, word) || fuzzyIncludes(r.ShortDescriptionGR, word)) return 20;
   if (

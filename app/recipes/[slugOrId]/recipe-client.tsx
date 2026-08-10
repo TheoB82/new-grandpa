@@ -131,7 +131,7 @@ function ExecutionSteps({ html }: { html: string }) {
       {sections.map((section, sIdx) => (
         <div key={sIdx}>
           {section.heading && (
-            <p className="text-xs font-bold uppercase tracking-widest text-[#fdd9a1]/60 mb-4 print:hidden">
+            <p className="text-sm font-bold tracking-wide text-[#fdd9a1]/80 mb-4 border-l-2 border-[#8c5e3c]/60 pl-3 print:hidden">
               {section.heading}
             </p>
           )}
@@ -358,9 +358,9 @@ function PhotoGallery({ photos, title }: { photos: string[]; title: string }) {
 /* ------------------------------------------------------------------ */
 
 function getSimilarRecipes(allRecipes: Recipe[], current: Recipe, lang: "gr" | "en", limit = 3) {
-  const titleKey    = lang === "gr" ? "TitleGR"    : "TitleEN";
-  const tagKey      = lang === "gr" ? "TagsGR"     : "TagsEN";
-  const categoryKey = lang === "gr" ? "CategoryGR" : "CategoryEN";
+  const titleKey = lang === "gr" ? "TitleGR" : "TitleEN";
+  const tagKey   = lang === "gr" ? "TagsGR"  : "TagsEN";
+  const currentCats = lang === "gr" ? current.CategoryGR : current.CategoryEN;
 
   const currentTags: string[] = (() => {
     try { return JSON.parse(current[tagKey] || "[]"); } catch { return []; }
@@ -371,10 +371,11 @@ function getSimilarRecipes(allRecipes: Recipe[], current: Recipe, lang: "gr" | "
     .map((r) => {
       let tags: string[] = [];
       try { tags = JSON.parse(r[tagKey] || "[]"); } catch {}
+      const rCats = lang === "gr" ? r.CategoryGR : r.CategoryEN;
+      const catOverlap = rCats.filter(c => currentCats.includes(c)).length;
       return {
         recipe: r,
-        score: (r[categoryKey] === current[categoryKey] ? 3 : 0) +
-               tags.filter(t => currentTags.includes(t)).length,
+        score: (catOverlap > 0 ? 3 : 0) + tags.filter(t => currentTags.includes(t)).length,
       };
     })
     .sort((a, b) => b.score - a.score)
@@ -402,7 +403,7 @@ export default function RecipeClient({
   const longDesc    = lang === "gr" ? recipe.LongDescriptionGR  : recipe.LongDescriptionEN;
   const ingredients = lang === "gr" ? recipe.IngredientsGR      : recipe.IngredientsEN;
   const execution   = lang === "gr" ? recipe.ExecutionGR        : recipe.ExecutionEN;
-  const category    = lang === "gr" ? recipe.CategoryGR         : recipe.CategoryEN;
+  const category    = lang === "gr" ? recipe.CategoryGR.join(" · ") : recipe.CategoryEN.join(" · ");
 
   const videoID = recipe.LinkYT ? getYoutubeVideoID(recipe.LinkYT) : null;
   const similar = getSimilarRecipes(recipes, recipe, lang);
@@ -501,7 +502,7 @@ export default function RecipeClient({
           <div>
             <SectionHeading>{lang === "gr" ? "Υλικά" : "Ingredients"}</SectionHeading>
             <div className="bg-[#2e1e12]/70 border border-[#8c5e3c]/40 rounded-xl p-5 shadow-lg">
-              <div className="prose prose-invert max-w-none prose-p:mb-2.5 prose-p:text-sm prose-p:text-white/80 prose-li:mb-2 prose-li:text-sm prose-strong:text-[#fdd9a1] prose-u:text-[#fdd9a1] prose-u:no-underline prose-u:font-semibold prose-h3:text-[#fdd9a1] prose-h3:text-xs prose-h3:font-bold prose-h3:mt-5 prose-h3:mb-2 prose-h3:first:mt-0">
+              <div className="prose prose-invert max-w-none prose-p:mb-2.5 prose-p:text-sm prose-p:text-white/80 prose-li:mb-2 prose-li:text-sm prose-strong:text-[#fdd9a1] prose-u:text-[#fdd9a1] prose-u:no-underline prose-u:font-semibold prose-h3:text-[#fdd9a1]/90 prose-h3:text-sm prose-h3:font-bold prose-h3:tracking-wide prose-h3:mt-6 prose-h3:mb-2 prose-h3:border-l-2 prose-h3:border-[#8c5e3c]/60 prose-h3:pl-3 prose-h3:not-italic [&_h3:first-child]:mt-0">
                 {parse(ingredients || "")}
               </div>
             </div>
@@ -531,7 +532,7 @@ export default function RecipeClient({
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               {similar.map((r, idx) => {
                 const simTitle = lang === "gr" ? r.TitleGR : r.TitleEN;
-                const simCat   = lang === "gr" ? r.CategoryGR : r.CategoryEN;
+                const simCat   = lang === "gr" ? r.CategoryGR.join(" · ") : r.CategoryEN.join(" · ");
                 const link     = `/recipes/${slugify(r.TitleEN)}`;
                 const vid      = r.LinkYT ? getYoutubeVideoID(r.LinkYT) : null;
                 const thumb    = r.Image

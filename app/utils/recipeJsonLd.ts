@@ -52,7 +52,7 @@ export function buildRecipeJsonLd(recipe: Recipe) {
     description: recipe.ShortDescriptionEN || recipe.ShortDescriptionGR,
     url,
     ...(datePublished ? { datePublished } : {}),
-    ...(recipe.CategoryEN ? { recipeCategory: recipe.CategoryEN } : {}),
+    ...(recipe.CategoryEN.length > 0 ? { recipeCategory: recipe.CategoryEN.join(", ") } : {}),
     recipeCuisine: "Greek",
     ...(tags.length ? { keywords: tags.join(", ") } : {}),
     author: {

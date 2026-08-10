@@ -1,6 +1,6 @@
 export interface Recipe {
-    CategoryGR: string;
-    CategoryEN: string;
+    CategoryGR: string[];
+    CategoryEN: string[];
   
     Image?: string;
     GalleryPhotos?: string[]; // additional photos shown on the recipe page itself

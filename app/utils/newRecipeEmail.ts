@@ -41,7 +41,7 @@ export function buildNewRecipeEmail(
   const c = COPY[lang];
   const title = lang === "gr" ? recipe.TitleGR : recipe.TitleEN;
   const desc = lang === "gr" ? recipe.ShortDescriptionGR : recipe.ShortDescriptionEN;
-  const category = lang === "gr" ? recipe.CategoryGR : recipe.CategoryEN;
+  const category = lang === "gr" ? recipe.CategoryGR.join(", ") : recipe.CategoryEN.join(", ");
 
   const recipeUrl = `${SITE_URL}/recipes/${recipe.ShortID}`;
   const image = recipeImage(recipe);

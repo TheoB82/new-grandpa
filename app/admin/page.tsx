@@ -88,7 +88,7 @@ export default function AdminPage() {
       (r) =>
         r.TitleEN.toLowerCase().includes(q) ||
         r.TitleGR.toLowerCase().includes(q) ||
-        r.CategoryEN.toLowerCase().includes(q)
+        r.CategoryEN.join(", ").toLowerCase().includes(q)
     );
   }, [recipes, search]);
 
@@ -214,7 +214,7 @@ export default function AdminPage() {
                       </span>
                     )}
                     <span className="px-2.5 py-1 text-[11px] font-semibold rounded-full bg-[#f0e2d0] text-[#5c4321] uppercase tracking-wide">
-                      {r.CategoryEN}
+                      {r.CategoryEN.join(" · ")}
                     </span>
                   </div>
                 </button>

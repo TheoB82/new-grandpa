@@ -184,7 +184,7 @@ export default function RecipeExplorer({ recipes }: { recipes: Recipe[] }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {visibleRecipes.map((r, index) => {
             const title    = lang === "gr" ? r.TitleGR : r.TitleEN;
-            const category = lang === "gr" ? r.CategoryGR : r.CategoryEN;
+            const category = lang === "gr" ? r.CategoryGR.join(" · ") : r.CategoryEN.join(" · ");
             const desc     = lang === "gr" ? r.ShortDescriptionGR : r.ShortDescriptionEN;
             const meta     = cardMeta(r, lang);
 

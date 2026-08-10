@@ -38,14 +38,26 @@ function toDMY(isoDate: string | null): string {
   return `${day}/${month}/${year}`;
 }
 
+// Parses the category column, which is either a JSON array (new format) or a
+// plain string (old single-category format). Always returns string[].
+function parseCategories(raw: string | null): string[] {
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [String(parsed)];
+  } catch {
+    return [raw]; // old single-string value
+  }
+}
+
 // Maps a Supabase row back into the existing Recipe shape (PascalCase fields,
 // tags as JSON-stringified arrays) so every existing component — RecipeClient,
 // RecipeExplorer, search, category pages, matchesCategory, searchRecipes,
 // recipeJsonLd — keeps working completely unchanged.
 export function mapRecipeRow(row: RecipeRow): Recipe {
   return {
-    CategoryGR: row.category_gr,
-    CategoryEN: row.category_en,
+    CategoryGR: parseCategories(row.category_gr),
+    CategoryEN: parseCategories(row.category_en),
     Image: row.photo_url ?? undefined,
     GalleryPhotos: row.gallery_photo_urls ?? [],
     TitleGR: row.title_gr,
@@ -86,8 +98,8 @@ export function recipeToRow(recipe: Recipe): Omit<RecipeRow, "short_id"> {
   const recipe_date = day && month && year ? `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}` : null;
 
   return {
-    category_en: recipe.CategoryEN,
-    category_gr: recipe.CategoryGR,
+    category_en: JSON.stringify(recipe.CategoryEN),
+    category_gr: JSON.stringify(recipe.CategoryGR),
     title_en: recipe.TitleEN,
     title_gr: recipe.TitleGR,
     short_description_en: recipe.ShortDescriptionEN,

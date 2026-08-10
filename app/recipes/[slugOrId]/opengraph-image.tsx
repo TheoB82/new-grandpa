@@ -18,7 +18,7 @@ export default async function Image({ params }: Props) {
   const recipe: Recipe | null = await getRecipeByShortId(slugOrId);
 
   const title    = recipe?.TitleEN    ?? "Grandpa Tassos Cooking";
-  const category = recipe?.CategoryEN ?? "";
+  const category = recipe?.CategoryEN.join(" · ") ?? "";
   const videoID  = recipe?.LinkYT ? getYoutubeVideoID(recipe.LinkYT) : null;
   const thumb    = recipe?.Image
     ?? (videoID ? `https://img.youtube.com/vi/${videoID}/maxresdefault.jpg` : null);

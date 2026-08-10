@@ -100,8 +100,8 @@ function isoToDMY(iso: string): string {
 /* ------------------------------------------------------------------ */
 
 type Form = {
-  categoryGR: string;
-  categoryEN: string;
+  categoriesGR: string[];
+  categoriesEN: string[];
   date: string; // yyyy-mm-dd, for <input type="date">
   linkYT: string;
   titleGR: string; titleEN: string;
@@ -130,8 +130,8 @@ const SEASONS: { value: string; en: string; gr: string }[] = [
 function recipeToForm(recipe: Recipe | null): Form {
   if (!recipe) {
     return {
-      categoryGR: "Γλυκά",
-      categoryEN: "Desserts",
+      categoriesGR: ["Γλυκά"],
+      categoriesEN: ["Desserts"],
       date: new Date().toISOString().split("T")[0],
       linkYT: "",
       titleGR: "", titleEN: "",
@@ -148,8 +148,8 @@ function recipeToForm(recipe: Recipe | null): Form {
     };
   }
   return {
-    categoryGR: recipe.CategoryGR || CATEGORIES.find((c) => c.en === recipe.CategoryEN)?.gr || "Γλυκά",
-    categoryEN: recipe.CategoryEN,
+    categoriesGR: recipe.CategoryGR.length ? recipe.CategoryGR : ["Γλυκά"],
+    categoriesEN: recipe.CategoryEN.length ? recipe.CategoryEN : ["Desserts"],
     date: dmyToISO(recipe.Date),
     linkYT: recipe.LinkYT,
     titleGR: recipe.TitleGR, titleEN: recipe.TitleEN,
@@ -171,8 +171,8 @@ function recipeToForm(recipe: Recipe | null): Form {
 
 function formToRecipe(form: Form, shortId: string): Recipe {
   return {
-    CategoryEN: form.categoryEN,
-    CategoryGR: form.categoryGR,
+    CategoryEN: form.categoriesEN,
+    CategoryGR: form.categoriesGR,
     Image: form.photoUrl || undefined,
     GalleryPhotos: form.galleryPhotos,
     TitleGR: form.titleGR,
@@ -366,8 +366,8 @@ export default function RecipeForm({
         body: JSON.stringify({
           password,
           title: form.titleEN || form.titleGR,
-          categoryGR: form.categoryGR,
-          categoryEN: form.categoryEN,
+          categoryGR: form.categoriesGR.join(", "),
+          categoryEN: form.categoriesEN.join(", "),
           ingredientsGR: form.ingredientsGR.split("\n").map((l) => l.trim()).filter(Boolean),
           ingredientsEN: form.ingredientsEN.split("\n").map((l) => l.trim()).filter(Boolean),
           stepsGR: form.stepsGR.split("\n").map((l) => l.trim()).filter(Boolean),
@@ -487,49 +487,50 @@ export default function RecipeForm({
             <div className={card}>
               <h2 className="font-bold text-[#3e2c18] text-base">Recipe Info</h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div>
-                  <label className={lbl}>Category (Greek)</label>
-                  <select
-                    value={form.categoryGR}
-                    onChange={(e) => {
-                      const grVal = e.target.value;
-                      const cat = CATEGORIES.find((c) => c.gr === grVal);
-                      if (grVal !== "Νηστίσιμα" && cat) {
-                        setForm((f) => ({ ...f, categoryGR: grVal, categoryEN: cat.en }));
-                      } else {
-                        set("categoryGR", grVal);
-                      }
-                    }}
-                    className={inp}
-                  >
-                    {CATEGORIES.map((c) => (
-                      <option key={c.gr} value={c.gr}>{c.gr}</option>
-                    ))}
-                  </select>
+              <div>
+                <label className={lbl}>Categories <span className="normal-case tracking-normal font-normal text-[#a06b45]">select one or more</span></label>
+                <div className="flex flex-wrap gap-2">
+                  {CATEGORIES.map((c) => {
+                    const active = form.categoriesGR.includes(c.gr);
+                    return (
+                      <button
+                        key={c.en}
+                        type="button"
+                        onClick={() =>
+                          setForm((f) => {
+                            if (active) {
+                              return {
+                                ...f,
+                                categoriesGR: f.categoriesGR.filter((g) => g !== c.gr),
+                                categoriesEN: f.categoriesEN.filter((e) => e !== c.en),
+                              };
+                            }
+                            return {
+                              ...f,
+                              categoriesGR: [...f.categoriesGR, c.gr],
+                              categoriesEN: [...f.categoriesEN, c.en],
+                            };
+                          })
+                        }
+                        className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
+                          active
+                            ? "bg-[#8c5e3c] text-white border-[#8c5e3c]"
+                            : "bg-white text-[#5c4321] border-[#d9b08c] hover:bg-[#f9f3ea]"
+                        }`}
+                      >
+                        {c.gr} / {c.en}
+                      </button>
+                    );
+                  })}
                 </div>
-                <div>
-                  <label className={lbl}>
-                    Category (English)
-                    {form.categoryGR === "Νηστίσιμα" && (
-                      <span className="ml-1 normal-case tracking-normal font-normal text-[#a06b45]">— choose manually</span>
-                    )}
-                  </label>
-                  <select
-                    value={form.categoryEN}
-                    onChange={(e) => set("categoryEN", e.target.value)}
-                    disabled={form.categoryGR !== "Νηστίσιμα"}
-                    className={`${inp} ${form.categoryGR !== "Νηστίσιμα" ? "opacity-60" : ""}`}
-                  >
-                    {CATEGORIES.map((c) => (
-                      <option key={c.en} value={c.en}>{c.en}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className={lbl}>Date</label>
-                  <input type="date" value={form.date} onChange={(e) => set("date", e.target.value)} className={inp} />
-                </div>
+                {form.categoriesGR.length === 0 && (
+                  <p className="text-xs text-red-500 mt-1">Select at least one category.</p>
+                )}
+              </div>
+
+              <div>
+                <label className={lbl}>Date</label>
+                <input type="date" value={form.date} onChange={(e) => set("date", e.target.value)} className={inp} />
               </div>
 
               <div>
