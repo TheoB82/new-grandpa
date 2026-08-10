@@ -501,7 +501,7 @@ export default function RecipeClient({
           <div>
             <SectionHeading>{lang === "gr" ? "Υλικά" : "Ingredients"}</SectionHeading>
             <div className="bg-[#2e1e12]/70 border border-[#8c5e3c]/40 rounded-xl p-5 shadow-lg">
-              <div className="prose prose-invert max-w-none prose-p:mb-2.5 prose-p:text-sm prose-p:text-white/80 prose-li:mb-2 prose-li:text-sm prose-strong:text-[#fdd9a1] prose-u:text-[#fdd9a1] prose-u:no-underline prose-u:font-semibold">
+              <div className="prose prose-invert max-w-none prose-p:mb-2.5 prose-p:text-sm prose-p:text-white/80 prose-li:mb-2 prose-li:text-sm prose-strong:text-[#fdd9a1] prose-u:text-[#fdd9a1] prose-u:no-underline prose-u:font-semibold prose-h3:text-[#fdd9a1] prose-h3:text-xs prose-h3:font-bold prose-h3:mt-5 prose-h3:mb-2 prose-h3:first:mt-0">
                 {parse(ingredients || "")}
               </div>
             </div>

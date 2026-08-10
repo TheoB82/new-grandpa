@@ -33,7 +33,11 @@ const CATEGORIES = [
 /* ------------------------------------------------------------------ */
 
 function toIngredients(text: string): string {
-  return text.split("\n").map((l) => l.trim()).filter(Boolean).map((l) => `<p>${l}</p>`).join("\n");
+  const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
+  if (lines.length === 0) return "";
+  return lines
+    .map((l) => (l.startsWith("# ") ? `<h3>${l.slice(2)}</h3>` : `<p>${l}</p>`))
+    .join("\n");
 }
 
 function toSteps(text: string): string {
@@ -61,8 +65,8 @@ function toTags(text: string): string {
 function htmlToLines(html: string): string {
   if (!html) return "";
   const lines: string[] = [];
-  // Match h3 (section headings) and li (steps) in document order
-  for (const m of html.matchAll(/<(h3|li)[^>]*>([\s\S]*?)<\/\1>/gi)) {
+  // Match h3 (section headings), li (steps), and p (ingredients) in document order
+  for (const m of html.matchAll(/<(h3|li|p)[^>]*>([\s\S]*?)<\/\1>/gi)) {
     const text = m[2].replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").trim();
     if (text) lines.push(m[1].toLowerCase() === "h3" ? `# ${text}` : text);
   }
@@ -712,7 +716,11 @@ export default function RecipeForm({
             {/* ── INGREDIENTS ──────────────────────────── */}
             <div className={card}>
               <h2 className="font-bold text-[#3e2c18] text-base">Ingredients</h2>
-              <p className="text-xs text-[#5c4321]">One ingredient per line — each line becomes a separate item.</p>
+              <p className="text-xs text-[#5c4321]">
+                One ingredient per line. For multi-part recipes start a group with{" "}
+                <code className="bg-[#f0e2d0] px-1 rounded text-[10px]"># Group Name</code> on its own line (e.g.{" "}
+                <code className="bg-[#f0e2d0] px-1 rounded text-[10px]"># Για τη ζύμη</code>), then list ingredients below.
+              </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className={lbl}>🇬🇷 Greek</label>

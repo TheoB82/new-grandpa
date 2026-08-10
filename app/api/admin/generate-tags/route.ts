@@ -23,9 +23,9 @@ const SYSTEM_PROMPT = `You are a tag generator for a Greek home cooking website.
 
 Rules:
 - Tags should cover: dish type, main ingredients, cooking method, occasion, dietary properties, cuisine style.
-- Greek tags: modern Greek script, lowercase.
-- English tags: lowercase.
-- Keep each tag short (1–3 words). No generic tags like "recipe" or "food". No duplicates.
+- Greek tags: modern Greek script with correct accents (e.g. "Γλυκό", "Θαλασσινά"). Capitalise the first letter of each tag.
+- English tags: capitalise the first letter of each tag (e.g. "Seafood", "Quick dinner").
+- Keep each tag short (1–3 words). No generic tags like "Recipe" or "Food". No duplicates.
 - Output only the two arrays — no explanations.`;
 
 export async function POST(req: NextRequest) {
