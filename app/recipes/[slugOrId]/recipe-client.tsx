@@ -162,6 +162,43 @@ function ExecutionSteps({ html }: { html: string }) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Ingredients — parses <h3> section headings + <p> items             */
+/* ------------------------------------------------------------------ */
+
+function IngredientsList({ html }: { html: string }) {
+  // Build a flat list of tokens: { type: "heading" | "item", text: string }
+  const tokens: { type: "heading" | "item"; text: string }[] = [];
+  for (const m of html.matchAll(/<(h3|p)[^>]*>([\s\S]*?)<\/\1>/gi)) {
+    const text = m[2].replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").trim();
+    if (text) tokens.push({ type: m[1].toLowerCase() === "h3" ? "heading" : "item", text });
+  }
+
+  if (tokens.length === 0) {
+    return (
+      <div className="prose prose-invert max-w-none prose-p:mb-2.5 prose-p:text-sm prose-p:text-white/80">
+        {parse(html)}
+      </div>
+    );
+  }
+
+  return (
+    <ul className="space-y-0 list-none p-0 m-0">
+      {tokens.map((t, i) =>
+        t.type === "heading" ? (
+          <li key={i} className={`text-sm font-bold tracking-wide text-[#fdd9a1]/90 border-l-2 border-[#8c5e3c]/60 pl-3 pb-2 ${i === 0 ? "mt-0" : "mt-5"}`}>
+            {t.text}
+          </li>
+        ) : (
+          <li key={i} className="text-sm text-white/80 py-1.5 border-b border-[#8c5e3c]/15 last:border-b-0 pl-0">
+            {t.text}
+          </li>
+        )
+      )}
+    </ul>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* Section heading — strips accents before CSS uppercases             */
 /* ------------------------------------------------------------------ */
 
@@ -502,9 +539,7 @@ export default function RecipeClient({
           <div>
             <SectionHeading>{lang === "gr" ? "Υλικά" : "Ingredients"}</SectionHeading>
             <div className="bg-[#2e1e12]/70 border border-[#8c5e3c]/40 rounded-xl p-5 shadow-lg">
-              <div className="prose prose-invert max-w-none prose-p:mb-2.5 prose-p:text-sm prose-p:text-white/80 prose-li:mb-2 prose-li:text-sm prose-strong:text-[#fdd9a1] prose-u:text-[#fdd9a1] prose-u:no-underline prose-u:font-semibold prose-h3:text-[#fdd9a1]/90 prose-h3:text-sm prose-h3:font-bold prose-h3:tracking-wide prose-h3:mt-6 prose-h3:mb-2 prose-h3:border-l-2 prose-h3:border-[#8c5e3c]/60 prose-h3:pl-3 prose-h3:not-italic [&_h3:first-child]:mt-0">
-                {parse(ingredients || "")}
-              </div>
+              <IngredientsList html={ingredients || ""} />
             </div>
           </div>
 
@@ -524,7 +559,7 @@ export default function RecipeClient({
             <div className="flex items-center gap-4 mb-8">
               <div className="h-px flex-1 bg-[#8c5e3c]/20" />
               <h2 className="text-sm font-semibold uppercase tracking-widest text-[#fdd9a1]/70">
-                {lang === "gr" ? "Παρόμοιες Συνταγές" : "You might also like"}
+                {stripAccents(lang === "gr" ? "Παρόμοιες Συνταγές" : "You might also like")}
               </h2>
               <div className="h-px flex-1 bg-[#8c5e3c]/20" />
             </div>
