@@ -11,16 +11,32 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
+// Columns fetched for listing, search, cards, similar-recipe suggestions, meal
+// planner, and sitemap. The six large HTML content columns — ingredients_en/gr,
+// execution_en/gr, long_description_en/gr — are intentionally excluded: no
+// getAllRecipes() caller renders them. They are fetched only via getRecipeByShortId
+// (the individual recipe detail page). Dropping them cuts payload by ~80–90%.
+const SUMMARY_COLUMNS = [
+  "short_id", "category_en", "category_gr",
+  "title_en", "title_gr",
+  "short_description_en", "short_description_gr",
+  "photo_url", "gallery_photo_urls",
+  "recipe_date", "link_yt",
+  "tags_en", "tags_gr",
+  "prep_time_minutes", "cook_time_minutes",
+  "servings", "difficulty",
+  "calories_per_serving", "calories_estimated",
+  "seasons", "notified_at",
+].join(", ");
+
 // unstable_cache persists across serverless function invocations for 1 hour.
-// This is the primary guard against Supabase egress: with ~400 recipes and
-// large HTML fields per row, a per-request SELECT * was generating massive egress.
 // revalidateTag("recipes") in the admin API clears this cache on every recipe save.
 export const getAllRecipes = cache(
   unstable_cache(
     async (): Promise<Recipe[]> => {
-      const { data, error } = await supabase.from("recipes").select("*");
+      const { data, error } = await supabase.from("recipes").select(SUMMARY_COLUMNS);
       if (error) throw new Error(`Failed to fetch recipes: ${error.message}`);
-      return (data as RecipeRow[]).map(mapRecipeRow);
+      return (data as unknown as RecipeRow[]).map(mapRecipeRow);
     },
     ["all-recipes"],
     { revalidate: 3600, tags: ["recipes"] }

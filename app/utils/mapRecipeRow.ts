@@ -10,8 +10,8 @@ export type RecipeRow = {
   short_description_gr: string;
   long_description_en: string | null;
   long_description_gr: string | null;
-  ingredients_en: string;
-  ingredients_gr: string;
+  ingredients_en: string | null;
+  ingredients_gr: string | null;
   execution_en: string | null;
   execution_gr: string | null;
   tags_en: string[];
@@ -64,8 +64,8 @@ export function mapRecipeRow(row: RecipeRow): Recipe {
     TitleEN: row.title_en,
     ShortDescriptionGR: row.short_description_gr,
     ShortDescriptionEN: row.short_description_en,
-    IngredientsGR: row.ingredients_gr,
-    IngredientsEN: row.ingredients_en,
+    IngredientsGR: row.ingredients_gr ?? "",
+    IngredientsEN: row.ingredients_en ?? "",
     LongDescriptionGR: row.long_description_gr ?? undefined,
     LongDescriptionEN: row.long_description_en ?? undefined,
     ExecutionGR: row.execution_gr ?? undefined,
