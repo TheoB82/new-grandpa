@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllRecipes } from "@/utils/recipesData";
 
-export const revalidate = 3600;
+export const revalidate = false;
 import { categoryMapping } from "@/utils/categoryMapping";
 import { parseDate } from "@/utils/parseDate";
 

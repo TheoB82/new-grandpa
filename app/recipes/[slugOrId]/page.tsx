@@ -6,7 +6,7 @@ import { notFound, redirect } from "next/navigation";
 import { Recipe } from "@/types/recipe";
 import { buildRecipeJsonLd } from "@/utils/recipeJsonLd";
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 interface PageProps {
   params: Promise<{ slugOrId: string }>;

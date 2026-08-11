@@ -4,7 +4,7 @@ import { categoryMapping } from "@/utils/categoryMapping";
 import { getAllRecipes } from "@/utils/recipesData";
 import CategoryClient from "./category-client";
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 interface PageProps {
   params: Promise<{ slug: string }>;

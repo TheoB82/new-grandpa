@@ -14,9 +14,9 @@ function generateShortID(): string {
   return Array.from({ length: 7 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
 }
 
-// Pages with `revalidate` set (see plan note in app/page.tsx etc.) rely on this for
-// instant freshness on save — the passive ISR window is intentionally long since this
-// already covers the paths that matter.
+// All public pages use revalidate = false (cache indefinitely) to eliminate
+// automatic ISR writes. This function is the ONLY thing that refreshes them —
+// every recipe save/update/delete must call it so visitors get fresh content.
 function parseRawCategory(raw: string | undefined): string[] {
   if (!raw) return [];
   try {
@@ -31,6 +31,8 @@ function revalidateRecipePaths(shortId?: string, rawCategoriesEN: (string | unde
   revalidateTag("recipes", {}); // clears the unstable_cache in recipesData.ts
   revalidatePath("/");
   revalidatePath("/sitemap.xml");
+  revalidatePath("/search");
+  revalidatePath("/meal-planner");
   if (shortId) revalidatePath(`/recipes/${shortId}`);
   const seen = new Set<string>();
   for (const raw of rawCategoriesEN) {
