@@ -27,16 +27,32 @@ const SCHEMA = {
   additionalProperties: false,
 };
 
-const SYSTEM_PROMPT = `You extract structured recipe metadata (prep time, cook time, servings, difficulty, estimated calories, seasonality) from recipe text (ingredients + steps).
+const SYSTEM_PROMPT = `You extract structured recipe metadata from recipe text (ingredients + steps).
 
 Rules:
+
+TIMES & SERVINGS
 - Prefer times explicitly stated in the steps over guessing.
-- If prep time isn't stated anywhere, estimate it reasonably from the number and complexity of steps before cooking starts.
-- Servings: infer from pan/dish size, ingredient quantities, or explicit mentions. If truly unknowable, use a reasonable default for a home-style dish (4-6).
+- If prep time isn't stated, estimate from the number and complexity of steps before cooking starts.
+- Servings: infer from pan/dish size, ingredient quantities, or explicit mentions. Default 4–6 if truly unknowable.
 - Difficulty: Easy (few steps, forgiving), Medium (multiple components or techniques), Hard (dough/pastry work, precise timing, many components).
-- caloriesPerServing: estimate from the ingredient list and quantities using general nutrition knowledge. This is always an estimate, not a lab measurement.
-- seasons: base this on the ingredients (e.g. watermelon/tomatoes/courgettes → summer; pumpkin/mushrooms → autumn; hearty stews/legume soups → autumn/winter; fresh spring greens/artichokes → spring) and dish type. A dish can belong to multiple seasons, or none — return an empty array for genuinely any-season dishes (most breads, many desserts, everyday staples) rather than forcing a guess.
-- Output only the structured fields. No commentary.`;
+
+CALORIES — work through this systematically to avoid undercounting:
+1. For every ingredient that has significant calories, note its quantity (in grams/ml/units) and its typical kcal/100g:
+   butter/ghee ≈ 720, olive oil ≈ 880, other oils ≈ 880, flour ≈ 360, sugar/honey ≈ 390,
+   cheese (hard) ≈ 400, cheese (soft/feta) ≈ 260, eggs ≈ 70 kcal each, meat (lean) ≈ 150,
+   meat (fatty/minced) ≈ 250, chicken breast ≈ 110, fish (white) ≈ 80, fish (oily) ≈ 200,
+   milk ≈ 60, cream ≈ 340, pasta/rice (dry) ≈ 360, nuts ≈ 600, chocolate ≈ 540.
+   Water-heavy vegetables, herbs, spices, lemon juice contribute almost nothing.
+2. Sum the kcal across all ingredients to get a batch total.
+3. Divide by servings to get kcal per serving.
+4. Round to the nearest 5. This is always an estimate, not a lab measurement.
+
+SEASONS
+- Base on ingredients and dish type. A dish can belong to multiple seasons, or none.
+- Return an empty array for genuinely any-season dishes (most breads, many desserts, everyday staples).
+
+Output only the structured fields. No commentary.`;
 
 export async function POST(req: NextRequest) {
   try {
@@ -51,8 +67,8 @@ export async function POST(req: NextRequest) {
     const userPrompt = `Recipe: ${title || ""}\n\nIngredients:\n${ingredients || ""}\n\nSteps:\n${steps || ""}`;
 
     const response = await client.messages.create({
-      model: "claude-haiku-4-5",
-      max_tokens: 300,
+      model: "claude-sonnet-4-6",
+      max_tokens: 600,
       system: SYSTEM_PROMPT,
       messages: [{ role: "user", content: userPrompt }],
       output_config: { format: { type: "json_schema", schema: SCHEMA } },
