@@ -39,7 +39,7 @@ export const getAllRecipes = cache(
       return (data as unknown as RecipeRow[]).map(mapRecipeRow);
     },
     ["all-recipes"],
-    { revalidate: 3600, tags: ["recipes"] }
+    { revalidate: false, tags: ["recipes"] }
   )
 );
 
@@ -57,6 +57,6 @@ export const getRecipeByShortId = cache(
       return mapRecipeRow(data as RecipeRow);
     },
     ["recipe-by-short-id"],
-    { revalidate: 3600, tags: ["recipes"] }
+    { revalidate: false, tags: ["recipes"] }
   )
 );
