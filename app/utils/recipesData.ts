@@ -35,7 +35,7 @@ export const getAllRecipes = cache(
   unstable_cache(
     async (): Promise<Recipe[]> => {
       const { data, error } = await supabase.from("recipes").select(SUMMARY_COLUMNS);
-      if (error) throw new Error(`Failed to fetch recipes: ${error.message}`);
+      if (error) return [];
       return (data as unknown as RecipeRow[]).map(mapRecipeRow);
     },
     ["all-recipes"],
